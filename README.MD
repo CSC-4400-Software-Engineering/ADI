@@ -1,2 +1,2 @@
 # ADI
-Project
+this is just a sanity check
