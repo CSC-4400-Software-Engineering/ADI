@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2021 at 05:29 PM
+-- Generation Time: Mar 03, 2021 at 06:38 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -52,11 +52,12 @@ CREATE TABLE `onlineorderproduct` (
 
 CREATE TABLE `product` (
   `productID` int(11) NOT NULL,
-  `brand` varchar(50) NOT NULL,
+  `brand` varchar(100) NOT NULL,
   `model` varchar(100) NOT NULL,
   `type` varchar(50) NOT NULL,
-  `price` int(5) NOT NULL,
-  `description` varchar(1000) NOT NULL,
+  `price` int(20) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `stock` int(20) NOT NULL,
   `picture` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -77,7 +78,7 @@ CREATE TABLE `user` (
   `state` varchar(20) NOT NULL,
   `phone` bigint(10) NOT NULL,
   `securityQuestion` varchar(100) NOT NULL,
-  `securityAnswer` int(100) NOT NULL,
+  `securityAnswer` varchar(100) NOT NULL,
   `userType` int(1) NOT NULL,
   `creditCardNum` bigint(16) NOT NULL,
   `creditCardExp` int(4) NOT NULL,
