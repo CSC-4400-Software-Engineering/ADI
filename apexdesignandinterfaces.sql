@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2021 at 06:38 PM
+-- Generation Time: Mar 08, 2021 at 06:18 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `onlineorder` (
   `orderID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL
+  `userID` int(11) NOT NULL,
+  `timeStamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -41,7 +42,8 @@ CREATE TABLE `onlineorder` (
 CREATE TABLE `onlineorderproduct` (
   `OOPID` int(11) NOT NULL,
   `orderID` int(11) NOT NULL,
-  `productID` int(11) NOT NULL
+  `productID` int(11) NOT NULL,
+  `quantity` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -76,13 +78,12 @@ CREATE TABLE `user` (
   `streetAddress` varchar(100) NOT NULL,
   `city` varchar(50) NOT NULL,
   `state` varchar(20) NOT NULL,
-  `phone` bigint(10) NOT NULL,
+  `phone` varchar(10) NOT NULL,
   `securityQuestion` varchar(100) NOT NULL,
   `securityAnswer` varchar(100) NOT NULL,
   `userType` int(1) NOT NULL,
-  `creditCardNum` bigint(16) NOT NULL,
-  `creditCardExp` int(4) NOT NULL,
-  `creditCardCVV` int(3) NOT NULL
+  `creditCardNum` varchar(16) NOT NULL,
+  `creditCardExp` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
