@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2021 at 06:18 PM
+-- Generation Time: Mar 15, 2021 at 05:35 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -60,8 +60,15 @@ CREATE TABLE `product` (
   `price` int(20) NOT NULL,
   `description` varchar(500) NOT NULL,
   `stock` int(20) NOT NULL,
-  `picture` blob NOT NULL
+  `picture` blob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`productID`, `brand`, `model`, `type`, `price`, `description`, `stock`, `picture`) VALUES
+(1, 'test', 'test', 'test', 1222, 'test', 1111, NULL);
 
 -- --------------------------------------------------------
 
@@ -141,7 +148,7 @@ ALTER TABLE `onlineorderproduct`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
