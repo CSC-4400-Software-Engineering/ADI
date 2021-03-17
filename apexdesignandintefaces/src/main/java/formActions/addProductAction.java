@@ -23,7 +23,7 @@ import javax.servlet.http.Part;
 import myBeans.DBConnect;
 
 @WebServlet(name = "addProductAction", urlPatterns = {"/addProductAction"})
-@MultipartConfig(maxFileSize = 16177216) // Limit the file size for now
+@MultipartConfig()
 public class addProductAction extends HttpServlet {
 
     @Override
