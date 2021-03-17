@@ -11,34 +11,44 @@
         <title>Checkout</title>
     </head>
     <body>
-        <%      
-            if (session.getAttribute("email").equals("null") || session.getAttribute("logged").equals("null"))
-            {
-            
-            }
+        <%            
             session.setAttribute("email", "sgoyette430@gmail.com");
-            //sql statements for querying the database 
-            String firstNamesql = "select firstName from user where email like '" + session.getAttribute("email") + "'";
-            String lastNamesql = "select lastName from user where email like '" + session.getAttribute("email") + "'";
-            String emailsql = "select email from user where email like '" + session.getAttribute("email") + "'";
-            String phonesql = "select phone from user where email like '" + session.getAttribute("email") + "'";
-            String streetAddresssql = "select streetAddress from user where email like '" + session.getAttribute("email") + "'";
-            String citysql = "select city from user where email like '" + session.getAttribute("email") + "'";
-            String statesql = "select state from user where email like '" + session.getAttribute("email") + "'";
-            String creditCardNumsql = "select creditCardNum from user where email like '" + session.getAttribute("email") + "'";
-            String creditCardExpsql = "select creditCardExp from user where email like '" + session.getAttribute("email") + "'";
 
-            //actual connections to the database to grab data and store in variables
-            DBConnect dbConnect = new DBConnect(); //java way of creating new class/variable of type "DBConnect" named dbConnect
-            String firstName = dbConnect.stringFinder(firstNamesql);
-            String lastName = dbConnect.stringFinder(lastNamesql);
-            String userEmail = dbConnect.stringFinder(emailsql);
-            String phone = dbConnect.stringFinder(phonesql);
-            String streetAddress = dbConnect.stringFinder(streetAddresssql);
-            String city = dbConnect.stringFinder(citysql);
-            String state = dbConnect.stringFinder(statesql);
-            String creditCardNum = dbConnect.stringFinder(creditCardNumsql);
-            String creditCardExp = dbConnect.stringFinder(creditCardExpsql);
+            if (!session.getAttribute("email").equals("null")) {
+                //sql statements for querying the database 
+                String firstNamesql = "select firstName from user where email like '" + session.getAttribute("email") + "'";
+                String lastNamesql = "select lastName from user where email like '" + session.getAttribute("email") + "'";
+                String emailsql = "select email from user where email like '" + session.getAttribute("email") + "'";
+                String phonesql = "select phone from user where email like '" + session.getAttribute("email") + "'";
+                String streetAddresssql = "select streetAddress from user where email like '" + session.getAttribute("email") + "'";
+                String citysql = "select city from user where email like '" + session.getAttribute("email") + "'";
+                String statesql = "select state from user where email like '" + session.getAttribute("email") + "'";
+                String creditCardNumsql = "select creditCardNum from user where email like '" + session.getAttribute("email") + "'";
+                String creditCardExpsql = "select creditCardExp from user where email like '" + session.getAttribute("email") + "'";
+
+                //actual connections to the database to grab data and store in variables
+                DBConnect dbConnect = new DBConnect(); //java way of creating new class/variable of type "DBConnect" named dbConnect
+                String firstName = dbConnect.stringFinder(firstNamesql);
+                String lastName = dbConnect.stringFinder(lastNamesql);
+                String userEmail = dbConnect.stringFinder(emailsql);
+                String phone = dbConnect.stringFinder(phonesql);
+                String streetAddress = dbConnect.stringFinder(streetAddresssql);
+                String city = dbConnect.stringFinder(citysql);
+                String state = dbConnect.stringFinder(statesql);
+                String creditCardNum = dbConnect.stringFinder(creditCardNumsql);
+                String creditCardExp = dbConnect.stringFinder(creditCardExpsql);
+            } else {
+                String firstName = "";
+                String lastName = "";
+                String userEmail = "";
+                String phone = "";
+                String streetAddress = "";
+                String city = "";
+                String state = "";
+                String creditCardNum = "";
+                String creditCardExp = "";
+            }
+
 
         %>
         <div class="w3-card-4 w3-margin">

@@ -12,17 +12,18 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="signUpFunctions.js"></script>
 
     <script> 
         <!--Code given by Mahadev last semester that prevents people from clicking the back button once logged out. This makes it so that
         people can't get on the computer and into your account right after they log off and walk away from the computer. -->
-                        function preventBack() {
-                        window.history.forward();
-                        }
-                setTimeout("prev            entBack()", 0);
-                window.onunload = f            unction () {
-                null
-                };
+      function preventBack() {
+      window.history.forward();
+    }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () {
+      null
+    };
   </script>    
 
     <body id="home"> <!--this id makes it so that we can make a button on the page that says "take me to the top" -->

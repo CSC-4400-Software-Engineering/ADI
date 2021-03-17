@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2021 at 05:35 PM
+-- Generation Time: Mar 17, 2021 at 05:47 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -57,18 +57,11 @@ CREATE TABLE `product` (
   `brand` varchar(100) NOT NULL,
   `model` varchar(100) NOT NULL,
   `type` varchar(50) NOT NULL,
-  `price` int(20) NOT NULL,
+  `price` varchar(20) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `stock` int(20) NOT NULL,
-  `picture` blob DEFAULT NULL
+  `stock` varchar(20) NOT NULL,
+  `picture` mediumblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`productID`, `brand`, `model`, `type`, `price`, `description`, `stock`, `picture`) VALUES
-(1, 'test', 'test', 'test', 1222, 'test', 1111, NULL);
 
 -- --------------------------------------------------------
 
@@ -92,6 +85,13 @@ CREATE TABLE `user` (
   `creditCardNum` varchar(16) NOT NULL,
   `creditCardExp` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userID`, `firstName`, `lastName`, `email`, `password`, `streetAddress`, `city`, `state`, `phone`, `securityQuestion`, `securityAnswer`, `userType`, `creditCardNum`, `creditCardExp`) VALUES
+(1, 'Sebastian', 'Goyette-Connerty', 'sgoyette430@gmail.com', 'Password123', '7 High Street Apt 9', 'Clinton', 'MA', '9784552191', 'What is your stepfather\'s middle name?', 'James', 0, '1111222233334444', '0222');
 
 --
 -- Indexes for dumped tables
@@ -148,13 +148,13 @@ ALTER TABLE `onlineorderproduct`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
