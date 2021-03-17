@@ -5,6 +5,7 @@
  */
 package myBeans;
 
+import java.io.InputStream;
 import java.sql.*;
 
 /**
@@ -13,7 +14,6 @@ import java.sql.*;
  */
 public class DBConnect {
 
-  // driver and connection string variables
     // driver and connection string variables
     private final String driver = "com.mysql.jdbc.Driver";
     private final String url = "jdbc:mysql://localhost:3306/apexdesignandinterfaces";
@@ -194,9 +194,8 @@ public class DBConnect {
             return message;
         }
     }
-    
-     public String stringFinder(String sql) 
-    {
+
+    public String stringFinder(String sql) {
         String result = "";
         String message = open();
         if (message.equals("Opened")) {
@@ -214,4 +213,30 @@ public class DBConnect {
         }
     }
 
+    /* 
+    Specialized function to help add products to the database. 
+    Normally this doesn't need to exist, but it's needed in order to store images as blobs.
+     */
+    public String addProduct(String sql, String brand, String model, String type, String price, String description, String stock, InputStream picture) {
+        String message = open();
+        if (message.equals("Opened")) {
+            try {
+                pstm = conn.prepareStatement(sql);
+                pstm.setString(1, brand);
+                pstm.setString(2, model);
+                pstm.setString(3, type);
+                pstm.setString(4, price);
+                pstm.setString(5, description);
+                pstm.setString(6, stock);
+                pstm.setBlob(7, picture);
+                pstm.executeUpdate();
+                message = close();
+
+            } catch (Exception e) {
+                message = e.getMessage();
+            }
+
+        }
+        return message;
+    }
 }

@@ -7,6 +7,7 @@
         <title>Test</title>
     </head>
     <body>
+    <!--This really should not be used anymore, but it's here just in case -->
         <%
             String productBrandInput = request.getParameter("productBrand");
             String productModelInput = request.getParameter("productModel");
@@ -16,9 +17,9 @@
             String productStockInput = request.getParameter("productStock");
             //String productPicture = request.getParameter("productPicture");
 
-            String willsLongBeyondAllReseasonableComprehensionSqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock) VALUES (0, '" + productBrandInput + "', '" + productModelInput + "', '" + productTypeInput + "', '" + productPriceInput + "', '" + productDescriptionInput + "', '" + productStockInput + "')";
+            String willsLongBeyondAllReasonableComprehensionSqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock) VALUES (0, '" + productBrandInput + "', '" + productModelInput + "', '" + productTypeInput + "', '" + productPriceInput + "', '" + productDescriptionInput + "', '" + productStockInput + "')";
             DBConnect dbConnect = new DBConnect();
-            String connectMessage = dbConnect.insertData(willsLongBeyondAllReseasonableComprehensionSqlInput);
+            String connectMessage = dbConnect.insertData(willsLongBeyondAllReasonableComprehensionSqlInput);
             out.println(connectMessage);
             if (connectMessage.equals("Closed")) {
                 response.sendRedirect("administrator.jsp");
