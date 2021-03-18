@@ -14,6 +14,7 @@
                 <div class="w3-card-4">
                     <h1 class="w3-container w3-theme-d4">Add Product</h1>
                     <form name="addProduct" action="addProductAction" method="POST" enctype="multipart/form-data" class="w3-container w3-padding-large">
+                        <!-- test page <form name="addProduct" action="addProductAction.jsp" method="POST" class="w3-container w3-padding-large"> -->
                         <label>Brand</label>
                         <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productBrand" id="productBrandID" size="100" onInput="verifyBrand()"/>
                         <label>Model</label>
@@ -35,11 +36,6 @@
                         <input class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" type="submit" value="Submit"/>
                     </form>
                 </div>
-                <%  
-                    if (request.getAttribute("successMessage") != null) {
-                        out.println(request.getAttribute("successMessage"));
-                    }
-                %>
             </div>
         </div>
     </div>   
