@@ -48,11 +48,11 @@
                     <div class="w3-dropdown-hover w3-medium">
                         <button class="w3-button">Products <i class="fa fa-caret-down"></i></button>     
                         <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-                            <a href="products.jsp/laptops" class="w3-bar-item w3-button">Laptops</a>
-                            <a href="products.jsp/desktops" class="w3-bar-item w3-button">Desktops</a>
-                            <a href="products.jsp/tv" class="w3-bar-item w3-button">TVs</a>
-                            <a href="products.jsp/videogames" class="w3-bar-item w3-button">Video Games/Consoles</a>
-                            <a href="products.jsp/audiovideo" class="w3-bar-item w3-button">Audio/Video</a>
+                            <a href="laptops.jsp" class="w3-bar-item w3-button">Laptops</a>
+                            <a href="desktops.jsp" class="w3-bar-item w3-button">Desktops</a>
+                            <a href="tv.jsp" class="w3-bar-item w3-button">TVs</a>
+                            <a href="videogames.jsp" class="w3-bar-item w3-button">Video Games/Consoles</a>
+                            <a href="audiovideo.jsp" class="w3-bar-item w3-button">Audio/Video</a>
                         </div>
                     </div>
                     <a href="products.jsp/deals" class="w3-bar-item w3-button w3-medium">Deals!</a>
