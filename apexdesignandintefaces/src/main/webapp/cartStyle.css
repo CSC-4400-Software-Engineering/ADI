@@ -17,7 +17,8 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
 }
 
 
-.container, products-container {
+.container, 
+.products-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -55,13 +56,11 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
 
 /*----------------------- CART PAGE STYLING ----------------------- */
 
-/*apply this to "container" too*/
 .products-container {
     max-width: 650px;
     justify-content: space-around;
     margin: 0 auto;
     margin-top: 50px;
-    
 }
 
 .products-container ion-icon {
@@ -80,7 +79,6 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
     justify-content: flex-start;
     border-bottom: 4px solid #9bb7d0;
     margin: 0 auto;
-    
 }
 
 .product-title {
@@ -93,19 +91,17 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
     align-items: center;
 }
 
+.quantity {
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
 .total {
     width: 10%;
     display: flex;
     align-items: center;
 }
-
-.quantity {
-    width: 30%;
-    display: flex;
-    aligns-items: center;
-}
-
-
 
 .product {
     width: 45%;
@@ -113,4 +109,29 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
     justify-content: space-around;
     align-items: center;
     padding: 10px 0;
+}
+
+.products {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products img {
+    width: 75px;
+}
+
+.basketTotalContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.baskeTotalTitle {
+    width: 30%;
+}
+
+.basketTotal {
+    width: 10%;
 }

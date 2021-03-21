@@ -40,7 +40,7 @@
                 <i class="fa fa-chevron-circle-up"></i></span></a>
     </div>
     </p>
-    
+     <script src="cartFunctions.js"></script>
 </footer>
 
 

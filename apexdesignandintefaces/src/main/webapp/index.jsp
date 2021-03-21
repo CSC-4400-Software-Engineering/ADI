@@ -21,10 +21,10 @@
     <div class="container">
         <div class="bg"></div>
         <div class="content">
-            <h3>Welcome to Sebastian's Car Lot!</h3>
-            <h6>243 Main St. Fitchburg, MA <br>
-                Bringing you a wide selection of quality cars since 2020! We sell meticulously combed through vehicles 
-                at a fraction of the cost of major dealers. Shop New, Used, or even get a quote on your car!
+            <h3>Welcome to Apex Design and Interfaces!</h3>
+            <h6> 732 Bridge Cr. Waltham, MA 02452<br>
+                We are an independent software company that creates and designs websites and interfaces for businesses. <br>
+                We got our start in Fitchburg, MA in 2021, bringing you <1 year experience!
             </h6>
         </div>
     </div>
