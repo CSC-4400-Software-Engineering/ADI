@@ -20,7 +20,7 @@
                     <div class="w3-container w3-theme-d4">
                         <h2>Sign Up</h2>
                     </div>
-                    <form name="customerSignUpForm" action="customerAction.jsp" class="w3-container" method="get" onsubmit="return (customerSignUp() && validate())">
+                    <form name="customerSignUpForm" action="customerAction.jsp" class="w3-container" method="post" onsubmit="return (customerSignUp() && validatePwd())">
 
                         <div class="w3-row-padding">
                             <h4><b>Basic Information</b></h4>
@@ -143,7 +143,7 @@
                                 <button class="w3-button w3-block w3-section w3-red w3-ripple w3-padding" type="reset">Clear</button>
                             </div>
                             <div class="w3-col s6 w3-padding">
-                                <button class="w3-button w3-block w3-section w3-green w3-ripple w3-padding"type="submit">Send</button>
+                                <button class="w3-button w3-block w3-section w3-green w3-ripple w3-padding"type="submit">Sign Up</button>
                             </div>
                         </div>
                     </form>
@@ -156,7 +156,7 @@
                     <div class="w3-container w3-theme-d4">
                         <h2>Login to Your Account</h2>
                     </div>
-                    <form name="customerLogInForm" action="customerLogInAction.jsp" class="w3-container" method="get" onsubmit="return customerLogIn()">
+                    <form name="customerLogInForm" action="customerLogInAction.jsp" class="w3-container" method="post" onsubmit="return customerLogIn()">
                         <div class="w3-row-padding">
                             <div class="w3-row">
                                 <p>

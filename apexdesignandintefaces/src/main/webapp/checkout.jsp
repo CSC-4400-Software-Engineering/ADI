@@ -11,42 +11,62 @@
         <title>Checkout</title>
     </head>
     <body>
-        <%            
+        <%   
             session.setAttribute("email", "sgoyette430@gmail.com");
+            String sessionString = (String) session.getAttribute("email");
+            String firstNamesql;
+            String lastNamesql;
+            String emailsql;
+            String phonesql;
+            String streetAddresssql;
+            String citysql;
+            String statesql;
+            String creditCardNumsql;
+            String creditCardExpsql;
 
-            if (!session.getAttribute("email").equals("null")) {
+            String firstName;
+            String lastName;
+            String userEmail;
+            String phone;
+            String streetAddress;
+            String city;
+            String state;
+            String creditCardNum;
+            String creditCardExp;
+
+            if (sessionString == null) {
                 //sql statements for querying the database 
-                String firstNamesql = "select firstName from user where email like '" + session.getAttribute("email") + "'";
-                String lastNamesql = "select lastName from user where email like '" + session.getAttribute("email") + "'";
-                String emailsql = "select email from user where email like '" + session.getAttribute("email") + "'";
-                String phonesql = "select phone from user where email like '" + session.getAttribute("email") + "'";
-                String streetAddresssql = "select streetAddress from user where email like '" + session.getAttribute("email") + "'";
-                String citysql = "select city from user where email like '" + session.getAttribute("email") + "'";
-                String statesql = "select state from user where email like '" + session.getAttribute("email") + "'";
-                String creditCardNumsql = "select creditCardNum from user where email like '" + session.getAttribute("email") + "'";
-                String creditCardExpsql = "select creditCardExp from user where email like '" + session.getAttribute("email") + "'";
+                firstName = "";
+                lastName = "";
+                userEmail = "";
+                phone = "";
+                streetAddress = "";
+                city = "";
+                state = "";
+                creditCardNum = "";
+                creditCardExp = "";
+            } else {
+                firstNamesql = "select firstName from user where email like '" + session.getAttribute("email") + "'";
+                lastNamesql = "select lastName from user where email like '" + session.getAttribute("email") + "'";
+                emailsql = "select email from user where email like '" + session.getAttribute("email") + "'";
+                phonesql = "select phone from user where email like '" + session.getAttribute("email") + "'";
+                streetAddresssql = "select streetAddress from user where email like '" + session.getAttribute("email") + "'";
+                citysql = "select city from user where email like '" + session.getAttribute("email") + "'";
+                statesql = "select state from user where email like '" + session.getAttribute("email") + "'";
+                creditCardNumsql = "select creditCardNum from user where email like '" + session.getAttribute("email") + "'";
+                creditCardExpsql = "select creditCardExp from user where email like '" + session.getAttribute("email") + "'";
 
                 //actual connections to the database to grab data and store in variables
                 DBConnect dbConnect = new DBConnect(); //java way of creating new class/variable of type "DBConnect" named dbConnect
-                String firstName = dbConnect.stringFinder(firstNamesql);
-                String lastName = dbConnect.stringFinder(lastNamesql);
-                String userEmail = dbConnect.stringFinder(emailsql);
-                String phone = dbConnect.stringFinder(phonesql);
-                String streetAddress = dbConnect.stringFinder(streetAddresssql);
-                String city = dbConnect.stringFinder(citysql);
-                String state = dbConnect.stringFinder(statesql);
-                String creditCardNum = dbConnect.stringFinder(creditCardNumsql);
-                String creditCardExp = dbConnect.stringFinder(creditCardExpsql);
-            } else {
-                String firstName = "";
-                String lastName = "";
-                String userEmail = "";
-                String phone = "";
-                String streetAddress = "";
-                String city = "";
-                String state = "";
-                String creditCardNum = "";
-                String creditCardExp = "";
+                firstName = dbConnect.stringFinder(firstNamesql);
+                lastName = dbConnect.stringFinder(lastNamesql);
+                userEmail = dbConnect.stringFinder(emailsql);
+                phone = dbConnect.stringFinder(phonesql);
+                streetAddress = dbConnect.stringFinder(streetAddresssql);
+                city = dbConnect.stringFinder(citysql);
+                state = dbConnect.stringFinder(statesql);
+                creditCardNum = dbConnect.stringFinder(creditCardNumsql);
+                creditCardExp = dbConnect.stringFinder(creditCardExpsql);
             }
 
 
@@ -56,7 +76,7 @@
                 <h2>Please Enter and Confirm Your Information Below</h2>
             </div>
 
-            <form name="checkoutForm" action="checkoutFormAction.jsp" class="w3-container" method="get">
+            <form name="checkoutForm" action="checkoutFormAction.jsp" class="w3-container" method="post">
 
                 <div class="w3-row-padding">
                     <div class="w3-col s6">
