@@ -7,6 +7,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+            $("#portals").show(); //this shows the boxes that say admin and customer
+            $("#logout").hide(); //this hides the one that says welcome to whoever is logged in
+        </script>
         <%@include file="header.jsp"%>
         <title>Cart</title>
     </head>
