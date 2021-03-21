@@ -12,7 +12,6 @@ package formActions;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -66,9 +65,6 @@ public class addProductAction extends HttpServlet {
         String sqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock, picture) VALUES(0,?,?,?,?,?,?,?)";
         String connectMessage = dbConnect.addProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productPictureInput);
         if (connectMessage.equals("Closed")) {
-            //request.setAttribute("successMessage","Product added to inventory!");
-            //RequestDispatcher requestDispatch = request.getRequestDispatcher("administrator.jsp");
-            //requestDispatch.forward(request, response);
             response.sendRedirect("administrator.jsp?message=Product added to inventory!");
 
         }
