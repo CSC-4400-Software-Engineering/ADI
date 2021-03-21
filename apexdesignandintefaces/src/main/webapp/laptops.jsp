@@ -1,7 +1,7 @@
 <%@page import="myBeans.DBConnect"%>
 <html>
     <head>
-        <title>Sebastian's Car Lot</title>
+        <title>Laptops</title>
         <%@include file="header.jsp" %>
         <script>
             $("#portals").show();
@@ -20,35 +20,12 @@
     
     <body>
         <h1 class="w3-container w3-theme-d4">Laptops</h1>
-        <table align="center" border="1" cellpadding="5">
-            <thead>
-                <tr>
-                    <th>Picture</th>
-                    <th>Name</th>
-                    <th>Brand</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>NULL</td>
-                    <td>Dell Optiplex 7010</td>
-                    <td>Dell</td>
-                    <td>$349.99</td>
-                </tr>
-                <tr>
-                    <td>NULL</td>
-                    <td>Logitech Wireless Mouse</td>
-                    <td>Logitech</td>
-                    <td>$13.98</td>
-                </tr>
-                <tr>
-                    <td>NULL</td>
-                    <td>RedDragon RGB Mechanical Gaming Keyboard</td>
-                    <td>RedDragon</td>
-                    <td>$25.99</td>
-                </tr>
-            </tbody>
+        <table>
+        <% 
+            DBConnect dbConnect = new DBConnect();
+            String table = dbConnect.htmlTable("SELECT picture, model, brand, description, price, stock FROM product WHERE stock > 0 AND type LIKE \"Laptop\" ORDER BY brand, price");
+            out.print(table);
+        %>
         </table>
     <%@include file="footer.jsp" %>
     </body>
