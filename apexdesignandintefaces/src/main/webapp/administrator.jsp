@@ -35,6 +35,13 @@
                     </div>
                 </div>
             </div>
+            <%      
+                if (request.getParameter("message") != null) {
+                    out.println("<div class='w3-col m4'><div class='w3-padding'><h1>");
+                    out.println(request.getParameter("message"));
+                    out.println("</h1></div></div>");
+                }
+            %>
         </div>
         <%@include file="footer.jsp" %>
     </body>
