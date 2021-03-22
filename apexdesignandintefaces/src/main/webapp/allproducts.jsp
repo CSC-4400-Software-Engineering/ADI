@@ -1,6 +1,7 @@
+<%@page import="myBeans.DBConnect"%>
 <html>
     <head>
-        <title>Apex Design and Interfaces</title>
+        <title>All Products</title>
         <%@include file="header.jsp" %>
         <script>
             $("#portals").show();
@@ -18,16 +19,14 @@
     </head>
     
     <body>
-    <div class="container">
-        <div class="bg"></div>
-        <div class="content">
-            <h3>Welcome to Apex Design and Interfaces!</h3>
-            <h6> 732 Bridge Cr. Waltham, MA 02452<br>
-                We are an independent software company that creates and designs websites and interfaces for businesses. <br>
-                We got our start in Fitchburg, MA in 2021, bringing you <1 year experience!
-            </h6>
-        </div>
-    </div>
+        <h1 class="w3-container w3-theme-d4">All Products</h1>
+        <table>
+          <% 
+            DBConnect dbConnect = new DBConnect();
+            String table = dbConnect.htmlTable("SELECT model, brand, type, price, CASE WHEN stock > 0 THEN \"In Stock\" WHEN stock = 0 THEN \"Out of Stock\" END FROM product ORDER BY stock DESC, brand, price DESC");
+            out.print(table);
+            %>
+        </table>
     <%@include file="footer.jsp" %>
     </body>
 </html>

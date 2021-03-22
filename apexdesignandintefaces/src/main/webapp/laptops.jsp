@@ -23,7 +23,7 @@
         <table>
         <% 
             DBConnect dbConnect = new DBConnect();
-            String table = dbConnect.htmlTable("SELECT picture, model, brand, description, price, stock FROM product WHERE stock > 0 AND type LIKE \"Laptop\" ORDER BY brand, price");
+            String table = dbConnect.htmlTable("SELECT model, brand, price, CASE WHEN stock > 0 THEN \"In Stock\" WHEN stock = 0 THEN \"Out of Stock\" END FROM product WHERE type LIKE \"Laptop\" ORDER BY stock DESC, brand, price DESC");
             out.print(table);
         %>
         </table>

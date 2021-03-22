@@ -1,6 +1,7 @@
+<%@page import="myBeans.DBConnect"%>
 <html>
     <head>
-        <title>Audio/Visual</title>
+        <title>Audio/Video</title>
         <%@include file="header.jsp" %>
         <script>
             $("#portals").show();
@@ -18,36 +19,13 @@
     </head>
     
     <body>
-        <h1 class="w3-container w3-theme-d4">Audio/Visual</h1>
-        <table align="center" border="1" cellpadding="5">
-            <thead>
-                <tr>
-                    <th>Picture</th>
-                    <th>Name</th>
-                    <th>Brand</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>NULL</td>
-                    <td>Dell Optiplex 7010</td>
-                    <td>Dell</td>
-                    <td>$349.99</td>
-                </tr>
-                <tr>
-                    <td>NULL</td>
-                    <td>Logitech Wireless Mouse</td>
-                    <td>Logitech</td>
-                    <td>$13.98</td>
-                </tr>
-                <tr>
-                    <td>NULL</td>
-                    <td>RedDragon RGB Mechanical Gaming Keyboard</td>
-                    <td>RedDragon</td>
-                    <td>$25.99</td>
-                </tr>
-            </tbody>
+        <h1 class="w3-container w3-theme-d4">Audio/Video</h1>
+        <table>
+          <% 
+            DBConnect dbConnect = new DBConnect();
+            String table = dbConnect.htmlTable("SELECT model, brand, type, price, CASE WHEN stock > 0 THEN \"In Stock\" WHEN stock = 0 THEN \"Out of Stock\" END FROM product WHERE type LIKE \"Audio/Video\" ORDER BY stock DESC, brand, price DESC");
+            out.print(table);
+            %>
         </table>
     <%@include file="footer.jsp" %>
     </body>
