@@ -21,17 +21,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import myBeans.DBConnect;
 
-@WebServlet(name = "addProductAction", urlPatterns = {"/addProductAction"})
+@WebServlet(name = "editProductIntermediateAction", urlPatterns = {"/editProductIntermediateAction"})
 @MultipartConfig()
-public class addProductAction extends HttpServlet {
+public class editProductIntermediateAction extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        /* Get the data from the form in parts */
+        String sqlInput;
+        String connectMessage;
 
+        /* Get the data from the form in parts */
+        
         Part part1 = request.getPart("productBrand");
         Scanner scanner1 = new Scanner(part1.getInputStream());
         String productBrandInput = scanner1.nextLine();
@@ -56,16 +59,30 @@ public class addProductAction extends HttpServlet {
         Scanner scanner6 = new Scanner(part6.getInputStream());
         String productStockInput = scanner6.nextLine();
 
-        Part part7 = request.getPart("productPicture");
-        InputStream productPictureInput = part7.getInputStream();
-
-        /* Insert the parts into the database */
+        Part part8 = request.getPart("productID");
+        Scanner scanner8 = new Scanner(part8.getInputStream());
+        String productIDInput = scanner8.nextLine();
         
+        /* Strip any potential whitespace from the ID just to be safe */
+        
+        productIDInput = productIDInput.trim();
+
+        /* Update the record in the database with the new parts. */
+
         DBConnect dbConnect = new DBConnect();
-        String sqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock, picture) VALUES(0,?,?,?,?,?,?,?)";
-        String connectMessage = dbConnect.addProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productPictureInput);
+
+        if (request.getPart("productPicture").getSize() > 0) {
+            Part part7 = request.getPart("productPicture");
+            InputStream productPictureInput = part7.getInputStream();
+            sqlInput = "UPDATE product SET brand = ?, model = ?, type = ?, price = ?, description = ?, stock = ?, picture = ? WHERE productID LIKE ?";
+            connectMessage = dbConnect.editProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productPictureInput, productIDInput);
+        } 
+        else {
+            sqlInput = "UPDATE product SET brand = ?, model = ?, type = ?, price = ?, description = ?, stock = ? WHERE productID LIKE ?";
+            connectMessage = dbConnect.editProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productIDInput);
+        }
         if (connectMessage.equals("Closed")) {
-            response.sendRedirect("administrator.jsp?addMessage=Product added to inventory!");
+            response.sendRedirect("administrator.jsp?editMessage=Product in inventory edited!");
 
         }
     }

@@ -7,6 +7,7 @@ package myBeans;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.util.Base64;
 
 /**
  *
@@ -238,5 +239,78 @@ public class DBConnect {
 
         }
         return message;
+    }
+
+    /* Specialized functions to help edit products to the database. */
+    public String editProduct(String sql, String brand, String model, String type, String price, String description, String stock, InputStream picture, String ID) {
+        String message = open();
+        if (message.equals("Opened")) {
+            try {
+                pstm = conn.prepareStatement(sql);
+                pstm.setString(1, brand);
+                pstm.setString(2, model);
+                pstm.setString(3, type);
+                pstm.setString(4, price);
+                pstm.setString(5, description);
+                pstm.setString(6, stock);
+                pstm.setBlob(7, picture);
+                pstm.setString(8, ID);
+                pstm.executeUpdate();
+                message = close();
+
+            } catch (Exception e) {
+                message = e.getMessage();
+            }
+
+        }
+        return message;
+    }
+
+    public String editProduct(String sql, String brand, String model, String type, String price, String description, String stock, String ID) {
+        String message = open();
+        if (message.equals("Opened")) {
+            try {
+                pstm = conn.prepareStatement(sql);
+                pstm.setString(1, brand);
+                pstm.setString(2, model);
+                pstm.setString(3, type);
+                pstm.setString(4, price);
+                pstm.setString(5, description);
+                pstm.setString(6, stock);
+                pstm.setString(7, ID);
+                pstm.executeUpdate();
+                message = close();
+
+            } catch (Exception e) {
+                message = e.getMessage();
+            }
+
+        }
+        return message;
+    }
+
+    /* 
+    Specialized function to retrieve image blobs from the database.
+    Returns the image as a base64 string lol
+    */
+    public String getPicture(String sql, String id) {
+        String message = open();
+        String pictureEncode = "";
+        if (message.equals("Opened")) {
+            try {
+                pstm = conn.prepareStatement(sql);
+                pstm.setString(1, id);
+                rst = pstm.executeQuery();
+                rst.next();
+                Blob pictureBlob = rst.getBlob("picture");
+                byte[] pictureBytes = pictureBlob.getBytes(1, (int) pictureBlob.length());
+                pictureEncode = Base64.getEncoder().encodeToString(pictureBytes);
+
+                //message = close();
+            } catch (Exception e) {
+            }
+
+        }
+        return pictureEncode;
     }
 }
