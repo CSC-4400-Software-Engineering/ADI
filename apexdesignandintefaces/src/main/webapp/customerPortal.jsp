@@ -3,6 +3,7 @@
     Created on : Mar 17, 2021, 10:49:53 AM
     Author     : Sebastian
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="myBeans.DBConnect" %>
 <html>
     <head>
         <title>Customer Portal</title>
@@ -22,7 +23,7 @@
                         <h2 class="w3-left">Sign Up</h2>
                         <h4 class="w3-right">Already have an account? <button onclick="switchForms()">&nbsp; Sign In &nbsp;</button></h4>
                     </div>
-                    <form name="customerSignUp" action="customerSignUpAction.jsp" class="w3-container" method="post" onsubmit="return (customerSignUp() && validatePwd())">
+                    <form name="customerSignUp" action="customerSignUpAction.jsp" class="w3-container" method="get" onsubmit="return signUp()">
 
                         <div class="w3-row-padding">
                             <h4><b>Basic Information</b></h4>
@@ -35,7 +36,7 @@
                             </div>
                             <div class="w3-col s6">
                                 <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="lastName" type="test" id="lastName" required>
+                                    <input class="w3-input w3-round w3-light-grey" name="lastName" type="text" id="lastName" required>
                                     <label>Last Name</label></p>    
                             </div>
                         </div>
@@ -69,7 +70,7 @@
                         <div class="w3-row-padding">
                             <div class="w3-col s3">
                                 <p>
-                                <input class="w3-input w3-round w3-light-grey" name="phone" type="phone" id="phone" required></input>
+                                <input class="w3-input w3-round w3-light-grey" name="phone" type="number" id="phone" required></input>
                                 <label>Phone Number</label>
                                 </p>
                             </div>
@@ -113,7 +114,58 @@
                             </div>
                             <div class="w3-col s4">
                                 <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="state" type="text" id="state" required>
+                                     <select class="w3-select w3-border w3-round w3-light-grey" name="state" id="state" required>
+                                        <option disabled selected value="">Select State</option>
+                                        <option>Alabama</option>
+                                        <option>Arizona</option>
+                                        <option>Arkansas</option>
+                                        <option>California</option>
+                                        <option>Colorado</option>
+                                        <option>Connecticut</option>
+                                        <option>Delaware</option>
+                                        <option>DC</option>
+                                        <option>Florida</option>
+                                        <option>Georgia</option>
+                                        <option>Idaho</option>
+                                        <option>Illinois</option>
+                                        <option>Indiana</option>
+                                        <option>Iowa</option>
+                                        <option>Kansas</option>
+                                        <option>Kentucky</option>
+                                        <option>Louisiana</option>
+                                        <option>Maine</option>
+                                        <option>Maryland</option>
+                                        <option>Massachusetts</option>
+                                        <option>Michigan</option>
+                                        <option>Minnesota</option>
+                                        <option>Mississippi</option>
+                                        <option>Missouri</option>
+                                        <option>Montana</option>
+                                        <option>Nebraska</option>
+                                        <option>Nevada</option>
+                                        <option>New Hampshire</option>
+                                        <option>New Jersey</option>
+                                        <option>New Mexico</option>
+                                        <option>New York</option>
+                                        <option>North Carolina</option>
+                                        <option>North Dakota</option>
+                                        <option>Ohio</option>
+                                        <option>Oklahoma</option>
+                                        <option>Oregon</option>
+                                        <option>Pennsylvania</option>
+                                        <option>Rhode Island</option>
+                                        <option>South Carolina</option>
+                                        <option>South Dakota</option>
+                                        <option>Tennessee</option>
+                                        <option>Texas</option>
+                                        <option>Utah</option>
+                                        <option>Vermont</option>
+                                        <option>Virginia</option>
+                                        <option>Washington</option>
+                                        <option>West Virginia</option>
+                                        <option>Wisconsin</option>
+                                        <option>Wyoming</option>
+                                    </select>
                                     <label>State</label>
                                 </p>
                             </div>
@@ -134,7 +186,7 @@
                             </div>
                             <div class="w3-col s4">
                                 <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="expiration" type="text" id="creditCardExp" required>
+                                    <input class="w3-input w3-round w3-light-grey" name="creditCardExp" type="text" id="creditCardExp" required>
                                     <label>Expiration Date</label>
                                 </p>
                             </div>   
@@ -162,19 +214,19 @@
                         <h2 class="w3-left">Login to Your Account</h2>
                         <h4 class="w3-right">Don't have an account? <button onclick="switchForms()">&nbsp; Sign Up &nbsp;</button></h4>
                     </div>
-                    <form name="customerLogInForm" action="customerLogInAction.jsp" class="w3-container" method="post" onsubmit="return customerLogIn()">
+                    <form name="customerSignInForm" action="customerSignInAction.jsp" class="w3-container" method="post" onsubmit="return signIn()">
                         <br>
                         <div class="w3-row-padding">
                             <div class="w3-row">
                                 <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="logInEmail" type="email" id="logInEmail" required>
+                                    <input class="w3-input w3-round w3-light-grey" name="signInEmail" type="email" id="signInEmail" required>
                                     <label>Email</label></p>
                             </div>
                         </div>
                         <div class="w3-row-padding">
                             <div class="w3-row">
                                 <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="logInPassword" type="password" id="logInPassword" required>
+                                    <input class="w3-input w3-round w3-light-grey" name="signInPassword" type="password" id="signInPassword" required>
                                     <label>Password</label></p>
                             </div>
                         </div>
