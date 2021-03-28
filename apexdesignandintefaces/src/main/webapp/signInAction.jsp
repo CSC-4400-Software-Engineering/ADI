@@ -15,7 +15,7 @@
            //I need to double check that the employee exists in the database then send them to employeeHome.jsp
       String userEmail = request.getParameter("signInEmail");
       String password = request.getParameter("signInPassword");
-      String sql = "select name, userType, email from user where email = ? and password = ?";
+      String sql = "select firstName, userType, email from user where email = ? and password = ?";
       DBConnect dbConnect = new DBConnect();
       String[] result = dbConnect.isPwdValid(sql, userEmail, password);
       if (result[0].length() >= 6 && result[0].substring(0, 6).equals("Error:")) {

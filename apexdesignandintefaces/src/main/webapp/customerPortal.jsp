@@ -214,7 +214,7 @@
                         <h2 class="w3-left">Login to Your Account</h2>
                         <h4 class="w3-right">Don't have an account? <button onclick="switchForms()">&nbsp; Sign Up &nbsp;</button></h4>
                     </div>
-                    <form name="customerSignInForm" action="customerSignInAction.jsp" class="w3-container" method="post" onsubmit="return signIn()">
+                    <form name="customerSignInForm" action="signInAction.jsp" class="w3-container" method="post" onsubmit="return signIn()">
                         <br>
                         <div class="w3-row-padding">
                             <div class="w3-row">
