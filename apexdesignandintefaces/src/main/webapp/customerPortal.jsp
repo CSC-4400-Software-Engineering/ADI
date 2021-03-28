@@ -10,17 +10,19 @@
         <script>
             $("#portals").show(); //this shows the boxes that say admin and customer
             $("#logout").hide(); //this hides the one that says welcome to whoever is logged in
+            $("#signUpForm").show();
+            $("#signInForm").hide();
         </script>
     </head>
     <body>
-        <div class="w3-row">
             <p><br></p>
-            <div class="w3-twothird w3-padding">
+            <div class="w3-padding w3-margin" id="signUpForm">
                 <div class="w3-card-4">
                     <div class="w3-container w3-theme-d4">
-                        <h2>Sign Up</h2>
+                        <h2 class="w3-left">Sign Up</h2>
+                        <h4 class="w3-right">Already have an account? <button onclick="switchForms()">&nbsp; Sign In &nbsp;</button></h4>
                     </div>
-                    <form name="customerSignUpForm" action="customerAction.jsp" class="w3-container" method="post" onsubmit="return (customerSignUp() && validatePwd())">
+                    <form name="customerSignUp" action="customerSignUpAction.jsp" class="w3-container" method="post" onsubmit="return (customerSignUp() && validatePwd())">
 
                         <div class="w3-row-padding">
                             <h4><b>Basic Information</b></h4>
@@ -41,7 +43,7 @@
                         <div class="w3-row-padding">
                             <div class="w3-col s6">
                                 <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="email" type="email" id="email" required>
+                                    <input class="w3-input w3-round w3-light-grey" name="userEmail" type="email" id="userEmail" required>
                                     <label>Email</label></p>
                             </div>
                             <div class="w3-col s6">
@@ -61,6 +63,33 @@
                                 <p>
                                     <input class="w3-input w3-round w3-light-grey" name="confirmedPassword" type="password" id="confirmedPassword" required>
                                     <label>Confirm Password</label></p>    
+                            </div>
+                        </div>
+                        
+                        <div class="w3-row-padding">
+                            <div class="w3-col s3">
+                                <p>
+                                <input class="w3-input w3-round w3-light-grey" name="phone" type="phone" id="phone" required></input>
+                                <label>Phone Number</label>
+                                </p>
+                            </div>
+                            <div class="w3-col s6">
+                                <p>
+                                    <select class="w3-select w3-border w3-round w3-light-grey" name="securityQuestion" id="securityQuestion" required>
+                                        <option disabled selected value="">Select Option</option>
+                                        <option>What is your Fathers middle name?</option>
+                                        <option>What is your Mothers maiden name?</option>
+                                        <option>What was the name of the street you grew up on?</option>
+                                        <option>Where did you go to second grade?</option>
+                                        <option>What is the name of your first pet?</option>
+                                    </select>
+                                    <label>Security Question</label>
+                                </p>
+                            </div>
+                            <div class="w3-col s3">
+                                <p>
+                                    <input class="w3-input w3-round w3-light-grey" name="securityAnswer" type="text" id="securityAnswer" required>
+                                    <label>Security Question Answer</label></p>    
                             </div>
                         </div>
 
@@ -90,26 +119,7 @@
                             </div>
                         </div>
 
-                        <div class="w3-row-padding">
-                            <div class="w3-col s6">
-                                <p>
-                                    <select class="w3-select w3-border w3-round w3-light-grey" name="securityQuestion" id="securityQuestion" required>
-                                        <option disabled selected value="">Select Option</option>
-                                        <option>What is your Fathers middle name?</option>
-                                        <option>What is your Mothers maiden name?</option>
-                                        <option>What was the name of the street you grew up on?</option>
-                                        <option>Where did you go to second grade?</option>
-                                        <option>What is the name of your first pet?</option>
-                                    </select>
-                                    <label>Security Question</label>
-                                </p>
-                            </div>
-                            <div class="w3-col s6">
-                                <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="securityAnswer" type="text" id="securityAnswer" required>
-                                    <label>Security Question Answer</label></p>    
-                            </div>
-                        </div>
+                        
 
                         <div class="w3-row-padding">
                             <h4><b>Billing Information (For Future Orders)</b></h4>
@@ -122,18 +132,12 @@
                                     <label>Credit Card Number</label>
                                 </p>
                             </div>
-                            <div class="w3-col s2">
+                            <div class="w3-col s4">
                                 <p>
                                     <input class="w3-input w3-round w3-light-grey" name="expiration" type="text" id="creditCardExp" required>
                                     <label>Expiration Date</label>
                                 </p>
                             </div>   
-                            <div class="w3-col s2">
-                                <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="CVV" type="text" id="CVV" required>
-                                    <label>CVV</label>
-                                </p>
-                            </div>
                         </div>
 
                         <div class="w3-row-padding w3-center w3-red" id="error">
@@ -151,12 +155,15 @@
             </div>  
 
             <p><br></p>
-            <div class="w3-third w3-padding">
-                <div class="w3-card-4">
+            <div class="w3-padding w3-row" id="signInForm" style="display: none;">
+                <div class="w3-col s3"><br></div>
+                <div class="w3-card-4 w3-margin w3-col s6">
                     <div class="w3-container w3-theme-d4">
-                        <h2>Login to Your Account</h2>
+                        <h2 class="w3-left">Login to Your Account</h2>
+                        <h4 class="w3-right">Don't have an account? <button onclick="switchForms()">&nbsp; Sign Up &nbsp;</button></h4>
                     </div>
                     <form name="customerLogInForm" action="customerLogInAction.jsp" class="w3-container" method="post" onsubmit="return customerLogIn()">
+                        <br>
                         <div class="w3-row-padding">
                             <div class="w3-row">
                                 <p>
@@ -187,8 +194,9 @@
                         </div>
                     </form>
                 </div>
+                <div class="w3-col s3"><br></div>
             </div>  
-        </div>
+       
         <%@include file="footer.jsp" %>
     </body>
 </html>
