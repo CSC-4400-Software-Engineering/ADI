@@ -31,13 +31,21 @@
             out.print("Search Results for " + searchInput);
         %>
         </h1>
-        <table>
+        <table border="1px solid black" padding="15px">
         <%
             DBConnect dbConnect = new DBConnect();
-            String table = dbConnect.htmlTable("SELECT brand, model, type, price, CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'supply' FROM product WHERE brand LIKE '%" + searchInput + "%' OR model LIKE '%" + searchInput + "%' OR type LIKE '%" + searchInput + "%' OR description LIKE '%" + searchInput + "%' ORDER BY stock DESC, brand, price");
+            String query = "SELECT model, brand, type, price, CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'supply' FROM product WHERE brand LIKE '%" + searchInput + "%' OR model LIKE '%" + searchInput + "%' OR type LIKE '%" + searchInput + "%' OR description LIKE '%" + searchInput + "%' ORDER BY stock DESC, brand, price";
+            String nullTest = dbConnect.fetchInfo(query);
+            if(nullTest.length() == 0){
+            out.print("No Results Found");
+            }
+            else{
+            String table = dbConnect.htmlTable(query);
             out.print(table);
+            }
         %>
         </table>
+        <br/>
     <%@include file="footer.jsp" %>
     </body>
 </html>

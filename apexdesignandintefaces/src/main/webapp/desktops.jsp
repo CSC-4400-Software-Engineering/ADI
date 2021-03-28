@@ -27,6 +27,7 @@
             out.print(table);
         %>
         </table>
+        <br/>
     <%@include file="footer.jsp" %>
     </body>
 </html>
