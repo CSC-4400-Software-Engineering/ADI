@@ -62,6 +62,10 @@
                 </div>
                 <a href="products.jsp/deals" class="w3-bar-item w3-button w3-medium">Deals!</a>
                 <a href="about.jsp" class="w3-bar-item w3-button w3-medium">About</a>
+                <form name="searchbar" action="searchAction.jsp" method="POST">
+                    <input required type="text" placeholder="Search for Products" name="search" id="search">
+                    <input type="submit" value="Submit"/>
+                </form>
             </div>
 
             <div class="w3-col s6" id="portals">
