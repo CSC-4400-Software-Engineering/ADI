@@ -28,12 +28,12 @@
                 if (userType.equals("1")) {
                     session.setAttribute("logged", userType);
                     session.setAttribute("name", name);
-                    session.setAttribute("userEmail", email);
+                    session.setAttribute("email", email);
                     response.sendRedirect("customerHome.jsp");
                 } else if (userType.equals("0")) {
                     session.setAttribute("logged", userType);
                     session.setAttribute("name", name);
-                    session.setAttribute("userEmail", email);
+                    session.setAttribute("email", email);
                     response.sendRedirect("administrator.jsp");
                 } else {
                     response.sendRedirect("index.jsp"); //this may not be needed, because any errors are already handled on line 20-22. Also see line 25

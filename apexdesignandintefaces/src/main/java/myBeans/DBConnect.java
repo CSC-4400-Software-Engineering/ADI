@@ -313,4 +313,39 @@ public class DBConnect {
         }
         return pictureEncode;
     }
+    
+    
+    public String prettyTable(String sql) {
+        //String result = "<table>\n"; // I commented this line out since it was cumbersome.
+        String result = "";
+        String message = open();
+        if (message.equals("Opened")) {
+            try {
+                rst = stm.executeQuery(sql);
+                rsmd = rst.getMetaData();
+                int count = rsmd.getColumnCount();
+                // create column headings
+                result += "<tr>\n";
+                for (int i = 0; i < count; i++) {
+                    result += "<th>" + rsmd.getColumnName(i + 1) + "</th>\n";
+                }
+                result += "</tr>\n";
+                // create data rows
+                while (rst.next()) {
+                    result += "<tr>\n";
+                    for (int i = 0; i < count; i++) {
+                        result += "<td>" + rst.getString(i + 1) + "</td>\n";
+                    }
+                    result += "</tr>\n";
+                }
+                message = close();
+                //result += "</table>\n"; // I commented this line out since it was cumbersome.
+                return result;
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        } else {
+            return message;
+        }
+    }
 }
