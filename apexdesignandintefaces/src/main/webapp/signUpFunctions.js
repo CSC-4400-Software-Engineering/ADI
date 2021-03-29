@@ -57,5 +57,21 @@ function signUp() {
 
 function signIn() 
 {
+    var email = document.getElementById("signInEmail").value;
+    var password = document.getElementById("signInPassword").value;
+    var errorBlock = document.getElementById("logInError");
+    var emailregex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var passwordregex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     
+    if (!emailregex.test(email)){
+        errorBlock.innerHTML = "Email is not valid";
+        return false;
+    }
+    
+    if (!passwordregex.test(password)){
+        errorBlock.innerHTML = "Password is not valid";
+        return false;
+    }
+    
+    return true;
 }

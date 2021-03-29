@@ -15,7 +15,8 @@
         <title>Checkout</title>
     </head>
     <body>
-        <%            session.setAttribute("email", "sgoyette430@gmail.com");
+        <%
+      
             String sessionString = (String) session.getAttribute("email");
             String firstNamesql;
             String lastNamesql;

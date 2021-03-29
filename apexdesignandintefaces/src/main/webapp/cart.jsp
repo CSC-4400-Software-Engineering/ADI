@@ -15,11 +15,6 @@
         <title>Cart</title>
     </head>
     <body>
-        <%
-            session.setAttribute("email", "sgoyette430@gmail.com");
-
-        %>
-       
         <div class="products-container">
             <div class="product-header">
                 <h5 class="product-title">Product</h5>
