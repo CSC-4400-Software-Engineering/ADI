@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Desktops</title>
+        <link rel="stylesheet" href="productStyle.css">
         <%@include file="header.jsp" %>
         <script>
             $("#portals").show();

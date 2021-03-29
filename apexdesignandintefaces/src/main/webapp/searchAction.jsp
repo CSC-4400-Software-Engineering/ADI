@@ -8,6 +8,7 @@
 <html>
     <head>
         <title>Search Results</title>
+        <link rel="stylesheet" href="productStyle.css">
         <%@include file="header.jsp" %>
         <script>
             $("#portals").show();
@@ -31,7 +32,7 @@
             out.print("Search Results for " + searchInput);
         %>
         </h1>
-        <table border="1px solid black" padding="15px">
+        <table>
         <%
             DBConnect dbConnect = new DBConnect();
             String query = "SELECT model, brand, type, price, CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'supply' FROM product WHERE brand LIKE '%" + searchInput + "%' OR model LIKE '%" + searchInput + "%' OR type LIKE '%" + searchInput + "%' OR description LIKE '%" + searchInput + "%' ORDER BY stock DESC, brand, price";

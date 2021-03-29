@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>All Products</title>
+        <link rel="stylesheet" href="productStyle.css">
         <%@include file="header.jsp" %>
         <script>
             $("#portals").show();
@@ -20,7 +21,7 @@
     
     <body>
         <h1 class="w3-container w3-theme-d4">All Products</h1>
-        <table border="1px solid black" padding="15px">
+        <table>
           <% 
             DBConnect dbConnect = new DBConnect();
             String table = dbConnect.htmlTable("SELECT model, brand, type, price, CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'supply' FROM product ORDER BY stock DESC, brand, price DESC");
