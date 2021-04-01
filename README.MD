@@ -1,2 +1,2 @@
 # ADI
-this is just a sanity check
+Our product offers a simple web interface for electronics retailers to market their store online. The administrators can list products by electronic category (i.e. TVs, Laptops, Desktops etc.), as well as edit both user information and the parts of the website itself. Anyone without an account (public) can browse the items in the database by type, search the database, add items to their cart, checkout as a guest, and register as a customer. Once registered, customers can keep track of previous orders as well as edit their personal information like addresses, phone numbers and credit card credentials.
