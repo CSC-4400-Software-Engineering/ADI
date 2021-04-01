@@ -25,6 +25,9 @@
         window.onunload = function () {
             null
         };
+        import javax.mail.*;
+            import javax.mail.internet.*;
+            import java.util.*;
     </script>
 
     <body id="home"> <!--this id makes it so that we can make a button on the page that says "take me to the top" -->
@@ -43,11 +46,12 @@
             String logged = (String) session.getAttribute("logged");
             String name = (String) session.getAttribute("name");
             String email = (String) session.getAttribute("email");
+            
         %>
 
         <!--Second bar down, has buttons with drop down on left and sign up on the right -->
         <div class="w3-bar w3-theme-d2">
-            <div class="w3-col s6">
+            <div class="w3-col s4">
                 <a href="index.jsp" class="w3-bar-item w3-button w3-theme-l1 w3-medium"><i class="fa fa-home w3-margin-right"></i>Home</a>
                 <div class="w3-dropdown-hover w3-medium">
                     <button class="w3-button">Products <i class="fa fa-caret-down"></i></button>
@@ -62,17 +66,21 @@
                 </div>
                 <a href="products.jsp/deals" class="w3-bar-item w3-button w3-medium">Deals!</a>
                 <a href="about.jsp" class="w3-bar-item w3-button w3-medium">About</a>
-                <form name="searchbar" action="searchAction.jsp" method="POST">
-                    <input required type="text" placeholder="Search for Products" name="search" id="search">
-                    <input type="submit" value="Submit"/>
-                </form>
+                
             </div>
 
-            <div class="w3-col s6" id="portals">
+            <div class="w3-col s4">
+                <form name="searchbar" action="searchAction.jsp" method="POST" class="w3-bar-item w3-small">
+                    <input required type="text" placeholder="Search for Products" name="search" id="search">
+                    <input type="submit" value="Search"/>
+                </form>
+            </div>
+            
+            <div class="w3-col s4" id="portals">
                 <a href="customerPortal.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Customer Portal</a>
                 <a href="administrator.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right">Admin Page</a>
             </div>
-            <div class="w3-col s6" id="logout">
+            <div class="w3-col s4" id="logout">
                 <a href="logoutAction.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Logout</a>
                 <div class="w3-bar-item w3-right w3-theme-l1 w3-border-right">Welcome: <%= name%></div>
                 <a href="toHomeAction.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right">Home</a>
