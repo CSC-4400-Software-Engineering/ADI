@@ -7,8 +7,9 @@
         <script src="otherScripts.js"></script>
     </head>
     <body>
-        <%                        
+        <%            
             DBConnect dbConnect = new DBConnect();
+            String productDropDown;
         %>
         <div class="w3-row">
             <div class="w3-col m4">
@@ -55,7 +56,7 @@
                             <label>Product</label>
                             <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productDropDown">
                                 <%
-                                    String productDropDown = dbConnect.dropdown("SELECT productID, model FROM product");
+                                    productDropDown = dbConnect.dropdown("SELECT productID, model FROM product");
                                     out.println(productDropDown);
                                 %>
                             </select>
@@ -69,6 +70,32 @@
                     if (request.getParameter("editMessage") != null) {
                         out.println("<div class='w3-padding'>");
                         out.println(request.getParameter("editMessage"));
+                        out.println("</div>");
+                    }
+                %>
+            </div>
+            <div class="w3-col m4">
+                <div class="w3-padding">
+                    <div class="w3-card-4">
+                        <h1 class="w3-container w3-theme-d4">Remove Product</h1>
+                        <form name="removeProduct" action="removeProductAction.jsp" method="POST" class="w3-container w3-padding-large">
+                            <label>Product</label>
+                            <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productDropDown" id="productDropDownID">
+                                <%
+                                    productDropDown = dbConnect.dropdown("SELECT productID, model FROM product");
+                                    out.println(productDropDown);
+                                %>
+                            </select>
+                            <br>
+                            <input class="w3-button w3-block w3-section w3-red w3-ripple w3-padding" type="reset" value="Reset" />
+                            <input class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" type="submit" value="Submit" onclick="return removeProductConfirm()" />
+                        </form>
+                    </div>
+                </div>
+                <%
+                    if (request.getParameter("removeMessage") != null) {
+                        out.println("<div class='w3-padding'>");
+                        out.println(request.getParameter("removeMessage"));
                         out.println("</div>");
                     }
                 %>

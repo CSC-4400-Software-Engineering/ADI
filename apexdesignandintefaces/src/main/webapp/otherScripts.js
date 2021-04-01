@@ -165,6 +165,15 @@ function editProductVerifyStock() {
         document.getElementById("productStockID").setCustomValidity("");
     }
 }
+
+function removeProductConfirm() {
+  var productDropDown = document.getElementById("productDropDownID");
+  var productModel = productDropDown.options[productDropDown.selectedIndex].text;
+  
+  if (productModel !== "Select one ...") {
+    return confirm("Remove " + productModel + " from inventory?");
+  }
+}
 /* Function to check if input is numeric */
 function numericCheck(inputString) {
     return /^[0-9]+$/.test(inputString);
