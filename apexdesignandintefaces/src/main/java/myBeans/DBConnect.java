@@ -207,10 +207,10 @@ public class DBConnect {
                 message = close();
                 return result;
             } catch (Exception e) {
-                return e.getMessage();
+                return "Error: " + e.getMessage();
             }
         } else {
-            return message;
+            return "Error: " + message;
         }
     }
 

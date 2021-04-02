@@ -8,12 +8,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Home</title>
+        <title>Forgot Password</title>
         <%@include file="header.jsp" %>
         <script>
             $("#portals").show();
             $("#logout").hide();
         </script>
+        <%            String returnedQuestion = request.getParameter("returnedQuestion");
+        %>
     </head>
     <body>
         <div class="w3-card-4 w3-margin">
@@ -21,14 +23,26 @@
             <div class="w3-row w3-padding-64">
                 <div class="w3-col s3"><br></div>
                 <div class="w3-col s6 w3-card-4 w3-padding-64 w3-center w3-margin">
-                    <h2 class="w3-center w3-padding">Please enter your email</h2>
-                    <input class="w3-padding w3-center w3-large" type="text" name="userEmail" id="userEmail" value=""/><br><br>
-                    <button class="w3-button w3-center w3-round-xxlarge w3-theme">Send Password Retrieval Email</button>
+                    <%
+                        //form that reveals itself when the users question has been fetched using their email
+                        if (returnedQuestion != null) {
+                            out.println("<form action='resetPassword.jsp' method='POST'>"
+                                    + "<h2 class='w3-center w3-padding'>" + returnedQuestion + "</h2>"
+                                    + "<input class='w3-padding w3-center w3-large' type='text' name='securityAnswer' id='securityAnswer'/><br><br>"
+                                    + "<button class='w3-button w3-center w3-round-xxlarge w3-theme' type='submit'>Submit Answer</button></form>");
+                        } else {
+                            out.println("<form action='forgotPasswordAction.jsp' method='POST'>"
+                                    + "<h2 class='w3-center w3-padding'>Please enter your email</h2>"
+                                    + "<input class='w3-padding w3-center w3-large' type='text' name='userEmail' id='userEmail'/><br><br>"
+                                    + "<button class='w3-button w3-center w3-round-xxlarge w3-theme' type='submit'>Get Security Question</button></form>");
+                        }
+
+                    %>
                 </div>
                 <div class="w3-col s3"><br></div>
             </div>
         </div>
-       
+
         <%@include file="footer.jsp" %>
     </body>
 </html>
