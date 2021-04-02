@@ -80,7 +80,7 @@
                         <h1 class="w3-container w3-theme-d4">Remove Product</h1>
                         <form name="removeProduct" action="removeProductAction.jsp" method="POST" class="w3-container w3-padding-large">
                             <label>Product</label>
-                            <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productDropDown" id="productDropDownID">
+                            <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productDropDown" id="productDropDownID" onchange="removeProductDropDownSwitch()">
                                 <%
                                     productDropDown = dbConnect.dropdown("SELECT productID, model FROM product");
                                     out.println(productDropDown);

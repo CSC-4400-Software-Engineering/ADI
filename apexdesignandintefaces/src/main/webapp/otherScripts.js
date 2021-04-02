@@ -166,12 +166,21 @@ function editProductVerifyStock() {
     }
 }
 
+/* This is for setting the validity onchange. Purely aesthetic */
+function removeProductDropDownSwitch() {
+    document.getElementById("productDropDownID").setCustomValidity("");   
+}
+
 function removeProductConfirm() {
   var productDropDown = document.getElementById("productDropDownID");
   var productModel = productDropDown.options[productDropDown.selectedIndex].text;
   
   if (productModel !== "Select one ...") {
-    return confirm("Remove " + productModel + " from inventory?");
+      return confirm("Are you sure you want to remove " + productModel + " from the inventory?");
+  }
+  /* Set the validity just in case. This is needed for browsers that are chromium-based. */
+  else {
+      document.getElementById("productDropDownID").setCustomValidity("Please select an item in the list.");
   }
 }
 /* Function to check if input is numeric */
