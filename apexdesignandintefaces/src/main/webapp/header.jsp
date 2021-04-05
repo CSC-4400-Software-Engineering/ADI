@@ -29,7 +29,6 @@
             import javax.mail.internet.*;
             import java.util.*;
     </script>
-
     <body id="home"> <!--this id makes it so that we can make a button on the page that says "take me to the top" -->
         <!--Top bar with Logo, website name, address -->
         <div class="w3-bar w3-theme w3-padding">
@@ -41,14 +40,12 @@
                 </a>
             </div>
         </div>
-
         <% // session control
             String logged = (String) session.getAttribute("logged");
             String name = (String) session.getAttribute("name");
             String email = (String) session.getAttribute("email");
             
         %>
-
         <!--Second bar down, has buttons with drop down on left and sign up on the right -->
         <div class="w3-bar w3-theme-d2">
             <div class="w3-col s4">
@@ -64,11 +61,10 @@
                       <a href="audiovideo.jsp" class="w3-bar-item w3-button">Audio/Video</a>
                     </div>
                 </div>
-                <a href="products.jsp/deals" class="w3-bar-item w3-button w3-medium">Deals!</a>
+                <a href="deals.jsp" class="w3-bar-item w3-button w3-medium">Deals!</a>
                 <a href="about.jsp" class="w3-bar-item w3-button w3-medium">About</a>
                 
             </div>
-
             <div class="w3-col s4">
                 <form name="searchbar" action="searchAction.jsp" method="POST" class="w3-bar-item w3-small">
                     <input required type="text" placeholder="Search for Products" name="search" id="search">

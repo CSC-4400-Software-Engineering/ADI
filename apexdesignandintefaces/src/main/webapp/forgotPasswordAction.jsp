@@ -16,11 +16,14 @@
             String sql = "select securityQuestion from user where email like '" + userEmail + "'";
             DBConnect dbConnect = new DBConnect();
             String returnedQuestion = dbConnect.stringFinder(sql);
-            if (returnedQuestion.substring(0, 6).equals("Error: ")){
-            response.sendRedirect("customerPortal.jsp?error");
+            if (returnedQuestion.substring(0, 6).equals("Error:")){
+            response.sendRedirect("forgotPassword.jsp?error" + returnedQuestion);
+            
             }
             else{
-            response.sendRedirect("forgotPassword.jsp?returnedQuestion='" + returnedQuestion + "'");
+            session.setAttribute("tempEmail", userEmail);
+            session.setAttribute("tempMessage", returnedQuestion);
+            response.sendRedirect("forgotPassword.jsp");
             }
         %>
     </body>

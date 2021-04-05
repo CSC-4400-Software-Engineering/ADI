@@ -16,7 +16,9 @@
         </script>
     </head>
     <body>
+        
             <p><br></p>
+            
             <div class="w3-padding w3-margin" id="signUpForm">
                 <div class="w3-card-4">
                     <div class="w3-container w3-theme-d4">
@@ -117,15 +119,17 @@
                                      <select class="w3-select w3-border w3-round w3-light-grey" name="state" id="state" required>
                                         <option disabled selected value="">Select State</option>
                                         <option>Alabama</option>
+                                        <option>Alaska</option>
                                         <option>Arizona</option>
                                         <option>Arkansas</option>
                                         <option>California</option>
                                         <option>Colorado</option>
                                         <option>Connecticut</option>
                                         <option>Delaware</option>
-                                        <option>DC</option>
+                                        <option>Washington, D.C.</option>
                                         <option>Florida</option>
                                         <option>Georgia</option>
+                                        <option>Hawaii</option>
                                         <option>Idaho</option>
                                         <option>Illinois</option>
                                         <option>Indiana</option>

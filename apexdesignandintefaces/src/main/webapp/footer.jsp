@@ -33,13 +33,13 @@
             </div>
         </div>
     </div>
-    <p>Powered by <u>Apex Design and Interfaces</u> 2021
+    Powered by <u>Apex Design and Interfaces</u> 2021
     <div class="w3-tooltip w3-right">
         <span class="w3-text w3-padding w3-gray w3-hide-small">Go To Top</span>   
         <a class="w3-button w3-theme" href="#home"><span class="w3-xlarge">
                 <i class="fa fa-chevron-circle-up"></i></span></a>
     </div>
-    </p>
+   
      <script src="cartFunctions.js"></script>
 </footer>
 

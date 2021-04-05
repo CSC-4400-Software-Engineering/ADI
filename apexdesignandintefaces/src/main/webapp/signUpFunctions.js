@@ -75,3 +75,27 @@ function signIn()
     
     return true;
 }
+
+function passwordValid() 
+{
+    var password = document.getElementById("password").value;
+    var confirmedPassword = document.getElementById("confirmedPassword").value;
+    var errorBlock = document.getElementById("error");
+    var passwordregex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    
+    //check that the passwords match
+    if (password !== confirmedPassword)
+    {
+        errorBlock.innerHTML = "Passwords do not match";
+        return false;
+    }
+    //check that the passwords are 
+    else if (!passwordregex.test(password))
+    {
+        errorBlock.innerHTML = "Password isn't valid format";
+        return false;
+    }
+    
+    return true;
+    return true;
+}
