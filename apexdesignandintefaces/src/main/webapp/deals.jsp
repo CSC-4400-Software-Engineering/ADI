@@ -30,7 +30,7 @@
         <table>
         <% 
             DBConnect dbConnect = new DBConnect();
-            String query = "SELECT Model, Brand, Type, CONCAT('$', price) AS 'List Price', CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) AS 'Sale Price', CONCAT('$', ROUND((price - (price * (100 - sale) / 100)), 2), ' (', sale, '%)') AS 'Savings', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'Supply' FROM product WHERE sale > 0 ORDER BY stock DESC, brand, price DESC";
+            String query = "SELECT Model, Brand, Type, CONCAT('$', ROUND(price, 2)) AS 'List Price', CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) AS 'Sale Price', CONCAT('$', ROUND((price - (price * (100 - sale) / 100)), 2), ' (', sale, '%)') AS 'Savings', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'Supply' FROM product WHERE sale > 0 ORDER BY stock DESC, brand, price DESC";
             String nullTest = dbConnect.fetchInfo(query);
             if(nullTest.length() == 0){
                 out.print("No Sales are currently ongoing");

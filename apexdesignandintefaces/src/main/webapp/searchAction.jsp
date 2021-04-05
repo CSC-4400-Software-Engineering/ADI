@@ -35,7 +35,7 @@
         <table>
         <%
             DBConnect dbConnect = new DBConnect();
-            String query = "SELECT model, brand, type, CASE WHEN sale > 1 THEN CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) ELSE CONCAT('$', price) END AS 'Price', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'Supply' FROM product WHERE brand LIKE '%" + searchInput + "%' OR model LIKE '%" + searchInput + "%' OR type LIKE '%" + searchInput + "%' OR description LIKE '%" + searchInput + "%' ORDER BY stock DESC, brand, price";
+            String query = "SELECT model, brand, type, CASE WHEN sale > 1 THEN CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) ELSE CONCAT('$', ROUND(price, 2)) END AS 'Price', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'Supply' FROM product WHERE brand LIKE '%" + searchInput + "%' OR model LIKE '%" + searchInput + "%' OR type LIKE '%" + searchInput + "%' OR description LIKE '%" + searchInput + "%' ORDER BY stock DESC, brand, price";
             String nullTest = dbConnect.fetchInfo(query);
             if(nullTest.length() == 0){
                 out.print("No Results Found");
