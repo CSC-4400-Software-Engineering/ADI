@@ -24,7 +24,7 @@
         <table>
         <% 
             DBConnect dbConnect = new DBConnect();
-            String table = dbConnect.htmlTable("SELECT model, brand, type, price, CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'supply' FROM product WHERE type LIKE \"Desktop\" ORDER BY stock DESC, brand, price DESC");
+            String table = dbConnect.htmlTable("SELECT model, brand, CASE WHEN sale > 1 THEN CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) ELSE CONCAT('$', ROUND(price, 2)) END AS 'Price', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'supply' FROM product WHERE type LIKE \"Desktop\" ORDER BY stock DESC, brand, price DESC");
             out.print(table);
         %>
         </table>

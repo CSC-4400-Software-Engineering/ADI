@@ -1,13 +1,13 @@
 <%-- 
-    Document   : searchAction
-    Created on : Mar 25, 2021, 12:57:30 PM
+    Document   : deals
+    Created on : Apr 2, 2021, 10:35:53 PM
     Author     : Adrien
 --%>
 
 <%@page import="myBeans.DBConnect"%>
 <html>
     <head>
-        <title>Search Results</title>
+        <title>Deals!</title>
         <link rel="stylesheet" href="productStyle.css">
         <%@include file="header.jsp" %>
         <script>
@@ -26,19 +26,14 @@
     </head>
     
     <body>
-        <h1 class="w3-container w3-theme-d4">
-        <%
-            String searchInput = request.getParameter("search");
-            out.print("Search Results for " + searchInput);
-        %>
-        </h1>
+        <h1 class="w3-container w3-theme-d4">Items on Sale</h1>
         <table>
-        <%
+        <% 
             DBConnect dbConnect = new DBConnect();
-            String query = "SELECT model, brand, type, CASE WHEN sale > 1 THEN CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) ELSE CONCAT('$', ROUND(price, 2)) END AS 'Price', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'Supply' FROM product WHERE brand LIKE '%" + searchInput + "%' OR model LIKE '%" + searchInput + "%' OR type LIKE '%" + searchInput + "%' OR description LIKE '%" + searchInput + "%' ORDER BY stock DESC, brand, price";
+            String query = "SELECT Model, Brand, Type, CONCAT('$', ROUND(price, 2)) AS 'List Price', CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) AS 'Sale Price', CONCAT('$', ROUND((price - (price * (100 - sale) / 100)), 2), ' (', sale, '%)') AS 'Savings', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'Supply' FROM product WHERE sale > 0 ORDER BY stock DESC, brand, price DESC";
             String nullTest = dbConnect.fetchInfo(query);
             if(nullTest.length() == 0){
-                out.print("No Results Found");
+                out.print("No Sales are currently ongoing");
             }
             else{
                 String table = dbConnect.htmlTable(query);
