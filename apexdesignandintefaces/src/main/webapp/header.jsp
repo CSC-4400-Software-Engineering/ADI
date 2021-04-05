@@ -64,7 +64,7 @@
                       <a href="audiovideo.jsp" class="w3-bar-item w3-button">Audio/Video</a>
                     </div>
                 </div>
-                <a href="products.jsp/deals" class="w3-bar-item w3-button w3-medium">Deals!</a>
+                <a href="deals.jsp" class="w3-bar-item w3-button w3-medium">Deals!</a>
                 <a href="about.jsp" class="w3-bar-item w3-button w3-medium">About</a>
                 
             </div>
