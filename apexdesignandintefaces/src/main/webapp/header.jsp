@@ -25,9 +25,7 @@
         window.onunload = function () {
             null
         };
-        import javax.mail.*;
-            import javax.mail.internet.*;
-            import java.util.*;
+       
     </script>
     <body id="home"> <!--this id makes it so that we can make a button on the page that says "take me to the top" -->
         <!--Top bar with Logo, website name, address -->
