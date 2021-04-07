@@ -1,33 +1,5 @@
 let carts = document.querySelectorAll('.add-cart'); //items MUST have this tag when we create product pages
 
-//list of all products (in testing)
-let products = [
-    {
-        name: "Dell Optiplex 7010",
-        tag: "optiplex7010",
-        price: 399,
-        inCart: 0
-        
-    },
-    {
-        name: "HP Folio 9470M",
-        tag: "folio9470m",
-        price: 199,
-        inCart: 0
-    },
-    {
-        name: "Xbox Series X (Black)",
-        tag: "xboxseriesx",
-        price: 499,
-        inCart: 0
-    },
-    {
-        name: "JBL Charge 4",
-       tag: "jblcharge4",
-       price: 129,
-       inCart: 0
-   }
-];
 
 for (let i = 0; i < carts.length; i++) //go through all the products with "add to cart" button
 {

@@ -77,7 +77,7 @@
             <div class="w3-col s4" id="logout">
                 <a href="logoutAction.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Logout</a>
                 <div class="w3-bar-item w3-right w3-theme-l1 w3-border-right">Welcome: <%= name%></div>
-                <a href="toHomeAction.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right">Home</a>
+                <a href="customerHome.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right">Home</a>
             </div>
         </div>
     </body>

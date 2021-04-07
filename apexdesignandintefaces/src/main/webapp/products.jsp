@@ -53,6 +53,35 @@
                 <a class="add-cart cart4" href="#">Add to Cart</a>
             </div>
         </div>
+                <script>
+                    let products = [
+    {
+        name: "Dell Optiplex 7010",
+        tag: "optiplex7010",
+        price: 399,
+        inCart: 0
+        
+    },
+    {
+        name: "HP Folio 9470M",
+        tag: "folio9470m",
+        price: 199,
+        inCart: 0
+    },
+    {
+        name: "Xbox Series X (Black)",
+        tag: "xboxseriesx",
+        price: 499,
+        inCart: 0
+    },
+    {
+        name: "JBL Charge 4",
+       tag: "jblcharge4",
+       price: 129,
+       inCart: 0
+   }
+];
+                </script>
         <%@include file="footer.jsp" %>
     </body>
 </html>
