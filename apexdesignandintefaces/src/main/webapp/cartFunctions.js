@@ -85,8 +85,8 @@ function displayCart() {
             productContainer.innerHTML += `
             <div class="product">
                 <!--<ion-icon name="close-circle"></ion-icon>-->
-                <img src="./Images/${item.tag}.jpg">
-                <span)${item.name}</span>
+                <img src="data:image/png;base64,<%=dbConnect.getPicture('SELECT picture FROM product WHERE productID LIKE ?', '${item.productID}')%>"/>
+                <span>${item.name}</span>
             </div>
             <div class="price">$${item.price}.00</div>
             <div class="quantity">
@@ -104,7 +104,7 @@ function displayCart() {
         productContainer.innerHTML += `
         <div class="basketTotalContainer">
             <h4 class="basketTotalTitle">
-                Basket Total 
+                Basket Total &nbsp;
             </h4>
             <h4 class="basketTotal">
                 $${cartCost}.00

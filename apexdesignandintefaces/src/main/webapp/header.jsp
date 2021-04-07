@@ -64,7 +64,7 @@
                 
             </div>
             <div class="w3-col s4">
-                <form name="searchbar" action="searchAction.jsp" method="POST" class="w3-bar-item w3-small">
+                <form name="searchbar" action="searchAction.jsp" method="POST" class="w3-medium w3-center">
                     <input required type="text" placeholder="Search for Products" name="search" id="search">
                     <input type="submit" value="Search"/>
                 </form>

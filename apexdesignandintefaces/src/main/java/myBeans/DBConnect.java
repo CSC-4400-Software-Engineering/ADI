@@ -348,4 +348,30 @@ public class DBConnect {
             return message;
         }
     }
+    
+    public String productScript(String sql) { //pass in brand, model, price and productID. MUST BE BETWEEN SCRIPT TAGS
+        String result = "let products = ["; //opens products block of code
+        String message = open();
+        if (message.equals("Opened")) {
+            try {
+                rst = stm.executeQuery(sql);
+                rsmd = rst.getMetaData();
+                int count = rsmd.getColumnCount();
+                while (rst.next()) {
+                    result += "{name: '" + rst.getString(1) + " " + rst.getString(2) + "',\n";//this prints {name: "Brand Model",\n
+                    result += "tag: '" + rst.getString(1) + rst.getString(2) + "',\n"; //this prints tag: "BrandModel",\n (no spaces)
+                    result += "price: " + rst.getInt(3) + ",\n"; //prints price: Price,\n
+                    result += "productID: " + rst.getInt(4) + ",\n"; //prints productID: ID,\n
+                    result += "inCart: 0}, "; //go over this line with Will, may or may not need to fix comma issue
+                }
+                result+= "];"; //closes products block of code
+                message = close();
+                return result;
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        } else {
+            return message;
+        }
+    }
 }

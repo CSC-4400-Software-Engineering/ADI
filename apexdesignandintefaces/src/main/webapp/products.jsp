@@ -10,22 +10,25 @@
 
         <%@include file="header.jsp"%>
         <title>Products</title>
-        <%
-            DBConnect dbConnect = new DBConnect();
-            String currentPicture = dbConnect.getPicture("SELECT picture FROM product WHERE productID LIKE ?", "13");
-        %>
-        
     </head>
     <body>
-        <!--These are the products that we have to display. To do so from the database, we must make a DBConnect
+        <% 
+            DBConnect dbConnect = new DBConnect();
+            //String currentPicture = dbConnect.getPicture("SELECT picture FROM product WHERE productID LIKE ?", "13");
+            String productsScript = dbConnect.productScript("select brand, model, price, productID from product");
+            out.print("<script>" + productsScript + "</script>");
+        %>
+        <!--
+        These are the products that we have to display. To do so from the database, we must make a DBConnect
         function that will print a repetitive version of this code as HTML statements based upon database
-        queries determined by how the user got to this page (-->
+        queries determined by how the user got to this page
+        -->
         <div class="container">
             <div class="image">
-                <%                    
+                <%/*
                     out.print("<img style='width:100%' src='data:image/png;base64,");
                     out.println(currentPicture);
-                    out.print("'/>");
+                    out.print("'/>");*/
                 %>
                 <h3>Dell Optiplex 7010</h3> <!--This would be something like "<h3>" + brand + " " + model + "</h3>" --->
                 <h3>$399</h3>  <!--This would be something like "<h3>$" + price + "</h3>" --->
@@ -53,35 +56,6 @@
                 <a class="add-cart cart4" href="#">Add to Cart</a>
             </div>
         </div>
-                <script>
-                    let products = [
-    {
-        name: "Dell Optiplex 7010",
-        tag: "optiplex7010",
-        price: 399,
-        inCart: 0
-        
-    },
-    {
-        name: "HP Folio 9470M",
-        tag: "folio9470m",
-        price: 199,
-        inCart: 0
-    },
-    {
-        name: "Xbox Series X (Black)",
-        tag: "xboxseriesx",
-        price: 499,
-        inCart: 0
-    },
-    {
-        name: "JBL Charge 4",
-       tag: "jblcharge4",
-       price: 129,
-       inCart: 0
-   }
-];
-                </script>
         <%@include file="footer.jsp" %>
     </body>
 </html>

@@ -15,6 +15,14 @@
         </script>
     </head>
     <body>
+        <%
+            //get the products info
+            
+            //get the make SQL statements
+            
+            //call SQL methods to create orders
+            
+            %>
         <div class="w3-padding">
             <div class="w3-card-4 w3-margin">
 
