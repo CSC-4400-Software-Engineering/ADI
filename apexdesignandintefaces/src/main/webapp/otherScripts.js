@@ -183,7 +183,144 @@ function removeProductConfirm() {
       document.getElementById("productDropDownID").setCustomValidity("Please select an item in the list.");
   }
 }
+
+function editUserVerifyFirstName() {
+    var theUserFirstName = document.editUserIntermediate.userFirstName.value;
+    var theUserFirstNameLength = theUserFirstName.length;
+    
+    if (theUserFirstNameLength > 50) {
+        document.getElementById("userFirstNameID").setCustomValidity("First Name must not be greater than 50 characters in size!");
+    } 
+    else {
+        document.getElementById("userFirstNameID").setCustomValidity("");
+    }
+}
+
+function editUserVerifyLastName() {
+    var theUserLastName = document.editUserIntermediate.userLastName.value;
+    var theUserLastNameLength = theUserLastName.length;
+    
+    if (theUserLastNameLength > 50) {
+        document.getElementById("userLastNameID").setCustomValidity("Last Name must not be greater than 50 characters in size!");
+    } 
+    else {
+        document.getElementById("userLastNameID").setCustomValidity("");
+    }
+}
+
+function editUserVerifyEmail() {
+    var theUserEmail = document.editUserIntermediate.userEmail.value;
+    var theUserEmailLength = theUserEmail.length;
+    
+    if (emailCheck(theUserEmail) === false) {
+        document.getElementById("userEmailID").setCustomValidity("Email is not valid!");
+    }    
+    else if (theUserEmailLength > 100) {
+        document.getElementById("userEmailID").setCustomValidity("Email must not be greater than 100 characters in size!");
+    } 
+    else {
+        document.getElementById("userEmailID").setCustomValidity("");
+    }
+}
+
+function editUserVerifyPassword() {
+    var theUserPassword = document.editUserIntermediate.userPassword.value;
+    var theUserPasswordLength = theUserPassword.length;
+    
+    if (passwordCheck(theUserPassword) === false) {
+        document.getElementById("userPasswordID").setCustomValidity("Password is not valid!");
+    }    
+    else if (theUserPasswordLength > 30) {
+        document.getElementById("userPasswordID").setCustomValidity("Password must not be greater than 30 characters in size!");
+    } 
+    else {
+        document.getElementById("userPasswordID").setCustomValidity("");
+    }
+}
+
+function editUserVerifyStreetAddress() {
+    var theUserStreetAddress = document.editUserIntermediate.userStreetAddress.value;
+    var theUserStreetAddressLength = theUserStreetAddress.length;
+    
+    if (theUserStreetAddressLength > 100) {
+        document.getElementById("userStreetAddressID").setCustomValidity("Street Address must not be greater than 100 characters in size!");
+    } 
+    else {
+        document.getElementById("userStreetAddressID").setCustomValidity("");
+    }
+}
+
+function editUserVerifyCity() {
+    var theUserCity = document.editUserIntermediate.userCity.value;
+    var theUserCityLength = theUserCity.length;
+    
+    if (theUserCityLength > 50) {
+        document.getElementById("userCityID").setCustomValidity("City must not be greater than 50 characters in size!");
+    } 
+    else {
+        document.getElementById("userCityID").setCustomValidity("");
+    }
+}
+
+function editUserVerifyPhone() {
+    var theUserPhone = document.editUserIntermediate.userPhone.value;
+    var theUserPhoneLength = theUserPhone.length;
+    
+    if (theUserPhoneLength > 10) {
+        document.getElementById("userPhoneID").setCustomValidity("Phone must not be greater than 10 digits in size!");
+    } 
+    else {
+        document.getElementById("userPhoneID").setCustomValidity("");
+    }
+}
+
+function editUserVerifySecurityAnswer() {
+    var theUserSecurityAnswer = document.editUserIntermediate.userSecurityAnswer.value;
+    var theUserSecurityAnswerLength = theUserSecurityAnswer.length;
+    
+    if (theUserSecurityAnswerLength > 100) {
+        document.getElementById("userSecurityAnswerID").setCustomValidity("Security Answer must not be greater than 100 characters in size!");
+    } 
+    else {
+        document.getElementById("userSecurityAnswerID").setCustomValidity("");
+    }
+}
+
+function editUserVerifyCreditCardNum() {
+    var theUserCreditCardNum = document.editUserIntermediate.userCreditCardNum.value;
+    var theUserCreditCardNumLength = theUserCreditCardNum.length;
+    
+    if (theUserCreditCardNumLength > 16) {
+        document.getElementById("userCreditCardNumID").setCustomValidity("Credit Card Number must not be greater than 16 digits in size!");
+    } 
+    else {
+        document.getElementById("userCreditCardNumID").setCustomValidity("");
+    }
+}
+
+function editUserVerifyCreditCardExp() {
+    var theUserCreditCardExp = document.editUserIntermediate.userCreditCardExp.value;
+    var theUserCreditCardExpLength = theUserCreditCardExp.length;
+    
+    if (theUserCreditCardExpLength > 4) {
+        document.getElementById("userCreditCardExpID").setCustomValidity("Credit Card Expiration must not be greater than 4 digits in size!");
+    } 
+    else {
+        document.getElementById("userCreditCardExpID").setCustomValidity("");
+    }
+}
+
 /* Function to check if input is numeric */
 function numericCheck(inputString) {
     return /^[0-9]+$/.test(inputString);
+}
+
+function emailCheck(inputString) {
+    var sebastiansPatentedEmailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    return sebastiansPatentedEmailRegex.test(inputString);
+}
+
+function passwordCheck(inputString) {
+    var sebastiansPatentedPasswordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    return sebastiansPatentedPasswordRegex.test(inputString);
 }

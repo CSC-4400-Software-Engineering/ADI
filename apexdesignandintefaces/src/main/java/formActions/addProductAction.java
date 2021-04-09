@@ -65,7 +65,7 @@ public class addProductAction extends HttpServlet {
         String sqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock, picture) VALUES(0,?,?,?,?,?,?,?)";
         String connectMessage = dbConnect.addProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productPictureInput);
         if (connectMessage.equals("Closed")) {
-            response.sendRedirect("administrator.jsp?addMessage=Product added to inventory!");
+            response.sendRedirect("administrator.jsp?addProductMessage=Product added to inventory!");
 
         }
     }

@@ -82,7 +82,7 @@ public class editProductIntermediateAction extends HttpServlet {
             connectMessage = dbConnect.editProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productIDInput);
         }
         if (connectMessage.equals("Closed")) {
-            response.sendRedirect("administrator.jsp?editMessage=Product in inventory edited!");
+            response.sendRedirect("administrator.jsp?editProductMessage=Product in inventory edited!");
 
         }
     }

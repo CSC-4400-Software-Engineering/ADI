@@ -14,7 +14,7 @@
             String connectMessage = dbConnect.insertData(sqlInput);
 
             if (connectMessage.equals("Closed")) {
-                response.sendRedirect("administrator.jsp?removeMessage=Product removed from inventory!");
+                response.sendRedirect("administrator.jsp?removeProductMessage=Product removed from inventory!");
             }
         %>
     </body>
