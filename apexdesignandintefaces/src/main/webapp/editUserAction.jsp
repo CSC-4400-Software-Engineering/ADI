@@ -46,6 +46,7 @@
                     <div class="w3-card-4">
                         <h1 class="w3-container w3-theme-d4">Edit User</h1>
                         <form name="editUserIntermediate" action="editUserIntermediateAction.jsp" method="POST" class="w3-container w3-padding">
+                        <!-- test page <form name="editUserIntermediate" action="editUserIntermediateActionTest.jsp" method="POST" class="w3-container w3-padding"> -->
                             <input type="hidden" name="userID" value="<%out.println(dropDownID);%>">
                             <div class="w3-row-padding">
                                 <div class="w3-col s6">

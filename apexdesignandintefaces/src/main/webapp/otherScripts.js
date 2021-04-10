@@ -266,7 +266,10 @@ function editUserVerifyPhone() {
     var theUserPhone = document.editUserIntermediate.userPhone.value;
     var theUserPhoneLength = theUserPhone.length;
     
-    if (theUserPhoneLength > 10) {
+    if (numericCheck(theUserPhone) === false) {
+        document.getElementById("userPhoneID").setCustomValidity("Phone must be numeric!");
+    }  
+    else if (theUserPhoneLength > 10) {
         document.getElementById("userPhoneID").setCustomValidity("Phone must not be greater than 10 digits in size!");
     } 
     else {
