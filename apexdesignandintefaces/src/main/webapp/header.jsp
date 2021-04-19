@@ -82,8 +82,12 @@
                         if (logged.equals("1")) {
                             out.println("<a href='customerHome.jsp' class='w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right'>Home</a>");
                         } 
-                        else {
+                        else if (logged.equals("0")) {
                             out.println("<a href='administrator.jsp' class='w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right'>Admin</a>");
+                        }
+                        else {
+                            // Do nothing. This is to catch when someone fails to log in and logged is set to index.
+                            //out.println("<a href='dummy.jsp' class='w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right'>dummy</a>");
                         }
 
                     }
