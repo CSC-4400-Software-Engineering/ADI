@@ -99,3 +99,64 @@ function passwordValid()
     return true;
     return true;
 }
+
+function verifyFirst(){
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var email = document.getElementById("email").value;
+    var emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    var creditCardNum = document.getElementById("creditCardNum").value;
+    var creditCardRegex = /^\d{16}$/;
+    var creditCardExp = document.getElementById("creditCardExp").value;
+    var expRegex = /^([1][0-2]|[0][1-9])([2][1-9])$/;
+    var CVV = document.getElementById("CVV").value;
+    var CVVRegex = /^\d{3}$/;
+    var error = document.getElementById("error");
+    
+    if (firstName.length > 50){
+        error.innerHTML = "Please limit first name to only 50 Characters";
+        return false;
+    }
+    if (lastName.length > 50){
+        error.innerHTML = "Please limit last name to only 50 Characters";
+        return false;
+    }
+    if (!emailRegex.test(email) || email.length > 100){
+        error.innerHTML = "Email is not valid";
+        return false;
+    }
+    if (!creditCardRegex.test(creditCardNum)){
+        error.innerHTML = "Please enter valid 16 digit credit card number";
+        return false;
+    }
+    if (!expRegex.test(creditCardExp)){
+        error.innerHTML = "Please enter valid expiration date as 4 digit number";
+        return false;
+    }
+    if (!CVVRegex.test(CVV)){
+        error.innerHTML = "Please enter valid 3 digit security code";
+        return false;
+    } 
+    return true;
+}
+
+function verifySecond(){
+   var phone = document.getElementById("phoneNumber").value;
+   var phoneRegex = /^\d{10}$/;
+   var streetAddress = document.getElementById("streetAddress").value;
+   var city = document.getElementById("city").value;
+   var error = document.getElementById("error");
+   
+   if (phone.length > 10 || !phoneRegex.test(phone)){
+        error.innerHTML = "Phone number invalid, please enter 10 digit phone numbers only";
+        return false;
+    }
+    if (streetAddress.length > 100){
+        error.innerHTML = "Please limit street address to 100 characters";
+        return false;
+    }
+    if (city.length > 50){
+        error.innerHTML = "Please limit city to 50 characters";
+        return false;
+    }
+}

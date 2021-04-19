@@ -81,7 +81,7 @@
                         <h2>Please Enter and Confirm Your Information Below</h2>
                     </div>
 
-                    <form name="checkoutForm" action="checkoutFormAction.jsp" class="w3-container" method="post">
+                    <form name="checkout" action="checkoutAction.jsp" class="w3-container" method="POST" onsubmit="return (verifyFirst() && verifySecond())">
 
                         <div class="w3-row-padding">
                             <br>
@@ -151,7 +151,7 @@
                             </div>
                             <div class="w3-col s2">
                                 <p>
-                                    <input class="w3-input w3-round w3-light-grey" name="expiration" type="text" id="expiration" value="<%=creditCardExp%>" required>
+                                    <input class="w3-input w3-round w3-light-grey" name="creditCardExp" type="text" id="creditCardExp" value="<%=creditCardExp%>" required>
                                     <label>Expiration Date</label>
                                 </p>
                             </div>   

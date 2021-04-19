@@ -193,7 +193,7 @@
                                     <input class="w3-input w3-round w3-light-grey" name="creditCardExp" type="text" id="creditCardExp" required>
                                     <label>Expiration Date</label>
                                 </p>
-                            </div>   
+                            </div>
                         </div>
 
                         <div class="w3-row-padding w3-center w3-red" id="error">
