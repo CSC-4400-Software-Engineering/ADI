@@ -7,14 +7,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@include file="header.jsp"%>
         <script>
             $("#portals").show(); //this shows the boxes that say admin and customer
             $("#logout").hide(); //this hides the one that says welcome to whoever is logged in
         </script>
-        <%@include file="header.jsp"%>
         <title>Cart</title>
     </head>
     <body>
+        <div class="pictures"></div>
         <div class="products-container">
             <div class="product-header">
                 <h5 class="product-title">Product</h5>
@@ -36,6 +37,6 @@
                 <div class="w3-col s4 w3-padding"><br></div>
             </div>
         </form>
-        <%@include file="footer.jsp" %>
+       <%@include file="footer.jsp" %>
     </body>
 </html>

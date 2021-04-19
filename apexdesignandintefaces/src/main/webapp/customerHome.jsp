@@ -16,7 +16,7 @@
     <body>
         <%
             DBConnect dbConnect = new DBConnect();
-  
+ 
             String firstName = dbConnect.stringFinder("select firstName from user where email like '" + email + "'");
             String lastName = dbConnect.stringFinder("select lastName from user where email like '" + email + "'");
             String phone = dbConnect.stringFinder("select phone from user where email like '" + email + "'");

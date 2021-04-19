@@ -78,14 +78,15 @@ function displayCart() {
     cartItems = JSON.parse(cartItems);
     let productContainer = document.querySelector(".products");
     
+    
     if (cartItems && productContainer){
         productContainer.innerHTML = '';
         Object.values(cartItems).map(item => 
-        {
+        { //This needs improvements
             productContainer.innerHTML += `
             <div class="product">
                 <!--<ion-icon name="close-circle"></ion-icon>-->
-                <img src="data:image/png;base64,<%=dbConnect.getPicture('SELECT picture FROM product WHERE productID LIKE ?', '${item.productID}')%>"/>
+                
                 <span>${item.name}</span>
             </div>
             <div class="price">$${item.price}.00</div>

@@ -7,55 +7,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <%@include file="header.jsp"%>
+        <link rel="stylesheet" href="productStyle.css">
         <title>Products</title>
     </head>
     <body>
-        <% 
-            DBConnect dbConnect = new DBConnect();
-            //String currentPicture = dbConnect.getPicture("SELECT picture FROM product WHERE productID LIKE ?", "13");
+        <%            DBConnect dbConnect = new DBConnect();
             String productsScript = dbConnect.productScript("select brand, model, price, productID from product");
             out.print("<script>" + productsScript + "</script>");
-        %>
-        <!--
-        These are the products that we have to display. To do so from the database, we must make a DBConnect
-        function that will print a repetitive version of this code as HTML statements based upon database
-        queries determined by how the user got to this page
-        -->
-        <div class="container">
-            <div class="image">
-                <%/*
-                    out.print("<img style='width:100%' src='data:image/png;base64,");
-                    out.println(currentPicture);
-                    out.print("'/>");*/
-                %>
-                <h3>Dell Optiplex 7010</h3> <!--This would be something like "<h3>" + brand + " " + model + "</h3>" --->
-                <h3>$399</h3>  <!--This would be something like "<h3>$" + price + "</h3>" --->
-                <a class="add-cart cart1" href="#">Add to Cart</a> <!--This would be the same always --->
-            </div>
-
-            <div class="image">
-                <img src="Images/folio9470m.jpg" alt="folio9470m"/>
-                <h3>HP Folio 9470M</h3>
-                <h3>$199</h3>
-                <a class="add-cart cart2" href="#">Add to Cart</a>
-            </div>
-
-            <div class="image">
-                <img src="Images/xboxseriesx.png" alt="xboxseriesx"/>
-                <h3>Xbox Series X (Black)</h3>
-                <h3>$499</h3>
-                <a class="add-cart cart3" href="#">Add to Cart</a>
-            </div>
-
-            <div class="image">
-                <img src="Images/jblcharge4.jpg" alt="jblcharge4"/>
-                <h3>JBL Charge 4</h3>
-                <h3>$129</h3>
-                <a class="add-cart cart4" href="#">Add to Cart</a>
-            </div>
-        </div>
-        <%@include file="footer.jsp" %>
+            out.print(dbConnect.displayProducts("select productID, brand, model, price from product"));
+%>
+                <%@include file="footer.jsp"%>        
     </body>
 </html>

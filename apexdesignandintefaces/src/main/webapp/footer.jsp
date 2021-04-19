@@ -39,7 +39,6 @@
         <a class="w3-button w3-theme" href="#home"><span class="w3-xlarge">
                 <i class="fa fa-chevron-circle-up"></i></span></a>
     </div>
-   
      <script src="cartFunctions.js"></script>
 </footer>
 

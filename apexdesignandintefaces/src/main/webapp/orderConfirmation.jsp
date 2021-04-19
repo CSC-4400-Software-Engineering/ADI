@@ -16,11 +16,12 @@
     </head>
     <body>
         <%
-            //get the products info
+            //get the products info, basically pull ID and inCart 
             
-            //get the make SQL statements
+            //String[] products = {};
+            //get the make SQL statements, INSERT (add products to order, link customers ID with order, etc)
             
-            //call SQL methods to create orders
+            //call SQL methods to create orders (updateDB(SQL statements))
             
             %>
         <div class="w3-padding">
@@ -28,7 +29,7 @@
 
                 <h1 class="w3-center w3-container w3-theme-d3 w3-padding"><b>Order Confirmed!</b></h1>
                 <h3 class="w3-padding">
-                    Your order has been sent in for processing. We will send a follow up email to <%=session.getAttribute("email")%>.<br>
+                    Your order has been sent in for processing. We will send a follow up email to <%=email%>.<br>
                     Please wait 3-5 business days to check that your payment has gone through. 
                 </h3>  
             </div> 

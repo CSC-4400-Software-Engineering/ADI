@@ -26,7 +26,9 @@ public class DBConnect {
     private Statement stm = null;
     private PreparedStatement pstm = null;
     private ResultSet rst = null;
+    private ResultSet rst2 = null;
     private ResultSetMetaData rsmd = null;
+    private ResultSetMetaData rsmd2 = null;
 
     // The two private methods below are used to open and close DB
     private String open() {
@@ -138,7 +140,6 @@ public class DBConnect {
             return result;
         }
     }
-
     // Business logic: Method to create html code for dropdown.  Lists options
     // Goes between <select> and </select> tags.
     public String dropdown(String sql) {
@@ -288,7 +289,6 @@ public class DBConnect {
         }
         return message;
     }
-
     /* 
     Specialized function to retrieve image blobs from the database.
     Returns the image as a base64 string lol
@@ -313,7 +313,6 @@ public class DBConnect {
         }
         return pictureEncode;
     }
-    
     
     public String prettyTable(String sql) {
         //String result = "<table>\n"; // I commented this line out since it was cumbersome.
@@ -356,7 +355,7 @@ public class DBConnect {
             try {
                 rst = stm.executeQuery(sql);
                 rsmd = rst.getMetaData();
-                int count = rsmd.getColumnCount();
+                
                 while (rst.next()) {
                     result += "{name: '" + rst.getString(1) + " " + rst.getString(2) + "',\n";//this prints {name: "Brand Model",\n
                     result += "tag: '" + rst.getString(1) + rst.getString(2) + "',\n"; //this prints tag: "BrandModel",\n (no spaces)
@@ -374,4 +373,84 @@ public class DBConnect {
             return message;
         }
     }
+    
+    public String displayProducts(String sql) {//productID, brand, model, price from product
+        String result = "<div class='container'>";
+        String message = open();
+        if (message.equals("Opened")) {
+            try {
+                rst2 = stm.executeQuery(sql);
+                rsmd2 = rst2.getMetaData();
+                int i = 1;
+                String pictureString;
+                String sql2;
+                int PID;
+                String productID;
+                while (rst2.next()) {
+                    PID = rst2.getInt(1);
+                    productID = String.valueOf(PID);
+                    sql2 = "SELECT picture FROM product where productID like ?";
+                    pictureString = getPicture(sql2, productID);
+                    result += "<div class='image w3-container'>"
+                            + "<img style='width:100%' src='data:image/png;base64," + pictureString + "'>";
+                    result += "<h3>" + rst2.getString(2) + " " + rst2.getString(3) + "</h3>";
+                    result += "<h3>$" + rst2.getInt(4) + "</h3>";
+                    result += "<a class='add-cart cart"+ i + "' href='#'>Add to Cart</a>";
+                    i++;
+                    result += "</div>";
+                }
+                result+= "</div>"; //closes 'container' block of code
+                message = close();
+                return result;
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        } else {
+            return message;
+        }
+    }
+    
+   public String orderHistory(String email){ 
+        String result = "";
+        String message = open();
+        if (message.equals("Opened")) {
+            try {
+                String sql = "SELECT onlineorder.orderID, onlineorder.timeStamp, product.brand, product.model, onlineorderproduct.quantity, product.price"
+                        + " FROM user INNER JOIN onlineorder ON user.userID = onlineorder.userID INNER JOIN onlineorderproduct ON onlineorder.orderID = "
+                        + "onlineorderproduct.orderID INNER JOIN product ON onlineorderproduct.productID=product.productID WHERE user.email = '" + email + "'";
+                rst = stm.executeQuery(sql);
+                rsmd = rst.getMetaData();
+                int count = rsmd.getColumnCount();
+                // create column headings
+                result += "<tr>\n";
+                /*for (int i = 0; i < count; i++) {
+                    result += "<th>" + rsmd.getColumnName(i + 1) + "</th>\n";
+                }*/
+                result += "<th> Order ID </th>";
+                result += "<th> Date/Time Placed </th>";
+                result += "<th> Product Brand </th>";
+                result += "<th> Product Model </th>";
+                result += "<th> Quantity </th>";
+                result += "<th> Price </th>";
+                result += "</tr>\n";
+                // create data rows
+                while (rst.next()) {
+                    result += "<tr>\n";
+                    for (int i = 0; i < count; i++) {
+                        result += "<td>" + rst.getString(i + 1) + "</td>\n";
+                    }
+                    result += "</tr>\n";}
+                //
+                message = close();
+                return result;
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        } else {
+            return message;
+        }
+    }
+ 
+    
+   
 }

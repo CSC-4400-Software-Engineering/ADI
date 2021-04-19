@@ -72,7 +72,6 @@
             
             <div class="w3-col s4" id="portals">
                 <a href="customerPortal.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Customer Portal</a>
-                <a href="administrator.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right">Admin Page</a>
             </div>
             <div class="w3-col s4" id="logout">
                 <a href="logoutAction.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Logout</a>
