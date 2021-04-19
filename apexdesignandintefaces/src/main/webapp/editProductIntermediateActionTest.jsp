@@ -4,6 +4,15 @@
     <head>
         <title>Test</title>
         <%@include file="header.jsp" %>
+        <%            
+            if (logged == null || !logged.equals("0")) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
+        <script>
+            $("#portals").hide();
+            $("#logout").show();
+        </script>
     </head>
     <body>
         <div class="w3-row">

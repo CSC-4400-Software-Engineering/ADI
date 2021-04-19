@@ -25,7 +25,7 @@
         window.onunload = function () {
             null
         };
-       
+
     </script>
     <body id="home"> <!--this id makes it so that we can make a button on the page that says "take me to the top" -->
         <!--Top bar with Logo, website name, address -->
@@ -42,7 +42,7 @@
             String logged = (String) session.getAttribute("logged");
             String name = (String) session.getAttribute("name");
             String email = (String) session.getAttribute("email");
-            
+
         %>
         <!--Second bar down, has buttons with drop down on left and sign up on the right -->
         <div class="w3-bar w3-theme-d2">
@@ -51,17 +51,17 @@
                 <div class="w3-dropdown-hover w3-medium">
                     <button class="w3-button">Products <i class="fa fa-caret-down"></i></button>
                     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-                      <a href="allproducts.jsp" class="w3-bar-item w3-button">All Products</a>
-                      <a href="laptops.jsp" class="w3-bar-item w3-button">Laptops</a>
-                      <a href="desktops.jsp" class="w3-bar-item w3-button">Desktops</a>
-                      <a href="tv.jsp" class="w3-bar-item w3-button">TVs</a>
-                      <a href="videogames.jsp" class="w3-bar-item w3-button">Video Games/Consoles</a>
-                      <a href="audiovideo.jsp" class="w3-bar-item w3-button">Audio/Video</a>
+                        <a href="allproducts.jsp" class="w3-bar-item w3-button">All Products</a>
+                        <a href="laptops.jsp" class="w3-bar-item w3-button">Laptops</a>
+                        <a href="desktops.jsp" class="w3-bar-item w3-button">Desktops</a>
+                        <a href="tv.jsp" class="w3-bar-item w3-button">TVs</a>
+                        <a href="videogames.jsp" class="w3-bar-item w3-button">Video Games/Consoles</a>
+                        <a href="audiovideo.jsp" class="w3-bar-item w3-button">Audio/Video</a>
                     </div>
                 </div>
                 <a href="deals.jsp" class="w3-bar-item w3-button w3-medium">Deals!</a>
                 <a href="about.jsp" class="w3-bar-item w3-button w3-medium">About</a>
-                
+
             </div>
             <div class="w3-col s4">
                 <form name="searchbar" action="searchAction.jsp" method="POST" class="w3-medium w3-center">
@@ -69,14 +69,29 @@
                     <input type="submit" value="Search"/>
                 </form>
             </div>
-            
+
             <div class="w3-col s4" id="portals">
-                <a href="customerPortal.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Customer Portal</a>
+                <a href="customerPortal.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Login</a>
             </div>
             <div class="w3-col s4" id="logout">
                 <a href="logoutAction.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Logout</a>
                 <div class="w3-bar-item w3-right w3-theme-l1 w3-border-right">Welcome: <%= name%></div>
-                <a href="customerHome.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right">Home</a>
+                <%
+                    if (logged != null) {
+                        /* Show the appropriate pages for customer and admin. */
+                        if (logged.equals("1")) {
+                            out.println("<a href='customerHome.jsp' class='w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right'>Home</a>");
+                        }
+                        else if (logged.equals("0")) {
+                            out.println("<a href='administrator.jsp' class='w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right'>Admin</a>");
+                        }
+                        else {
+                            // Do nothing. This is to catch when someone fails to log in and logged is set to index.
+                            //out.println("<a href='dummy.jsp' class='w3-bar-item w3-right w3-button w3-theme-l1 w3-border-right'>dummy</a>");
+                        }
+
+                    }
+                %>
             </div>
         </div>
     </body>
