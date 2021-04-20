@@ -33,6 +33,12 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
     overflow: hidden;
 }
 
+.productPic{
+    width: 400px ;
+    height: 200px;
+    object-fit: contain;
+}
+
 .add-cart {
     position: absolute;
     width: 100%;
@@ -46,7 +52,16 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
 .image:hover .cart1,
 .image:hover .cart2,
 .image:hover .cart3,
-.image:hover .cart4 {
+.image:hover .cart4,
+.image:hover .cart5,
+.image:hover .cart6,
+.image:hover .cart7,
+.image:hover .cart8,
+.image:hover .cart9,
+.image:hover .cart10,
+.image:hover .cart11,
+.image:hover .cart12
+{
     bottom: 50px;
     opacity: 1;
     padding: 10px;

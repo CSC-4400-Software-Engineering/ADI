@@ -51,6 +51,7 @@
                 <div class="w3-dropdown-hover w3-medium">
                     <button class="w3-button">Products <i class="fa fa-caret-down"></i></button>
                     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                        <a href="products.jsp" class="w3-bar-item w3-button">Proof of Concept</a>
                         <a href="allproducts.jsp" class="w3-bar-item w3-button">All Products</a>
                         <a href="laptops.jsp" class="w3-bar-item w3-button">Laptops</a>
                         <a href="desktops.jsp" class="w3-bar-item w3-button">Desktops</a>

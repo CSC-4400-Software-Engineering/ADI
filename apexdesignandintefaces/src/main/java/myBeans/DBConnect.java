@@ -354,14 +354,15 @@ public class DBConnect {
         if (message.equals("Opened")) {
             try {
                 rst = stm.executeQuery(sql);
-                rsmd = rst.getMetaData();
-                
                 while (rst.next()) {
                     result += "{name: '" + rst.getString(1) + " " + rst.getString(2) + "',\n";//this prints {name: "Brand Model",\n
                     result += "tag: '" + rst.getString(1) + rst.getString(2) + "',\n"; //this prints tag: "BrandModel",\n (no spaces)
                     result += "price: " + rst.getInt(3) + ",\n"; //prints price: Price,\n
                     result += "productID: " + rst.getInt(4) + ",\n"; //prints productID: ID,\n
-                    result += "inCart: 0}, "; //go over this line with Will, may or may not need to fix comma issue
+                    result += "inCart: 0}";
+                    if (!rst.isLast()){
+                        result+=", ";
+                    }
                 }
                 result+= "];"; //closes products block of code
                 message = close();
@@ -391,8 +392,8 @@ public class DBConnect {
                     productID = String.valueOf(PID);
                     sql2 = "SELECT picture FROM product where productID like ?";
                     pictureString = getPicture(sql2, productID);
-                    result += "<div class='image w3-container'>"
-                            + "<img style='width:100%' src='data:image/png;base64," + pictureString + "'>";
+                    result += "<div class='image'>"
+                            + "<img src='data:image/png;base64," + pictureString + "' class='productPic'  width='100%' >";
                     result += "<h3>" + rst2.getString(2) + " " + rst2.getString(3) + "</h3>";
                     result += "<h3>$" + rst2.getInt(4) + "</h3>";
                     result += "<a class='add-cart cart"+ i + "' href='#'>Add to Cart</a>";

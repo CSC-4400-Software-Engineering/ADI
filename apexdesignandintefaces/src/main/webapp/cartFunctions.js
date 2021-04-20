@@ -86,7 +86,6 @@ function displayCart() {
             productContainer.innerHTML += `
             <div class="product">
                 <!--<ion-icon name="close-circle"></ion-icon>-->
-                
                 <span>${item.name}</span>
             </div>
             <div class="price">$${item.price}.00</div>
