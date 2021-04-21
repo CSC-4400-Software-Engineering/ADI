@@ -12,7 +12,6 @@
     </head>
     <body>
         <%
-            //I need to double check that the employee exists in the database then send them to employeeHome.jsp
             String userEmail = request.getParameter("signInEmail");
             String password = request.getParameter("signInPassword");
             String sql = "select firstName, userType, email from user where email = ? and password = ?";
@@ -21,22 +20,37 @@
             if (result[0].length() >= 6 && result[0].substring(0, 6).equals("Error:")) {
                 session.setAttribute("logged", "index");
                 response.sendRedirect("customerPortal.jsp?error='" + result[0] + "'");
-            } else {
-                String name = result[0]; //this is the name pulled from the database
-                String userType = result[1]; //this is the userType
-                String email = result[2];
-                if (userType.equals("1")) {
+            } 
+            else {
+                String userType = result[1];
+
+                /* We should only have two userTypes */
+                
+                if (userType.equals("1") || userType.equals("0")) {
+
+                    /* Once we are sure that the userType is valid, get and set the name and email */
+                    
+                    String name = result[0];
+                    String email = result[2];
                     session.setAttribute("logged", userType);
                     session.setAttribute("name", name);
                     session.setAttribute("email", email);
-                    response.sendRedirect("customerHome.jsp");
-                } else if (userType.equals("0")) {
-                    session.setAttribute("logged", userType);
-                    session.setAttribute("name", name);
-                    session.setAttribute("email", email);
-                    response.sendRedirect("administrator.jsp");
-                } else {
-                    response.sendRedirect("index.jsp"); //this may not be needed, because any errors are already handled on line 20-22. Also see line 25
+
+                    /* Use the appropriate redirects for each userType */
+                    
+                    if (userType.equals("1")) {
+                        response.sendRedirect("customerHome.jsp");
+                    } 
+                    else {
+                        response.sendRedirect("administrator.jsp");
+                    }
+                } 
+                else {
+
+                    /* In the event we somehow get an invalid userType */
+                    
+                    session.setAttribute("logged", "index");
+                    response.sendRedirect("customerPortal.jsp?error='Error: Invalid User Type'");
                 }
             }
         %>
