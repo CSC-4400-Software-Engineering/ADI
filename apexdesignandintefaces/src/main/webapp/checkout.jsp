@@ -81,7 +81,7 @@
                         <h2>Please Enter and Confirm Your Information Below</h2>
                     </div>
 
-                    <form name="checkout" action="checkoutAction.jsp" class="w3-container" method="POST" onsubmit="return (verifyFirst() && verifySecond())">
+                    <form name="checkout" action="orderConfirmation.jsp" class="w3-container" method="POST" onsubmit="return (verifyFirst() && verifySecond())">
 
                         <div class="w3-row-padding">
                             <br>
