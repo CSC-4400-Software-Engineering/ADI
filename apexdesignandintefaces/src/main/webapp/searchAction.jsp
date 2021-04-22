@@ -1,52 +1,37 @@
-<%-- 
-    Document   : searchAction
-    Created on : Mar 25, 2021, 12:57:30 PM
-    Author     : Adrien
---%>
-
-<%@page import="myBeans.DBConnect"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="myBeans.DBConnect" %>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Search Results</title>
+        <title>Search</title>
+        <%@include file="header.jsp"%>
         <link rel="stylesheet" href="productStyle.css">
-        <%@include file="header.jsp" %>
         <script>
-            $("#portals").show();
-            $("#logout").hide();
+            <%    
+                if (logged == null || logged.equals("index")) {
+                    out.print("$('#portals').show();");
+                    out.print("$('#logout').hide();");
+                } 
+                else if (logged.equals("index") == false) {
+                    out.print("$('#portals').hide();");
+                    out.print("$('#logout').show();");
+                }
+            %>
         </script>
-        
-        <% if ((logged != null) && (logged.equals("index"))) {
-            String error = request.getParameter("error");
-            if (error != null) {
-        %>
-    <div class="w3-small w3-red col-sm-4 float-right">
-        <%= error%>
-    </div>
-    <%} } %>
     </head>
-    
     <body>
-        <h1 class="w3-container w3-theme-d4">
-        <%
-            String searchInput = request.getParameter("search");
-            out.print("Search Results for " + searchInput);
-        %>
-        </h1>
-        <table>
-        <%
+        <% 
+            String productSearch = request.getParameter("search");
             DBConnect dbConnect = new DBConnect();
-            String query = "SELECT model, brand, type, CASE WHEN sale > 1 THEN CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) ELSE CONCAT('$', ROUND(price, 2)) END AS 'Price', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'Supply' FROM product WHERE brand LIKE '%" + searchInput + "%' OR model LIKE '%" + searchInput + "%' OR type LIKE '%" + searchInput + "%' OR description LIKE '%" + searchInput + "%' ORDER BY stock DESC, brand, price";
-            String nullTest = dbConnect.fetchInfo(query);
-            if(nullTest.length() == 0){
-                out.print("No Results Found");
-            }
-            else{
-                String table = dbConnect.htmlTable(query);
-                out.print(table);
-            }
+
+            /* Create the in-line product Javascript */
+            
+            String productsScript = dbConnect.productScript("SELECT brand, model, price, productID FROM product WHERE model LIKE '%" + productSearch + "%' ORDER BY stock DESC");
+            out.print("<script>" + productsScript + "</script>");
+
+            /* Display the products */
+            
+            out.print(dbConnect.displayProducts("SELECT productID, brand, model, price, stock FROM product WHERE model LIKE '%" + productSearch + "%' ORDER BY stock DESC"));
         %>
-        </table>
-        <br/>
-    <%@include file="footer.jsp" %>
+        <%@include file="footer.jsp"%>        
     </body>
 </html>

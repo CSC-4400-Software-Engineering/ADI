@@ -375,7 +375,7 @@ public class DBConnect {
         }
     }
     
-    public String displayProducts(String sql) {//productID, brand, model, price from product
+    public String displayProducts(String sql) {//productID, brand, model, price, stock from product
         String result = "<div class='container'>";
         String message = open();
         if (message.equals("Opened")) {
@@ -396,7 +396,16 @@ public class DBConnect {
                             + "<img src='data:image/png;base64," + pictureString + "' class='productPic'  width='100%' >";
                     result += "<h3>" + rst2.getString(2) + " " + rst2.getString(3) + "</h3>";
                     result += "<h3>$" + rst2.getInt(4) + "</h3>";
-                    result += "<a class='add-cart cart"+ i + "' href='#'>Add to Cart</a>";
+                    
+                    /* Handle product stock */
+                    
+                    if (rst2.getInt(5) > 0) {
+                        result += "<a class='add-cart cart"+ i + "' href='#'>Add to Cart</a>";
+                        result += "<h3 class='w3-text-green'>In Stock</h3>";
+                    }
+                    else {
+                        result += "<h3 class='w3-text-red'>Out of Stock</h3>";
+                    }
                     i++;
                     result += "</div>";
                 }
