@@ -16,7 +16,7 @@
         <script src="otherScripts.js"></script>
     </head>
     <body>
-        <%            
+        <%
             int dropDownID = Integer.parseInt(request.getParameter("productDropDown"));
 
             DBConnect dbConnect = new DBConnect();
@@ -58,7 +58,24 @@
                             <div class="w3-row-padding">
                                 <div class="w3-col s12">
                                     <label>Type</label>
-                                    <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productType" id="productTypeID" size="50" value="<%out.println(currentProductType);%>" onInput="editProductVerifyType()"/>
+                                    <!-- <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productType" id="productTypeID" size="50" value="%out.println(currentProductType);%" onInput="editProductVerifyType()"/>-->
+                                    <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productType">
+                                        <option <% if (currentProductType.equals("Laptop")) {
+                                                out.println("selected");
+                                            } %>>Laptop</option>
+                                        <option <% if (currentProductType.equals("Desktop")) {
+                                                out.println("selected");
+                                            } %>>Desktop</option>
+                                        <option <% if (currentProductType.equals("TV")) {
+                                                out.println("selected");
+                                            } %>>TV</option>
+                                        <option <% if (currentProductType.equals("Video Game/Console")) {
+                                                out.println("selected");
+                                            } %>>Video Game/Console</option>
+                                        <option <% if (currentProductType.equals("Audio/Video")) {
+                                                out.println("selected");
+                                            } %>>Audio/Video</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="w3-row-padding">

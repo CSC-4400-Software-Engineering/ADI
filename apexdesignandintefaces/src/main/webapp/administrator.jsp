@@ -16,7 +16,7 @@
         <script src="otherScripts.js"></script>
     </head>
     <body>
-        <%            
+        <%
             DBConnect dbConnect = new DBConnect();
             String productDropDown;
         %>
@@ -42,7 +42,15 @@
                             <div class="w3-row-padding">
                                 <div class="w3-col s12">
                                     <label>Type</label>
-                                    <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productType" id="productTypeID" size="50" onInput="addProductVerifyType()"/>
+                                    <!-- <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productType" id="productTypeID" size="50" onInput="addProductVerifyType()"/> -->
+                                    <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productType">
+                                        <option disabled selected>Select one ...</option>
+                                        <option>Laptop</option>
+                                        <option>Desktop</option>
+                                        <option>TV</option>
+                                        <option>Video Game/Console</option>
+                                        <option>Audio/Video</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="w3-row-padding">
