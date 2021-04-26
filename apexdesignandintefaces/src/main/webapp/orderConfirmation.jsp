@@ -31,8 +31,8 @@
             else {
                 currentUserID = "0";
             }
-            out.print(currentUserID);
             String addOrder = dbConnect.insertData("INSERT INTO onlineorder (userID, timeStamp) VALUES (" + currentUserID + ", CURRENT_TIMESTAMP)");
+            out.print(addOrder);
             String currentOrder = dbConnect.fetchInfo("SELECT max(orderID) FROM `onlineorder`");
             String addOrderProduct = dbConnect.insertData("INSERT INTO onlineorderproduct (orderID, productID, quantity) VALUES (" + currentOrder + ", 1, 1)");
             %>
@@ -46,7 +46,10 @@
                 </h3>  
             </div> 
         </div>
-
+        <script>
+            string test = "<%=currentUserID%>";
+            localStorage.clear();
+        </script>
         <%@include file="footer.jsp" %>
     </body>
 </html>
