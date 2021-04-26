@@ -392,9 +392,9 @@ public class DBConnect {
                     productID = String.valueOf(PID);
                     sql2 = "SELECT picture FROM product where productID like ?";
                     pictureString = getPicture(sql2, productID);
-                    result += "<div class='image'>"
+                    result += "<div class='w3-col m3'><div class='w3-padding'><div class='w3-card-4'><h3 class='w3-container w3-theme-d4'>" + rst2.getString(2) + " " + rst2.getString(3) + "</h3><div class='image'>"
                             + "<img src='data:image/png;base64," + pictureString + "' class='productPic'  width='100%' >";
-                    result += "<h3>" + rst2.getString(2) + " " + rst2.getString(3) + "</h3>";
+                    //result += "<h3>" + rst2.getString(2) + " " + rst2.getString(3) + "</h3>";
                     result += "<h3>$" + rst2.getInt(4) + "</h3>";
                     
                     /* Handle product stock */
@@ -407,7 +407,7 @@ public class DBConnect {
                         result += "<h3 class='w3-text-red'>Out of Stock</h3>";
                     }
                     i++;
-                    result += "</div>";
+                    result += "</div></div></div></div>";
                 }
                 result+= "</div>"; //closes 'container' block of code
                 message = close();
@@ -460,7 +460,35 @@ public class DBConnect {
             return message;
         }
     }
- 
-    
+   
+   public String productStyle (String sql) {
+       String result="";
+       int i = 1;
+       String message = open();
+       if (message.equals("Opened")) {
+            try {
+                rst = stm.executeQuery(sql);
+                while (rst.next()) {
+                    result += ".image:hover .cart" + i;
+                    if (!rst.isLast()){
+                        result+=", ";
+                    }
+                    i++;
+                }
+                /* Add the rest of the CSS */
+                if (i > 1){
+                result += " { bottom: 50px; opacity: 1; padding: 10px; text-decoration: none; }";
+                }
+                message = close();
+                return result;
+            } 
+            catch (Exception e) {
+                return e.getMessage();
+            }
+        } 
+       else {
+            return message;
+        }
+    }  
    
 }

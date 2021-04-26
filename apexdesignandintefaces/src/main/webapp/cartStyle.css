@@ -22,7 +22,6 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 50px;
     padding-bottom: 100px;
 }
 
@@ -49,6 +48,7 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
     text-align: center;
 }
 
+/*
 .image:hover .cart1,
 .image:hover .cart2,
 .image:hover .cart3,
@@ -67,6 +67,7 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
     padding: 10px;
     text-decoration: none;
 }
+*/
 
 
 /*----------------------- CART PAGE STYLING ----------------------- */
