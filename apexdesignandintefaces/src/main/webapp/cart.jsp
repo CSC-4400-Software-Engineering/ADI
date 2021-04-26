@@ -1,8 +1,3 @@
-<%-- 
-    Document   : cart
-    Created on : Mar 15, 2021, 11:18:41 AM
-    Author     : Sebastian
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="myBeans.DBConnect" %>
 <!DOCTYPE html>
 <html>

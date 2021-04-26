@@ -1,8 +1,3 @@
-<%-- 
-    Document   : tester
-    Created on : Apr 19, 2021, 7:12:26 PM
-    Author     : Sebastian
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="myBeans.DBConnect" %>
 <!DOCTYPE html>
 <html>
