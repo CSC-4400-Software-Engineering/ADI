@@ -392,9 +392,14 @@ public class DBConnect {
                     productID = String.valueOf(PID);
                     sql2 = "SELECT picture FROM product where productID like ?";
                     pictureString = getPicture(sql2, productID);
-                    result += "<div class='w3-col m3'><div class='w3-padding'><div class='w3-card-4'><h3 class='w3-container w3-theme-d4'>" + rst2.getString(2) + " " + rst2.getString(3) + "</h3><div class='image'>"
-                            + "<img src='data:image/png;base64," + pictureString + "' class='productPic'  width='100%' >";
-                    //result += "<h3>" + rst2.getString(2) + " " + rst2.getString(3) + "</h3>";
+                    result += "<form name='viewProduct' action='viewProductAction.jsp' method='GET'>";
+                    result += "<div class='w3-padding'>";
+                    result += "<div class='w3-card-4'>";
+                    result += "<input type='hidden' name='productID' value='"+ productID  + "'>";
+                    result += "<input type='hidden' name='productNameConcat' value='"+ rst2.getString(2) + " " + rst2.getString(3) + "'>";
+                    result += "<input class='w3-button w3-block w3-section w3-theme-d4 w3-ripple' type='submit' value='" + rst2.getString(2) + " " + rst2.getString(3) + "'>";
+                    result += "<div class='image'>";
+                    result += "<img src='data:image/png;base64," + pictureString + "' class='productPic'  width='100%' >";
                     result += "<h3>$" + rst2.getInt(4) + "</h3>";
                     
                     /* Handle product stock */
@@ -407,7 +412,7 @@ public class DBConnect {
                         result += "<h3 class='w3-text-red'>Out of Stock</h3>";
                     }
                     i++;
-                    result += "</div></div></div></div>";
+                    result += "</form></div></div></div>";
                 }
                 result+= "</div>"; //closes 'container' block of code
                 message = close();
