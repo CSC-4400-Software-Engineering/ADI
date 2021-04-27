@@ -28,32 +28,35 @@
                         <div class="w3-container w3-padding">
                             <div class="w3-row-padding">
                                 <div class="w3-col s12">
-                                    <%                                
-                                        String productBrandInput = request.getParameter("productBrand");
-                                        String productModelInput = request.getParameter("productModel");
-                                        String productTypeInput = request.getParameter("productType");
-                                        String productPriceInput = request.getParameter("productPrice");
-                                        String productDescriptionInput = request.getParameter("productDescription");
-                                        String productStockInput = request.getParameter("productStock");
-                                        String productPictureInput = request.getParameter("productPicture");
+                                    <ul>
+                                        <%
+                                            String productBrandInput = request.getParameter("productBrand");
+                                            String productModelInput = request.getParameter("productModel");
+                                            String productTypeInput = request.getParameter("productType");
+                                            String productPriceInput = request.getParameter("productPrice");
+                                            String productDescriptionInput = request.getParameter("productDescription");
+                                            String productStockInput = request.getParameter("productStock");
+                                            String productPictureInput = request.getParameter("productPicture");
 
-                                        /* Note that we do not actually insert the image in this test */
-                                        String willsLongBeyondAllReasonableComprehensionSqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock) VALUES (0, '" + productBrandInput + "', '" + productModelInput + "', '" + productTypeInput + "', '" + productPriceInput + "', '" + productDescriptionInput + "', '" + productStockInput + "')";
-                                        DBConnect dbConnect = new DBConnect();
-                                        String connectMessage = dbConnect.insertData(willsLongBeyondAllReasonableComprehensionSqlInput);
-                                        out.print("<li>Brand: <b>" + productBrandInput + "</b></li>");
-                                        out.print("<li>Model: <b>" + productModelInput + "</b></li>");
-                                        out.print("<li>Type: <b>" + productTypeInput + "</b></li>");
-                                        out.print("<li>Price: <b>" + productPriceInput + "</b></li>");
-                                        out.print("<li>Description: <b>" + productDescriptionInput + "</b></li>");
-                                        out.print("<li>Stock: <b>" + productStockInput + "</b></li>");
-                                        out.print("<li>Picture: <b>" + productPictureInput + "</b></li>");
-                                        //out.println(connectMessage);
-                                        if (connectMessage.equals("Closed")) {
-                                            //response.sendRedirect("administrator.jsp");
-                                            out.println("<li class='my-2'><b>Success!</b></li>");
-                                        }
-                                    %>
+                                            /* Note that we do not actually insert the image in this test */
+                                            
+                                            String willsLongBeyondAllReasonableComprehensionSqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock) VALUES (0, '" + productBrandInput + "', '" + productModelInput + "', '" + productTypeInput + "', '" + productPriceInput + "', '" + productDescriptionInput + "', '" + productStockInput + "')";
+                                            DBConnect dbConnect = new DBConnect();
+                                            String connectMessage = dbConnect.insertData(willsLongBeyondAllReasonableComprehensionSqlInput);
+                                            out.print("<li>Brand: <b>" + productBrandInput + "</b></li>");
+                                            out.print("<li>Model: <b>" + productModelInput + "</b></li>");
+                                            out.print("<li>Type: <b>" + productTypeInput + "</b></li>");
+                                            out.print("<li>Price: <b>" + productPriceInput + "</b></li>");
+                                            out.print("<li>Description: <b>" + productDescriptionInput + "</b></li>");
+                                            out.print("<li>Stock: <b>" + productStockInput + "</b></li>");
+                                            out.print("<li>Picture: <b>" + productPictureInput + "</b></li>");
+                                            //out.println(connectMessage);
+                                            if (connectMessage.equals("Closed")) {
+                                                //response.sendRedirect("administrator.jsp");
+                                                out.println("<li class='my-2'><b>Success!</b></li>");
+                                            }
+                                        %>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
