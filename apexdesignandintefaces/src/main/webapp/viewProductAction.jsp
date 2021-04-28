@@ -26,7 +26,7 @@
             String currentProductModelSqlInput = "SELECT model FROM product WHERE productID LIKE '" + productID + "'";
             String currentProductPriceSqlInput = "SELECT price FROM product WHERE productID LIKE '" + productID + "'";
             String currentProductDescriptionSqlInput = "SELECT description FROM product WHERE productID LIKE '" + productID + "'";
-            
+
             String currentProductBrand = dbConnect.fetchInfo(currentProductBrandSqlInput);
             String currentProductModel = dbConnect.fetchInfo(currentProductModelSqlInput);
             String currentProductPrice = dbConnect.fetchInfo(currentProductPriceSqlInput);
@@ -34,29 +34,8 @@
             String currentPicture = dbConnect.getPicture("SELECT picture FROM product WHERE productID LIKE ?", productID);
 
         %>
-        <div class="w3-row">
-        <div class="w3-col m4">
-                <div class="w3-padding">
-                    <div class="w3-card-4">
-                        <h1 class="w3-container w3-theme-d4">Product Details</h1>
-                        <div class="w3-container w3-padding">
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <ul>
-                                    <%
-                                        out.print("<li>Brand: <b>" + currentProductBrand + "</b></li>");
-                                        out.print("<li>Model: <b>" + currentProductModel + "</b></li>");
-                                        out.print("<li>Price: <b>" + currentProductPrice + "</b></li>");
-                                        out.print("<li>Description: <b>" + currentProductDescription + "</b></li>");
-                                    %>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          <div class="w3-col m4">
+        <div class="container">
+            <div class="w3-col m4">
                 <div class="w3-padding">
                     <div class="w3-card-4">
                         <h1 class="w3-container w3-theme-d4"><%out.println(request.getParameter("productNameConcat"));%></h1>
@@ -65,6 +44,29 @@
                                 <div class="w3-col s12">
                                     <%
                                         out.print("<img style='width:100%' src='data:image/png;base64," + currentPicture + "'/>");
+                                    %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col m4">
+                <div class="w3-padding">
+                    <div class="w3-card-4">
+                        <h1 class="w3-container w3-theme-d4">Product Details</h1>
+                        <div class="w3-container w3-padding">
+                            <div class="w3-row-padding">
+                                <div class="w3-col s12">
+                                    <%
+                                        out.print("<h1>" + request.getParameter("productNameConcat") + "</h1>");
+                                        out.print("<h3>Price: $" + currentProductPrice + "</h3>");
+                                        out.print("<h5>Brand: " + currentProductBrand + "</h5>");
+                                        out.print("<h5>Model: " + currentProductModel + "</h5>");
+                                    %>
+                                    <h3>About this item:</h3>
+                                    <%
+                                        out.print("<h5>" + currentProductDescription + "</h5>");
                                     %>
                                 </div>
                             </div>

@@ -397,7 +397,7 @@ public class DBConnect {
                     result += "<div class='w3-card-4'>";
                     result += "<input type='hidden' name='productID' value='"+ productID  + "'>";
                     result += "<input type='hidden' name='productNameConcat' value='"+ rst2.getString(2) + " " + rst2.getString(3) + "'>";
-                    result += "<input class='w3-button w3-block w3-section w3-theme-d4 w3-ripple' type='submit' value='" + rst2.getString(2) + " " + rst2.getString(3) + "'>";
+                    result += "<input class='w3-button w3-large w3-block w3-section w3-theme-d4 w3-ripple' type='submit' value='" + rst2.getString(2) + " " + rst2.getString(3) + "'>";
                     result += "<div class='image'>";
                     result += "<img src='data:image/png;base64," + pictureString + "' class='productPic'  width='100%' >";
                     result += "<h3>$" + rst2.getInt(4) + "</h3>";
