@@ -22,7 +22,8 @@
                 <!--This is where we populate the products in the cart -->
             </div>
         </div>
-        
+        <input class="productSQL" type="hidden" name="productSQL" id="productSQL" value="?">
+        <!--<div class="productSQLdiv"></div>-->
         <form name="checkout" action="checkout.jsp" class="w3-container" method="get" id="checkoutForm">
             <div class="w3-row-padding">
                 <div class="w3-col s4 w3-padding"><br></div>

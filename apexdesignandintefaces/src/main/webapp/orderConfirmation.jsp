@@ -4,6 +4,8 @@
     Author     : Sebastian
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="myBeans.DBConnect" %>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,12 +18,13 @@
     </head>
     <body>
         <%
-            //get the products info, basically pull ID and inCart 
-            
-            //String[] products = {};
-            //get the make SQL statements, INSERT (add products to order, link customers ID with order, etc)
-            
-            //call SQL methods to create orders (updateDB(SQL statements))
+            //String sql = "12, 2"; //, 17, 1, 16, 1, 15, 2";
+            String sql = request.getParameter("productSQL");
+            int index = sql.length()-1;
+            char ch = ' ';
+            sql = sql.substring(0, index)
+              + ch
+              + sql.substring(index + 1);
             
             String currentUserID;
             DBConnect dbConnect = new DBConnect();
@@ -29,12 +32,15 @@
                 currentUserID = dbConnect.fetchInfo("select userID from user where email like '" + session.getAttribute("email") + "'");
             }
             else {
-                currentUserID = "0";
+                currentUserID = "1";
             }
-            String addOrder = dbConnect.insertData("INSERT INTO onlineorder (userID, timeStamp) VALUES (" + currentUserID + ", CURRENT_TIMESTAMP)");
-            out.print(addOrder);
-            String currentOrder = dbConnect.fetchInfo("SELECT max(orderID) FROM `onlineorder`");
-            String addOrderProduct = dbConnect.insertData("INSERT INTO onlineorderproduct (orderID, productID, quantity) VALUES (" + currentOrder + ", 1, 1)");
+            String addOrder = dbConnect.insertData("INSERT INTO onlineorder (orderID, userID, timeStamp) VALUES (0, " + currentUserID + ", CURRENT_TIMESTAMP)");
+            String currentOrder = dbConnect.fetchInfo("SELECT max(orderID) FROM `onlineorder` where userID = '"+ currentUserID + "'");
+            List<String> result = Arrays.asList(sql.split("\\s*,\\s*"));
+            for (int i = 0; i < result.size(); i+=2) 
+            {
+            dbConnect.insertData("INSERT INTO onlineorderproduct (orderID, productID, quantity) VALUES (" + currentOrder + ", " + result.get(i) + ", " + result.get(i+1) + ")");
+            } 
             %>
         <div class="w3-padding">
             <div class="w3-card-4 w3-margin">

@@ -74,15 +74,13 @@
 
 
         %>
+        <form name="checkout" action="orderConfirmation.jsp" class="w3-container" method="POST" onsubmit="return (verifyFirst() && verifySecond())">
         <div class="w3-row">
             <div class="w3-half">
                 <div class="w3-card-4 w3-margin">
                     <div class="w3-row w3-theme-d4 w3-padding">
                         <h2>Please Enter and Confirm Your Information Below</h2>
                     </div>
-
-                    <form name="checkout" action="orderConfirmation.jsp" class="w3-container" method="POST" onsubmit="return (verifyFirst() && verifySecond())">
-
                         <div class="w3-row-padding">
                             <br>
                             <div class="w3-col s6">
@@ -167,6 +165,7 @@
                             class="w3-row-padding w3-center w3-red" id="error">
                         </div>
 
+                                    <div class="w3-button w3-black" onclick="return submitOrder();">Click me!</div>
                         <div class="w3-row">
                             <div class="w3-col s6 w3-padding">
                                 <button class="w3-button w3-block w3-section w3-red w3-ripple w3-padding" type="reset">Clear</button>
@@ -175,7 +174,7 @@
                                 <button class="w3-button w3-block w3-section w3-green w3-ripple w3-padding"type="submit">Place Order</button>
                             </div>
                         </div>
-                    </form>
+                
                 </div>
             </div>
             <div class="w3-half">
@@ -193,7 +192,10 @@
                     </div>
                 </div>
             </div>
+            <input class="productSQL" type="hidden" name="productSQL" id="productSQL" value="?">
+            <!--<div class="productSQLdiv"></div>-->
         </div>
+                                        </form>
         <%@include file="footer.jsp" %>
     </body>
 </html>

@@ -1,6 +1,5 @@
 let carts = document.querySelectorAll('.add-cart'); //items MUST have this tag when we create product pages
 
-
 for (let i = 0; i < carts.length; i++) //go through all the products with "add to cart" button
 {
     //once clicked...
@@ -77,10 +76,12 @@ function displayCart() {
     let cartCost = localStorage.getItem('totalCost');
     cartItems = JSON.parse(cartItems);
     let productContainer = document.querySelector(".products");
-    
-    
+    let productSQLinput = document.getElementById("productSQL");
+    //let productSQLinput = document.querySelector(".productSQLdiv");
+  
     if (cartItems && productContainer){
         productContainer.innerHTML = '';
+        productSQLinput.value = '';
         Object.values(cartItems).map(item => 
         { //This needs improvements
             productContainer.innerHTML += `
@@ -99,7 +100,7 @@ function displayCart() {
             </div>
             <div class="productIDdiv" style="display: none;">${item.productID}</div>
             `;
-            
+            productSQLinput.value += `${item.productID}, ${item.inCart}, `;
         });
         
         productContainer.innerHTML += `
@@ -118,14 +119,12 @@ function displayCart() {
 function submitOrder(){
     let cartItems = localStorage.getItem("productsInCart");
     cartItems = JSON.parse(cartItems);
-    var sqlStatements = '';
-    
-    console.log(Object.values(cartItems));
+ 
     /*cartItems.forEach((element, index, array) =>{
         console.log(element.x);
         console.log(index);
         console.log(array);
-    });*/
+    });
     /*
      IDK WHAT I'M DOING
     also check Object.keys(), .forEach(), .values(0 etc.
@@ -151,4 +150,4 @@ function submitOrder(){
 
 onLoadCartNumbers();
 displayCart();
-submitOrder();
+//submitOrder();
