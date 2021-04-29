@@ -7,16 +7,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
-            $("#portals").show(); //this shows the boxes that say admin and customer
-            $("#logout").hide(); //this hides the one that says welcome to whoever is logged in
-        </script>
+        
         <%@include file="header.jsp"%>
+        <script>
+        <%
+            if (logged == null || logged.equals("index")) {
+                out.print("$('#portals').show();");
+                out.print("$('#logout').hide();");
+            } else if (logged.equals("index") == false) {
+                out.print("$('#portals').hide();");
+                out.print("$('#logout').show();");
+            }
+        %>
+            </script>
         <title>Checkout</title>
     </head>
     <body>
-        <%            
-            String sessionString = (String) session.getAttribute("email");
+        <%            String sessionString = (String) session.getAttribute("email");
             String firstNamesql;
             String lastNamesql;
             String emailsql;
@@ -37,7 +44,7 @@
             String creditCardNum;
             String creditCardExp;
 
-            if (sessionString == null) {
+            if (sessionString == null || logged.equals("index")) {
                 //sql statements for querying the database 
                 firstName = "";
                 lastName = "";
@@ -75,12 +82,12 @@
 
         %>
         <form name="checkout" action="orderConfirmation.jsp" class="w3-container" method="POST" onsubmit="return (verifyFirst() && verifySecond())">
-        <div class="w3-row">
-            <div class="w3-half">
-                <div class="w3-card-4 w3-margin">
-                    <div class="w3-row w3-theme-d4 w3-padding">
-                        <h2>Please Enter and Confirm Your Information Below</h2>
-                    </div>
+            <div class="w3-row">
+                <div class="w3-half">
+                    <div class="w3-card-4 w3-margin">
+                        <div class="w3-row w3-theme-d4 w3-padding">
+                            <h2>Please Enter and Confirm Your Information Below</h2>
+                        </div>
                         <div class="w3-row-padding">
                             <br>
                             <div class="w3-col s6">
@@ -165,7 +172,6 @@
                             class="w3-row-padding w3-center w3-red" id="error">
                         </div>
 
-                                    <div class="w3-button w3-black" onclick="return submitOrder();">Click me!</div>
                         <div class="w3-row">
                             <div class="w3-col s6 w3-padding">
                                 <button class="w3-button w3-block w3-section w3-red w3-ripple w3-padding" type="reset">Clear</button>
@@ -174,28 +180,27 @@
                                 <button class="w3-button w3-block w3-section w3-green w3-ripple w3-padding"type="submit">Place Order</button>
                             </div>
                         </div>
-                
+
+                    </div>
                 </div>
-            </div>
-            <div class="w3-half">
-                <div class="w3-card-4 w3-margin">
-                    <div class="products-container">
-                        <div class="product-header">
-                            <h5 class="product-title">Product</h5>
-                            <h5 class="price">Price</h5>
-                            <h5 class="quantity">Quantity</h5>
-                            <h5 class="total">Total</h5>
-                        </div>
-                        <div class="products">
-                            <!--This is where we populate the products in the cart -->
+                <div class="w3-half">
+                    <div class="w3-card-4 w3-margin">
+                        <div class="products-container">
+                            <div class="product-header">
+                                <h5 class="product-title">Product</h5>
+                                <h5 class="price">Price</h5>
+                                <h5 class="quantity">Quantity</h5>
+                                <h5 class="total">Total</h5>
+                            </div>
+                            <div class="products">
+                                <!--This is where we populate the products in the cart -->
+                            </div>
                         </div>
                     </div>
                 </div>
+                <input class="productSQL" type="hidden" name="productSQL" id="productSQL" value="?">
             </div>
-            <input class="productSQL" type="hidden" name="productSQL" id="productSQL" value="?">
-            <!--<div class="productSQLdiv"></div>-->
-        </div>
-                                        </form>
+        </form>
         <%@include file="footer.jsp" %>
     </body>
 </html>

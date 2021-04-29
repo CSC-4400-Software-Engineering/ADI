@@ -71,7 +71,7 @@
             </div>
 
             <div class="w3-col s4" id="portals">
-                <a href="customerPortal.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Login</a>
+                <a href="loginPortal.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Login</a>
             </div>
             <div class="w3-col s4" id="logout">
                 <a href="logoutAction.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Logout</a>

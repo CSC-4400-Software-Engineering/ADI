@@ -19,7 +19,7 @@
             String[] result = dbConnect.isPwdValid(sql, userEmail, password);
             if (result[0].length() >= 6 && result[0].substring(0, 6).equals("Error:")) {
                 session.setAttribute("logged", "index");
-                response.sendRedirect("customerPortal.jsp?error='" + result[0] + "'");
+                response.sendRedirect("loginPortal.jsp?error='" + result[0] + "'");
             } 
             else {
                 String userType = result[1];
@@ -50,7 +50,7 @@
                     /* In the event we somehow get an invalid userType */
                     
                     session.setAttribute("logged", "index");
-                    response.sendRedirect("customerPortal.jsp?error='Error: Invalid User Type'");
+                    response.sendRedirect("loginPortal.jsp?error='Error: Invalid User Type'");
                 }
             }
         %>

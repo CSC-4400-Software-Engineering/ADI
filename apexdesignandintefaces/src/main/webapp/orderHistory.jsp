@@ -8,6 +8,11 @@
 <html>
     <head>
         <%@include file="header.jsp"%>
+         <%            
+            if (logged == null || !logged.equals("1")) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
         <title>Order History</title>
         <script>
             $("#portals").hide();

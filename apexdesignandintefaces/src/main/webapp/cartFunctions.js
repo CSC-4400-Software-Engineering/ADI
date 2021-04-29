@@ -77,7 +77,6 @@ function displayCart() {
     cartItems = JSON.parse(cartItems);
     let productContainer = document.querySelector(".products");
     let productSQLinput = document.getElementById("productSQL");
-    //let productSQLinput = document.querySelector(".productSQLdiv");
   
     if (cartItems && productContainer){
         productContainer.innerHTML = '';
@@ -113,41 +112,7 @@ function displayCart() {
             </h4>
 `;
     }
-
-}
-
-function submitOrder(){
-    let cartItems = localStorage.getItem("productsInCart");
-    cartItems = JSON.parse(cartItems);
- 
-    /*cartItems.forEach((element, index, array) =>{
-        console.log(element.x);
-        console.log(index);
-        console.log(array);
-    });
-    /*
-     IDK WHAT I'M DOING
-    also check Object.keys(), .forEach(), .values(0 etc.
-     let cartQuantitys = document.querySelectorAll(".quantity");
-    let cartProductIDs= document.querySelectorAll(".productIDdiv");
-    let javasqlContainer = document.querySelector(".javasqlContainer");
-    let cartItems = localStorage.getItem("productsInCart");
-    cartItems = JSON.parse(cartItems);
-    
-    if (cartItems && javasqlContainer){
-        javasqlContainer.innerHTML = `<script>`;
-        var i;
-        Object.values(cartItems).map(item => 
-        {
-            javasqlContainer.innerHTML += `
-            String sql` + i + ` = "select name where productID = '${item.productID}'";
-            `;
-            
-        });
-        javasqlContainer.innerHTML = `</script>`;
-    }*/
 }
 
 onLoadCartNumbers();
 displayCart();
-//submitOrder();

@@ -234,7 +234,7 @@
                                     <label>Password</label></p>
                             </div>
                         </div>
-                        <div class="w3-row-padding w3-center" id="logInError">
+                        <div class="w3-row-padding w3-center w3-red" id="logInError">
                         </div>
                         <div class="w3-row w3-padding">
                             <a class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding" href="forgotPassword.jsp" type="button">Forgot Password</a>

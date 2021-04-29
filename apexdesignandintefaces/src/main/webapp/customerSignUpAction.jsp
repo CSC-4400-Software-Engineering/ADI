@@ -60,7 +60,7 @@
                 <div class="w3-row-padding">
                     <div class="w3-col s4"><br></div>
                     <div class="w3-col s4">
-                        <a href="customerPortal.jsp" class="w3-button w3-theme-d2">Go Back to the Customer Portal</a>
+                        <a href="loginPortal.jsp" class="w3-button w3-theme-d2">Go Back to the Customer Portal</a>
                     </div>
                     <div class="w3-col s4"><br></div>  
                 </div> 
