@@ -22,16 +22,6 @@
         <%            
             DBConnect dbConnect = new DBConnect();
 
-            /* Create the in-line product Javascript */
-            
-            String productsScript = dbConnect.productScript("SELECT brand, model, price, productID FROM product WHERE type LIKE 'Laptop' ORDER BY stock DESC");
-            out.print("<script>" + productsScript + "</script>");
-            
-            /* Create the in-line prodyct CSS */
-            
-            String productStyle = dbConnect.productStyle("SELECT productID, brand, model, price, stock FROM product WHERE type LIKE 'Laptop' ORDER BY stock DESC");
-            out.print("<style>" + productStyle + "</style>");
-
             /* Display the products */
             
             out.print(dbConnect.displayProducts("SELECT productID, brand, model, price, stock FROM product WHERE type LIKE 'Laptop' ORDER BY stock DESC"));

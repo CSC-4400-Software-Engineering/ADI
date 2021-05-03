@@ -33,3 +33,9 @@ and open the template in the editor.
 
 .w3-text-theme-dark {color:#172531 !important}
 .w3-text-theme-light {color:#9bb7d0 !important}
+
+.logo {
+    width: 128px ;
+    height: 64px;
+    object-fit: contain;
+}

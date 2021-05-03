@@ -348,7 +348,7 @@ public class DBConnect {
         }
     }
     
-    public String productScript(String sql) { //pass in brand, model, price and productID. MUST BE BETWEEN SCRIPT TAGS
+    /*public String productScript(String sql) { //pass in brand, model, price and productID. MUST BE BETWEEN SCRIPT TAGS
         String result = "let products = ["; //opens products block of code
         String message = open();
         if (message.equals("Opened")) {
@@ -373,13 +373,16 @@ public class DBConnect {
         } else {
             return message;
         }
-    }
+    }*/
     
-    public String displayProducts(String sql) {//productID, brand, model, price, stock from product
+     public String displayProducts(String sql) {//productID, brand, model, price, stock from product
         String result = "<div class='container'>";
         String message = open();
         if (message.equals("Opened")) {
             try {
+                
+                /* Begin HTML creation */
+                
                 rst2 = stm.executeQuery(sql);
                 rsmd2 = rst2.getMetaData();
                 int i = 1;
@@ -395,26 +398,65 @@ public class DBConnect {
                     result += "<form name='viewProduct' action='viewProductAction.jsp' method='GET'>";
                     result += "<div class='w3-padding'>";
                     result += "<div class='w3-card-4'>";
-                    result += "<input type='hidden' name='productID' value='"+ productID  + "'>";
-                    result += "<input type='hidden' name='productNameConcat' value='"+ rst2.getString(2) + " " + rst2.getString(3) + "'>";
+                    result += "<input type='hidden' name='productID' value='" + productID + "'>";
+                    result += "<input type='hidden' name='productNameConcat' value='" + rst2.getString(2) + " " + rst2.getString(3) + "'>";
                     result += "<input class='w3-button w3-large w3-block w3-section w3-theme-d4 w3-ripple' type='submit' value='" + rst2.getString(2) + " " + rst2.getString(3) + "'>";
                     result += "<div class='image'>";
                     result += "<img src='data:image/png;base64," + pictureString + "' class='productPic'  width='100%' >";
                     result += "<h3>$" + rst2.getInt(4) + "</h3>";
-                    
+
                     /* Handle product stock */
                     
                     if (rst2.getInt(5) > 0) {
-                        result += "<a class='add-cart cart"+ i + "' href='#'>Add to Cart</a>";
+                        result += "<a class='add-cart cart" + i + "' href='#'>Add to Cart</a>";
                         result += "<h3 class='w3-text-green'>In Stock</h3>";
-                    }
+                    } 
                     else {
                         result += "<h3 class='w3-text-red'>Out of Stock</h3>";
                     }
                     i++;
                     result += "</form></div></div></div>";
                 }
-                result+= "</div>"; //closes 'container' block of code
+                result += "</div>"; //closes 'container' block of code
+                
+                /* Begin JavaScript creation */
+
+                rst2 = stm.executeQuery(sql);
+                rsmd2 = rst2.getMetaData();
+                result += "<script>let products = ["; //opens products block of code
+
+                while (rst2.next()) {
+                    result += "{name: '" + rst2.getString(2) + " " + rst2.getString(3) + "',\n";//this prints {name: "Brand Model",\n
+                    result += "tag: '" + rst2.getString(2) + rst2.getString(3) + "',\n"; //this prints tag: "BrandModel",\n (no spaces)
+                    result += "price: " + rst2.getInt(4) + ",\n"; //prints price: Price,\n
+                    result += "productID: " + rst2.getInt(1) + ",\n"; //prints productID: ID,\n
+                    result += "inCart: 0}";
+                    if (!rst2.isLast()) {
+                        result += ", ";
+                    }
+                }
+                result += "];</script>"; //closes products block of code
+                
+                /* Begin CSS creation */
+                
+                result +="<style>";
+                rst2 = stm.executeQuery(sql);
+                rsmd2 = rst2.getMetaData();
+                i = 1;
+                while (rst2.next()) {
+                    result += ".image:hover .cart" + i;
+                    if (!rst2.isLast()) {
+                        result += ", ";
+                    }
+                    i++;
+                }
+                
+                /* Add the rest of the CSS */
+                
+                if (i > 1) {
+                    result += " { opacity: 1; padding: 10px; text-decoration: none; }";
+                }
+                result += "</style>";
                 message = close();
                 return result;
             } catch (Exception e) {
@@ -466,7 +508,7 @@ public class DBConnect {
         }
     }
    
-   public String productStyle (String sql) {
+   /*public String productStyle (String sql) {
        String result="";
        int i = 1;
        String message = open();
@@ -480,9 +522,9 @@ public class DBConnect {
                     }
                     i++;
                 }
-                /* Add the rest of the CSS */
+
                 if (i > 1){
-                result += " { bottom: 50px; opacity: 1; padding: 10px; text-decoration: none; }";
+                result += " { opacity: 1; padding: 10px; text-decoration: none; }";
                 }
                 message = close();
                 return result;
@@ -494,6 +536,6 @@ public class DBConnect {
        else {
             return message;
         }
-    }  
+    } */ 
    
 }

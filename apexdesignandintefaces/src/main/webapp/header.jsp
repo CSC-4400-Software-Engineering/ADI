@@ -30,7 +30,7 @@
     <body id="home"> <!--this id makes it so that we can make a button on the page that says "take me to the top" -->
         <!--Top bar with Logo, website name, address -->
         <div class="w3-bar w3-theme w3-padding">
-            <div class="w3-col s2"><img src="images/apexLogo.png" alt="apexLogo" class="responsive"/></div>
+            <div class="w3-col s2"><img src="Images/apexLogo.png" alt="apexLogo" class="logo"/></div>
             <div class="w3-col s8 w3-center"><h1>Apex Design and Interfaces</h1></div>
             <div class="w3-col s2 w3-right-align"> <p>732 Bridge Cr. <br>Waltham, MA 02452</p>
                 <a href="cart.jsp" class="cart w3-bar-item w3-right w3-button w3-theme-l2">

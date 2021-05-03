@@ -43,7 +43,7 @@
                             <div class="w3-row-padding">
                                 <div class="w3-col s12">
                                     <%
-                                        out.print("<img style='width:100%' src='data:image/png;base64," + currentPicture + "'/>");
+                                        out.print("<img style='width:100%' src='data:image/png;base64," + currentPicture + "' class='viewProductPic' />");
                                     %>
                                 </div>
                             </div>

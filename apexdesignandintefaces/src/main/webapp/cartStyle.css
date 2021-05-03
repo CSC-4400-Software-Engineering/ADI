@@ -38,6 +38,12 @@ CURRENTLY AT THE 8 MINUTE MARK IN TUTORIAL 5
     object-fit: contain;
 }
 
+.viewProductPic{
+    width: 400px ;
+    height: 400px;
+    object-fit: contain;
+}
+
 .add-cart {
     position: absolute;
     width: 100%;

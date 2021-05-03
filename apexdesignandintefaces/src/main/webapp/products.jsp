@@ -12,11 +12,10 @@
         <title>Products</title>
     </head>
     <body>
-        <%            DBConnect dbConnect = new DBConnect();
-            String productsScript = dbConnect.productScript("select brand, model, price, productID from product");
-            out.print("<script>" + productsScript + "</script>");
-            out.print(dbConnect.displayProducts("select productID, brand, model, price from product"));
-%>
-                <%@include file="footer.jsp"%>        
+        <%            
+            DBConnect dbConnect = new DBConnect();
+            out.print(dbConnect.displayProducts("select productID, brand, model, price, stock from product"));
+        %>
+        <%@include file="footer.jsp"%>        
     </body>
 </html>
