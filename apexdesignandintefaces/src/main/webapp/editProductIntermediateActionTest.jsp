@@ -36,11 +36,12 @@
                                             String productPriceInput = request.getParameter("productPrice");
                                             String productDescriptionInput = request.getParameter("productDescription");
                                             String productStockInput = request.getParameter("productStock");
+                                            String productSaleInput = request.getParameter("productSale");
                                             String productPictureInput = request.getParameter("productPicture");
 
                                             /* We refrain from updating the image in this test, since it needs to be done via servlet */
                                             
-                                            String sqlInput = "UPDATE product SET brand = '" + productBrandInput + "', model = '" + productModelInput + "', type = '" + productTypeInput + "', price = '" + productPriceInput + "', description = '" + productDescriptionInput + "', stock = '" + productStockInput + "' WHERE productID LIKE '" + productIDInput + "'";
+                                            String sqlInput = "UPDATE product SET brand = '" + productBrandInput + "', model = '" + productModelInput + "', type = '" + productTypeInput + "', price = '" + productPriceInput + "', description = '" + productDescriptionInput + "', stock = '" + productStockInput + "', sale = " + productSaleInput + " WHERE productID LIKE '" + productIDInput + "'";
                                             DBConnect dbConnect = new DBConnect();
                                             String connectMessage = dbConnect.insertData(sqlInput);
                                             out.print("<li>Brand: <b>" + productBrandInput + "</b></li>");
@@ -49,6 +50,7 @@
                                             out.print("<li>Price: <b>" + productPriceInput + "</b></li>");
                                             out.print("<li>Description: <b>" + productDescriptionInput + "</b></li>");
                                             out.print("<li>Stock: <b>" + productStockInput + "</b></li>");
+                                            out.print("<li>Sale: <b>" + productSaleInput + "</b></li>");
                                             if (request.getParameter("productPicture") != "") {
                                                 out.print("<li>Picture: <b>" + productPictureInput + "</b></li>");
                                             }

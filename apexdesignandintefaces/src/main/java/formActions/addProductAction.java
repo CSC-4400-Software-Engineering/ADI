@@ -55,15 +55,19 @@ public class addProductAction extends HttpServlet {
         Part part6 = request.getPart("productStock");
         Scanner scanner6 = new Scanner(part6.getInputStream());
         String productStockInput = scanner6.nextLine();
+        
+        Part part7 = request.getPart("productSale");
+        Scanner scanner7 = new Scanner(part7.getInputStream());
+        String productSaleInput = scanner7.nextLine();
 
-        Part part7 = request.getPart("productPicture");
-        InputStream productPictureInput = part7.getInputStream();
+        Part part8 = request.getPart("productPicture");
+        InputStream productPictureInput = part8.getInputStream();
 
         /* Insert the parts into the database */
         
         DBConnect dbConnect = new DBConnect();
-        String sqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock, picture) VALUES(0,?,?,?,?,?,?,?)";
-        String connectMessage = dbConnect.addProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productPictureInput);
+        String sqlInput = "INSERT INTO product (productID, brand, model, type, price, description, stock, sale, picture) VALUES(0,?,?,?,?,?,?,?,?)";
+        String connectMessage = dbConnect.addProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productSaleInput, productPictureInput);
         if (connectMessage.equals("Closed")) {
             response.sendRedirect("administrator.jsp?addProductMessage=Product added to inventory!");
 

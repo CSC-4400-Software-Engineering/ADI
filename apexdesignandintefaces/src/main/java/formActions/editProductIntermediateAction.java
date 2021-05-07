@@ -58,10 +58,14 @@ public class editProductIntermediateAction extends HttpServlet {
         Part part6 = request.getPart("productStock");
         Scanner scanner6 = new Scanner(part6.getInputStream());
         String productStockInput = scanner6.nextLine();
+        
+        Part part7 = request.getPart("productSale");
+        Scanner scanner7 = new Scanner(part7.getInputStream());
+        String productSaleInput = scanner7.nextLine();
 
-        Part part8 = request.getPart("productID");
-        Scanner scanner8 = new Scanner(part8.getInputStream());
-        String productIDInput = scanner8.nextLine();
+        Part part9 = request.getPart("productID");
+        Scanner scanner9 = new Scanner(part9.getInputStream());
+        String productIDInput = scanner9.nextLine();
         
         /* Strip any potential whitespace from the ID just to be safe */
         
@@ -72,14 +76,14 @@ public class editProductIntermediateAction extends HttpServlet {
         DBConnect dbConnect = new DBConnect();
 
         if (request.getPart("productPicture").getSize() > 0) {
-            Part part7 = request.getPart("productPicture");
-            InputStream productPictureInput = part7.getInputStream();
-            sqlInput = "UPDATE product SET brand = ?, model = ?, type = ?, price = ?, description = ?, stock = ?, picture = ? WHERE productID LIKE ?";
-            connectMessage = dbConnect.editProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productPictureInput, productIDInput);
+            Part part8 = request.getPart("productPicture");
+            InputStream productPictureInput = part8.getInputStream();
+            sqlInput = "UPDATE product SET brand = ?, model = ?, type = ?, price = ?, description = ?, stock = ?, sale = ?, picture = ? WHERE productID LIKE ?";
+            connectMessage = dbConnect.editProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productSaleInput, productPictureInput, productIDInput);
         } 
         else {
-            sqlInput = "UPDATE product SET brand = ?, model = ?, type = ?, price = ?, description = ?, stock = ? WHERE productID LIKE ?";
-            connectMessage = dbConnect.editProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productIDInput);
+            sqlInput = "UPDATE product SET brand = ?, model = ?, type = ?, price = ?, description = ?, stock = ?, sale= ? WHERE productID LIKE ?";
+            connectMessage = dbConnect.editProduct(sqlInput, productBrandInput, productModelInput, productTypeInput, productPriceInput, productDescriptionInput, productStockInput, productSaleInput, productIDInput);
         }
         if (connectMessage.equals("Closed")) {
             response.sendRedirect("administrator.jsp?editProductMessage=Product in inventory edited!");

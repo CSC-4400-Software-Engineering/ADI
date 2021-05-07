@@ -24,7 +24,7 @@
 
             /* Display the products */
             
-            out.print(dbConnect.displayProducts("SELECT productID, brand, model, price, stock FROM product ORDER BY stock DESC"));
+            out.print(dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product ORDER BY stock DESC"));
         %>
         <%@include file="footer.jsp"%>        
     </body>

@@ -42,7 +42,7 @@
             String logged = (String) session.getAttribute("logged");
             String name = (String) session.getAttribute("name");
             String email = (String) session.getAttribute("email");
-
+            boolean testEnable = false;
         %>
         <!--Second bar down, has buttons with drop down on left and sign up on the right -->
         <div class="w3-bar w3-theme-d2">
@@ -61,6 +61,11 @@
                 </div>
                 <a href="deals.jsp" class="w3-bar-item w3-button w3-medium">Deals!</a>
                 <a href="about.jsp" class="w3-bar-item w3-button w3-medium">About</a>
+                <%
+                    if (testEnable == true) {
+                        out.println("<a href='#' class='w3-bar-item w3-button w3-medium w3-text-red'>TEST ON!</a>");
+                    }
+                %>
 
             </div>
             <div class="w3-col s4">

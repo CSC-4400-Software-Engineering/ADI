@@ -33,7 +33,7 @@
                                             String userFirstNameInput = request.getParameter("userFirstName");
                                             String userLastNameInput = request.getParameter("userLastName");
                                             String userEmailInput = request.getParameter("userEmail");
-                                            String userPasswordInput = request.getParameter("userPassword");
+                                            //String userPasswordInput = request.getParameter("userPassword");
                                             String userStreetAddressInput = request.getParameter("userStreetAddress");
                                             String userCityInput = request.getParameter("userCity");
                                             String userStateInput = request.getParameter("userState");
@@ -45,7 +45,7 @@
                                             String userCreditCardExpInput = request.getParameter("userCreditCardExp");
 
                                             String sqlInput = "UPDATE user SET firstName = '" + userFirstNameInput + "', lastName = '" + userLastNameInput + "', email = '"
-                                                    + userEmailInput + "', password = '" + userPasswordInput + "', streetAddress = '" + userStreetAddressInput + "', city = '"
+                                                    + userEmailInput + "', streetAddress = '" + userStreetAddressInput + "', city = '"
                                                     + userCityInput + "', state = '" + userStateInput + "', phone = '"
                                                     + userPhoneInput + "', securityQuestion = '"
                                                     + userSecurityQuestionInput + "', securityAnswer = '"
@@ -59,7 +59,7 @@
                                             out.print("<li>First Name: <b>" + userFirstNameInput + "</b></li>");
                                             out.print("<li>Last Name: <b>" + userLastNameInput + "</b></li>");
                                             out.print("<li>Email: <b>" + userEmailInput + "</b></li>");
-                                            out.print("<li>Password: <b>" + userPasswordInput + "</b></li>");
+                                            //out.print("<li>Password: <b>" + userPasswordInput + "</b></li>");
                                             out.print("<li>Street Address: <b>" + userStreetAddressInput + "</b></li>");
                                             out.print("<li>City: <b>" + userCityInput + "</b></li>");
                                             out.print("<li>State: <b>" + userStateInput + "</b></li>");

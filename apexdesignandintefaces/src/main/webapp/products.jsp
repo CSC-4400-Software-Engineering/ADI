@@ -14,7 +14,7 @@
     <body>
         <%            
             DBConnect dbConnect = new DBConnect();
-            out.print(dbConnect.displayProducts("select productID, brand, model, price, stock from product"));
+            out.print(dbConnect.displayProducts("select productID, brand, model, price, stock, sale from product"));
         %>
         <%@include file="footer.jsp"%>        
     </body>

@@ -25,7 +25,7 @@
 
             /* Display the products */
             
-            String productSearchResult = dbConnect.displayProducts("SELECT productID, brand, model, price, stock FROM product WHERE brand LIKE '%" + productSearch + "%' OR model LIKE '%" + productSearch + "%' ORDER BY stock DESC");
+            String productSearchResult = dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product WHERE brand LIKE '%" + productSearch + "%' OR model LIKE '%" + productSearch + "%' ORDER BY stock DESC");
             
             /* If the tags are empty, the query probably did not return any products */
             

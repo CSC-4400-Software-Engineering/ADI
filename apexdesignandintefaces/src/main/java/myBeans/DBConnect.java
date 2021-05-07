@@ -219,7 +219,7 @@ public class DBConnect {
     Specialized function to help add products to the database. 
     Normally this doesn't need to exist, but it's needed in order to store images as blobs.
      */
-    public String addProduct(String sql, String brand, String model, String type, String price, String description, String stock, InputStream picture) {
+    public String addProduct(String sql, String brand, String model, String type, String price, String description, String stock, String sale, InputStream picture) {
         String message = open();
         if (message.equals("Opened")) {
             try {
@@ -230,7 +230,8 @@ public class DBConnect {
                 pstm.setString(4, price);
                 pstm.setString(5, description);
                 pstm.setString(6, stock);
-                pstm.setBlob(7, picture);
+                pstm.setString(7, sale);
+                pstm.setBlob(8, picture);
                 pstm.executeUpdate();
                 message = close();
 
@@ -243,7 +244,7 @@ public class DBConnect {
     }
 
     /* Specialized functions to help edit products to the database. */
-    public String editProduct(String sql, String brand, String model, String type, String price, String description, String stock, InputStream picture, String ID) {
+    public String editProduct(String sql, String brand, String model, String type, String price, String description, String stock, String sale, InputStream picture, String ID) {
         String message = open();
         if (message.equals("Opened")) {
             try {
@@ -254,8 +255,9 @@ public class DBConnect {
                 pstm.setString(4, price);
                 pstm.setString(5, description);
                 pstm.setString(6, stock);
-                pstm.setBlob(7, picture);
-                pstm.setString(8, ID);
+                pstm.setString(7, sale);
+                pstm.setBlob(8, picture);
+                pstm.setString(9, ID);
                 pstm.executeUpdate();
                 message = close();
 
@@ -267,7 +269,7 @@ public class DBConnect {
         return message;
     }
 
-    public String editProduct(String sql, String brand, String model, String type, String price, String description, String stock, String ID) {
+    public String editProduct(String sql, String brand, String model, String type, String price, String description, String stock, String sale, String ID) {
         String message = open();
         if (message.equals("Opened")) {
             try {
@@ -278,7 +280,8 @@ public class DBConnect {
                 pstm.setString(4, price);
                 pstm.setString(5, description);
                 pstm.setString(6, stock);
-                pstm.setString(7, ID);
+                pstm.setString(7, sale);
+                pstm.setString(8, ID);
                 pstm.executeUpdate();
                 message = close();
 
@@ -375,7 +378,7 @@ public class DBConnect {
         }
     }*/
     
-     public String displayProducts(String sql) {//productID, brand, model, price, stock from product
+     public String displayProducts(String sql) {//productID, brand, model, price, stock, sale from product
         String result = "<div class='container'>";
         String message = open();
         if (message.equals("Opened")) {
@@ -402,8 +405,22 @@ public class DBConnect {
                     result += "<input type='hidden' name='productNameConcat' value='" + rst2.getString(2) + " " + rst2.getString(3) + "'>";
                     result += "<input class='w3-button w3-large w3-block w3-section w3-theme-d4 w3-ripple' type='submit' value='" + rst2.getString(2) + " " + rst2.getString(3) + "'>";
                     result += "<div class='image'>";
-                    result += "<img src='data:image/png;base64," + pictureString + "' class='productPic'  width='100%' >";
-                    result += "<h3>$" + rst2.getInt(4) + "</h3>";
+                    
+                    /* If there is no product image, use the placeholder */
+                    
+                    if (pictureString.equals("")) {
+                        result += "<img src='Images/noImage.png' class='productPic' width='100%' >";
+                    }
+                    else {
+                        result += "<img src='data:image/png;base64," + pictureString + "' class='productPic' width='100%' >";    
+                    }
+                    
+                    if (rst2.getInt(6) == 1) {
+                        result += "<h3 class='w3-text-orange' >Sale: $" + rst2.getInt(4) + "</h3>";
+                    } 
+                    else {
+                        result += "<h3>$" + rst2.getInt(4) + "</h3>";
+                    }
 
                     /* Handle product stock */
                     
@@ -472,9 +489,9 @@ public class DBConnect {
         String message = open();
         if (message.equals("Opened")) {
             try {
-                String sql = "SELECT onlineorder.orderID, onlineorder.timeStamp, product.brand, product.model, onlineorderproduct.quantity, product.price"
+                String sql = "SELECT onlineorder.orderID, onlineorder.timeStamp, onlineorderproduct.currentBrand, onlineorderproduct.currentModel, onlineorderproduct.quantity, onlineorderproduct.currentPrice"
                         + " FROM user INNER JOIN onlineorder ON user.userID = onlineorder.userID INNER JOIN onlineorderproduct ON onlineorder.orderID = "
-                        + "onlineorderproduct.orderID INNER JOIN product ON onlineorderproduct.productID=product.productID WHERE user.email = '" + email + "'";
+                        + "onlineorderproduct.orderID WHERE user.email = '" + email + "'";
                 rst = stm.executeQuery(sql);
                 rsmd = rst.getMetaData();
                 int count = rsmd.getColumnCount();

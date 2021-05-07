@@ -23,7 +23,7 @@
                 <div class="w3-card-4">
                     <div class="w3-container w3-theme-d4">
                         <h2 class="w3-left">Sign Up</h2>
-                        <h4 class="w3-right">Already have an account? <button onclick="switchForms()">&nbsp; Sign In &nbsp;</button></h4>
+                        <h4 class="w3-right">Already have an account? &nbsp;<button class="w3-button w3-theme-l1" onclick="switchForms()">&nbsp; Sign In &nbsp;</button></h4>
                     </div>
                     <form name="customerSignUp" action="customerSignUpAction.jsp" class="w3-container" method="get" onsubmit="return signUp()">
 
@@ -216,7 +216,7 @@
                 <div class="w3-card-4 w3-margin w3-col s6">
                     <div class="w3-container w3-theme-d4">
                         <h2 class="w3-left">Login to Your Account</h2>
-                        <h4 class="w3-right">Don't have an account? <button onclick="switchForms()">&nbsp; Sign Up &nbsp;</button></h4>
+                        <h4 class="w3-right">Don't have an account? &nbsp;<button class="w3-button w3-theme-l1" onclick="switchForms()">&nbsp; Sign Up &nbsp;</button></h4>
                     </div>
                     <form name="customerSignInForm" action="signInAction.jsp" class="w3-container" method="post" onsubmit="return signIn()">
                         <br>

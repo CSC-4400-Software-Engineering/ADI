@@ -25,70 +25,86 @@
                 <div class="w3-padding">
                     <div class="w3-card-4">
                         <h1 class="w3-container w3-theme-d4">Add Product</h1>
-                        <form name="addProduct" action="addProductAction" method="POST" enctype="multipart/form-data" class="w3-container w3-padding">
-                            <!-- test page <form name="addProduct" action="addProductActionTest.jsp" method="POST" class="w3-container w3-padding"> -->
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <label>Brand</label>
-                                    <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productBrand" id="productBrandID" size="100" onInput="addProductVerifyBrand()"/>
-                                </div>
+                        <%
+                            if (testEnable == true) {
+                                out.println("<form name='addProduct' action='addProductActionTest.jsp' method='POST' class='w3-container w3-padding'>");
+                            } 
+                            else {
+                                out.println("<form name='addProduct' action='addProductAction' method='POST' enctype='multipart/form-data' class='w3-container w3-padding'>");
+                            }
+                        %>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Brand</label>
+                                <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productBrand" id="productBrandID" size="100" onInput="addProductVerifyBrand()"/>
                             </div>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <label>Model</label>
-                                    <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productModel" id="productModelID" size="100" onInput="addProductVerifyModel()"/>
-                                </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Model</label>
+                                <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productModel" id="productModelID" size="100" onInput="addProductVerifyModel()"/>
                             </div>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <label>Type</label>
-                                    <!-- <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productType" id="productTypeID" size="50" onInput="addProductVerifyType()"/> -->
-                                    <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productType">
-                                        <option disabled selected>Select one ...</option>
-                                        <option>Laptop</option>
-                                        <option>Desktop</option>
-                                        <option>TV</option>
-                                        <option>Video Game/Console</option>
-                                        <option>Audio/Video</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Type</label>
+                                <!-- <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productType" id="productTypeID" size="50" onInput="addProductVerifyType()"/> -->
+                                <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productType">
+                                    <option disabled selected>Select one ...</option>
+                                    <option>Laptop</option>
+                                    <option>Desktop</option>
+                                    <option>TV</option>
+                                    <option>Video Game/Console</option>
+                                    <option>Audio/Video</option>
+                                </select>
                             </div>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <label>Price</label>
-                                    <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productPrice" id="productPriceID" size="20" onInput="addProductVerifyPrice()"/>
-                                </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Price</label>
+                                <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productPrice" id="productPriceID" size="20" onInput="addProductVerifyPrice()"/>
                             </div>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <label>Description</label>
-                                    <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productDescription" id="productDescriptionID" size="500" onInput="addProductVerifyDescription()"/>
-                                </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Description</label>
+                                <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productDescription" id="productDescriptionID" size="500" onInput="addProductVerifyDescription()"/>
                             </div>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <label>Stock</label>
-                                    <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productStock" id="productStockID" size="20" onInput="addProductVerifyStock()"/>
-                                </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Stock</label>
+                                <input required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" type="text" name="productStock" id="productStockID" size="20" onInput="addProductVerifyStock()"/>
                             </div>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <label>Picture</label>
-                                    <br>
-                                    <input required class="w3-margin-top w3-margin-bottom" type="file" name="productPicture"/>
-                                </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Sale</label>
+                                <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productSale">
+                                    <option disabled selected>Select one ...</option>
+                                    <option value="0" >No</option>
+                                    <option value="1" >Yes</option>
+                                </select>
                             </div>
-                            <br>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <input class="w3-button w3-block w3-section w3-red w3-ripple w3-padding" type="reset" value="Reset" />
-                                </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Picture</label>
+                                <br>
+                                <input required class="w3-margin-top w3-margin-bottom" type="file" name="productPicture"/>
                             </div>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <input class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" type="submit" value="Submit"/>
-                                </div>
+                        </div>
+                        <br>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <input class="w3-button w3-block w3-section w3-red w3-ripple w3-padding" type="reset" value="Reset" />
                             </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <input class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" type="submit" value="Submit"/>
+                            </div>
+                        </div>
                         </form>
                     </div>
                 </div>
@@ -142,30 +158,36 @@
                 <div class="w3-padding">
                     <div class="w3-card-4">
                         <h1 class="w3-container w3-theme-d4">Remove Product</h1>
-                        <form name="removeProduct" action="removeProductAction.jsp" method="POST" class="w3-container w3-padding">
-                            <!-- test page <form name="removeProduct" action="removeProductActionTest.jsp" method="POST" class="w3-container w3-padding"> -->
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <label>Product</label>
-                                    <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productDropDown" id="productDropDownID" onchange="removeProductDropDownSwitch()">
-                                        <%
-                                            productDropDown = dbConnect.dropdown("SELECT productID, model FROM product");
-                                            out.println(productDropDown);
-                                        %>
-                                    </select>
-                                </div>
+                        <%
+                            if (testEnable == true) {
+                                out.println("<form name='removeProduct' action='removeProductActionTest.jsp' method='POST' class='w3-container w3-padding'>");
+                            } 
+                            else {
+                                out.println("<form name='removeProduct' action='removeProductAction.jsp' method='POST' class='w3-container w3-padding'>");
+                            }
+                        %>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <label>Product</label>
+                                <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productDropDown" id="productDropDownID" onchange="removeProductDropDownSwitch()">
+                                    <%
+                                        productDropDown = dbConnect.dropdown("SELECT productID, model FROM product");
+                                        out.println(productDropDown);
+                                    %>
+                                </select>
                             </div>
-                            <br>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <input class="w3-button w3-block w3-section w3-red w3-ripple w3-padding" type="reset" value="Reset" />
-                                </div>
+                        </div>
+                        <br>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <input class="w3-button w3-block w3-section w3-red w3-ripple w3-padding" type="reset" value="Reset" />
                             </div>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12">
-                                    <input class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" type="submit" value="Submit" onclick="return removeProductConfirm()" />
-                                </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col s12">
+                                <input class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" type="submit" value="Submit" onclick="return removeProductConfirm()" />
                             </div>
+                        </div>
                         </form>
                     </div>
                 </div>

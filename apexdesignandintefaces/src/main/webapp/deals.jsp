@@ -1,47 +1,40 @@
-<%-- 
-    Document   : deals
-    Created on : Apr 2, 2021, 10:35:53 PM
-    Author     : Adrien
---%>
-
-<%@page import="myBeans.DBConnect"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="myBeans.DBConnect" %>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Deals!</title>
+        <title>Deals</title>
+        <%@include file="header.jsp"%>
         <link rel="stylesheet" href="productStyle.css">
-        <%@include file="header.jsp" %>
         <script>
-            $("#portals").show();
-            $("#logout").hide();
+            <%                
+                if (logged == null || logged.equals("index")) {
+                    out.print("$('#portals').show();");
+                    out.print("$('#logout').hide();");
+                } 
+                else if (logged.equals("index") == false) {
+                    out.print("$('#portals').hide();");
+                    out.print("$('#logout').show();");
+                }
+            %>
         </script>
-        
-        <% if ((logged != null) && (logged.equals("index"))) {
-            String error = request.getParameter("error");
-            if (error != null) {
-        %>
-    <div class="w3-small w3-red col-sm-4 float-right">
-        <%= error%>
-    </div>
-    <%} } %>
     </head>
-    
     <body>
-        <h1 class="w3-container w3-theme-d4">Items on Sale</h1>
-        <table>
-        <% 
+        <%
             DBConnect dbConnect = new DBConnect();
-            String query = "SELECT Model, Brand, Type, CONCAT('$', ROUND(price, 2)) AS 'List Price', CONCAT('$', ROUND((price * (100 - sale) / 100), 2)) AS 'Sale Price', CONCAT('$', ROUND((price - (price * (100 - sale) / 100)), 2), ' (', sale, '%)') AS 'Savings', CASE WHEN stock > 0 THEN 'In Stock' WHEN stock = 0 THEN 'Out of Stock' END AS 'Supply' FROM product WHERE sale > 0 ORDER BY stock DESC, brand, price DESC";
-            String nullTest = dbConnect.fetchInfo(query);
-            if(nullTest.length() == 0){
-                out.print("No Sales are currently ongoing");
-            }
-            else{
-                String table = dbConnect.htmlTable(query);
-                out.print(table);
+
+            /* Display the products */
+            
+            String productDealsResult = dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product WHERE sale LIKE '1' ORDER BY stock DESC");
+            
+            /* If the tags are empty, the query probably did not return any products */
+            
+            if (productDealsResult.equals("<div class='container'></div><script>let products = [];</script><style></style>")) {
+                out.print("<div class='container'>No sales are currently ongoing</div>");
+            } 
+            else {
+                out.print(productDealsResult);
             }
         %>
-        </table>
-        <br/>
-    <%@include file="footer.jsp" %>
+        <%@include file="footer.jsp"%>        
     </body>
 </html>

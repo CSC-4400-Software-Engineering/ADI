@@ -12,10 +12,12 @@
         <%@include file="header.jsp"%>
         <title>Order Confirmation</title>
         <script>
-            <%            if (logged == null || logged.equals("index")) {
+            <%            
+                if (logged == null || logged.equals("index")) {
                     out.print("$('#portals').show();");
                     out.print("$('#logout').hide();");
-                } else if (logged.equals("index") == false) {
+                } 
+                else if (logged.equals("index") == false) {
                     out.print("$('#portals').hide();");
                     out.print("$('#logout').show();");
                 }
@@ -23,8 +25,12 @@
         </script>
     </head>
     <body>
-        <%            DBConnect dbConnect = new DBConnect();
+        <%            
+            DBConnect dbConnect = new DBConnect();
             String userEmail = request.getParameter("email");
+            String currentBrand;
+            String currentModel;
+            String currentPrice;
 
             //grab comma separated list. They're grouped by 2, anything with an even index is the productID
             //anything with an odd index is the cooresponding quantity for that item
@@ -57,7 +63,12 @@
             //iterate through the array in the groups of 2, add products and 
             //quantity to many-to-many table by creating dbConnect statements
             for (int i = 0; i < result.size(); i += 2) {
-                dbConnect.insertData("INSERT INTO onlineorderproduct (orderID, productID, quantity) VALUES (" + currentOrder + ", " + result.get(i) + ", " + result.get(i + 1) + ")");
+                
+                currentBrand = dbConnect.fetchInfo("SELECT brand FROM product WHERE productID LIKE '" + result.get(i) + "'");
+                currentModel = dbConnect.fetchInfo("SELECT model FROM product WHERE productID LIKE '" + result.get(i) + "'");
+                currentPrice = dbConnect.fetchInfo("SELECT price FROM product WHERE productID LIKE '" + result.get(i) + "'");
+                
+                dbConnect.insertData("INSERT INTO onlineorderproduct (orderID, productID, currentBrand, currentModel, currentPrice, quantity) VALUES (" + currentOrder + ", " + result.get(i) + ", '" + currentBrand + "', '" + currentModel + "', '" + currentPrice + "', " + result.get(i + 1) + ")");
             }
         %>
         <div class="w3-padding">

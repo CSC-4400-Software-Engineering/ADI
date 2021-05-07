@@ -9,7 +9,7 @@
     <body>
         <%            
             DBConnect dbConnect = new DBConnect();
-            out.print(dbConnect.displayProducts("select productID, brand, model, price, stock from product where type='Desktop'"));
+            out.print(dbConnect.displayProducts("select productID, brand, model, price, stock, sale from product where type='Desktop'"));
         %>
         <%@include file="footer.jsp"%>        
     </body>

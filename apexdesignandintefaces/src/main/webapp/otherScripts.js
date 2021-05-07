@@ -293,7 +293,11 @@ function editUserVerifyCreditCardNum() {
     var theUserCreditCardNum = document.editUserIntermediate.userCreditCardNum.value;
     var theUserCreditCardNumLength = theUserCreditCardNum.length;
     
-    if (theUserCreditCardNumLength > 16) {
+    if (numericCheck(theUserCreditCardNum) === false) {
+       document.getElementById("userCreditCardNumID").setCustomValidity("Credit Card Number must be numeric!");
+    } 
+    
+    else if (theUserCreditCardNumLength > 16) {
         document.getElementById("userCreditCardNumID").setCustomValidity("Credit Card Number must not be greater than 16 digits in size!");
     } 
     else {
@@ -305,7 +309,10 @@ function editUserVerifyCreditCardExp() {
     var theUserCreditCardExp = document.editUserIntermediate.userCreditCardExp.value;
     var theUserCreditCardExpLength = theUserCreditCardExp.length;
     
-    if (theUserCreditCardExpLength > 4) {
+    if (creditCardExpCheck(theUserCreditCardExp) === false) {
+        document.getElementById("userCreditCardExpID").setCustomValidity("Credit Card Expiration is not valid!");
+    }  
+    else if (theUserCreditCardExpLength > 4) {
         document.getElementById("userCreditCardExpID").setCustomValidity("Credit Card Expiration must not be greater than 4 digits in size!");
     } 
     else {
@@ -326,4 +333,9 @@ function emailCheck(inputString) {
 function passwordCheck(inputString) {
     var sebastiansPatentedPasswordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     return sebastiansPatentedPasswordRegex.test(inputString);
+}
+
+function creditCardExpCheck(inputString) {
+    var sebastiansPatentedCreditCardExpRegex = /^([1][0-2]|[0][1-9])([2][1-9])$/;
+    return sebastiansPatentedCreditCardExpRegex.test(inputString);
 }
