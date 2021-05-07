@@ -25,7 +25,7 @@
                         <h2 class="w3-left">Sign Up</h2>
                         <h4 class="w3-right">Already have an account? &nbsp;<button class="w3-button w3-theme-l1" onclick="switchForms()">&nbsp; Sign In &nbsp;</button></h4>
                     </div>
-                    <form name="customerSignUp" action="customerSignUpAction.jsp" class="w3-container" method="get" onsubmit="return signUp()">
+                    <form name="customerSignUp" action="customerSignUpAction.jsp" class="w3-container" method="get" onsubmit="return signUpFirst() && signUpSecond();">
 
                         <div class="w3-row-padding">
                             <h4><b>Basic Information</b></h4>

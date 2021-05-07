@@ -14,7 +14,9 @@
             if (logged == null || logged.equals("index")) {
                 out.print("$('#portals').show();");
                 out.print("$('#logout').hide();");
-            } else if (logged.equals("index") == false) {
+            } 
+            
+            else if (logged.equals("index") == false) {
                 out.print("$('#portals').hide();");
                 out.print("$('#logout').show();");
             }
