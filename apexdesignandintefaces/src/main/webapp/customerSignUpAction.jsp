@@ -10,12 +10,8 @@
         <title>Sign Up Action</title>
     </head>
     <body>
+        <div class="flexcontent">
         <br>
-        <script>
-            $("#portals").show();
-            $("#logout").hide();
-        </script>
-        
         <%           
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
@@ -68,6 +64,7 @@
             </div>
         </div>
         <br><br>
+        </div>
         <%@include file="footer.jsp" %>
     </body>
 </html>

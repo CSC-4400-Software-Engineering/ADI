@@ -16,9 +16,10 @@
         </script>
     </head>
     <body>
-        
+        <div class="flexcontent">
+
             <p><br></p>
-            
+
             <div class="w3-padding w3-margin" id="signUpForm">
                 <div class="w3-card-4">
                     <div class="w3-container w3-theme-d4">
@@ -68,12 +69,12 @@
                                     <label>Confirm Password</label></p>    
                             </div>
                         </div>
-                        
+
                         <div class="w3-row-padding">
                             <div class="w3-col s3">
                                 <p>
-                                <input class="w3-input w3-round w3-light-grey" name="phone" type="number" id="phone" required></input>
-                                <label>Phone Number</label>
+                                    <input class="w3-input w3-round w3-light-grey" name="phone" type="number" id="phone" required></input>
+                                    <label>Phone Number</label>
                                 </p>
                             </div>
                             <div class="w3-col s6">
@@ -116,7 +117,7 @@
                             </div>
                             <div class="w3-col s4">
                                 <p>
-                                     <select class="w3-select w3-border w3-round w3-light-grey" name="state" id="state" required>
+                                    <select class="w3-select w3-border w3-round w3-light-grey" name="state" id="state" required>
                                         <option disabled selected value="">Select State</option>
                                         <option>Alabama</option>
                                         <option>Alaska</option>
@@ -175,7 +176,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="w3-row-padding">
                             <h4><b>Billing Information (For Future Orders)</b></h4>
@@ -252,7 +253,7 @@
                 </div>
                 <div class="w3-col s3"><br></div>
             </div>  
-       
+        </div>
         <%@include file="footer.jsp" %>
     </body>
 </html>

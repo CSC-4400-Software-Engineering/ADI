@@ -6,7 +6,7 @@
         <%@include file="header.jsp"%>
         <link rel="stylesheet" href="productStyle.css">
         <script>
-            <%    
+            <%                
                 if (logged == null || logged.equals("index")) {
                     out.print("$('#portals').show();");
                     out.print("$('#logout').hide();");
@@ -19,13 +19,15 @@
         </script>
     </head>
     <body>
-        <%            
-            DBConnect dbConnect = new DBConnect();
+        <div class="flexcontent">
+            <%
+                DBConnect dbConnect = new DBConnect();
 
-            /* Display the products */
-            
-            out.print(dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product ORDER BY stock DESC"));
-        %>
+                /* Display the products */
+                
+                out.print(dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product ORDER BY stock DESC"));
+            %>
+        </div>
         <%@include file="footer.jsp"%>        
     </body>
 </html>
