@@ -6,13 +6,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" import="myBeans.DBConnect" %>
 <html>
     <head>
-        <title>Customer Portal</title>
+        <title>Login Portal</title>
         <%@include file="header.jsp" %>
         <script>
-            $("#portals").show(); //this shows the boxes that say admin and customer
-            $("#logout").hide(); //this hides the one that says welcome to whoever is logged in
-            $("#signUpForm").show();
-            $("#signInForm").hide();
+            <%                
+                if (logged == null || logged.equals("index")) {
+                    out.print("$('#portals').show();");
+                    out.print("$('#logout').hide();");
+                } 
+                else if (logged.equals("index") == false) {
+                    out.print("$('#portals').hide();");
+                    out.print("$('#logout').show();");
+                }
+            %>
         </script>
     </head>
     <body>

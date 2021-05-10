@@ -6,8 +6,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" import="myBeans.DBConnect" %>
 <html>
     <head>
-        <%@include file="header.jsp"%>
         <title>Sign Up Action</title>
+        <%@include file="header.jsp"%>
+        <script>
+            <%                
+                if (logged == null || logged.equals("index")) {
+                    out.print("$('#portals').show();");
+                    out.print("$('#logout').hide();");
+                } 
+                else if (logged.equals("index") == false) {
+                    out.print("$('#portals').hide();");
+                    out.print("$('#logout').show();");
+                }
+            %>
+        </script>
     </head>
     <body>
         <div class="flexcontent">

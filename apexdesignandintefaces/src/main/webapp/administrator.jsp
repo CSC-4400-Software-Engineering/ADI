@@ -127,7 +127,7 @@
                                         <label>Product</label>
                                         <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productDropDown">
                                             <%
-                                                productDropDown = dbConnect.dropdown("SELECT productID, model FROM product");
+                                                productDropDown = dbConnect.dropdown("SELECT productID, brand, model FROM product");
                                                 out.println(productDropDown);
                                             %>
                                         </select>
@@ -172,7 +172,7 @@
                                     <label>Product</label>
                                     <select required class="w3-margin-top w3-margin-bottom w3-input w3-round w3-light-grey" name="productDropDown" id="productDropDownID" onchange="removeProductDropDownSwitch()">
                                         <%
-                                            productDropDown = dbConnect.dropdown("SELECT productID, model FROM product");
+                                            productDropDown = dbConnect.dropdown("SELECT productID, brand, model FROM product");
                                             out.println(productDropDown);
                                         %>
                                     </select>

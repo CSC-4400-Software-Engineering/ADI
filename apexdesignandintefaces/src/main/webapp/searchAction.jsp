@@ -31,7 +31,7 @@
                 /* If the tags are empty, the query probably did not return any products */
                 
                 if (productSearchResult.equals("<div class='container'></div><script>let products = [];</script><style></style>")) {
-                    out.print("<div class='container'>No Results Found</div>");
+                    out.print("<div class='container'><h3>No Results Found</h3></div>");
                 } 
                 else {
                     out.print(productSearchResult);

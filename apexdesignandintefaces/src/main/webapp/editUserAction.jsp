@@ -50,7 +50,7 @@
                 String currentUserCreditCardExp = dbConnect.fetchInfo(currentUserCreditCardExpSqlInput);
 
             %>
-            <div class="w3-row">
+            <div class="container">
                 <div class="w3-col m6">
                     <div class="w3-padding">
                         <div class="w3-card-4">

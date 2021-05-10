@@ -30,7 +30,7 @@
                 /* If the tags are empty, the query probably did not return any products */
                 
                 if (productDealsResult.equals("<div class='container'></div><script>let products = [];</script><style></style>")) {
-                    out.print("<div class='container'>No sales are currently ongoing</div>");
+                    out.print("<div class='container'><h3>No sales are currently ongoing</h3></div>");
                 } 
                 else {
                     out.print(productDealsResult);
