@@ -19,23 +19,25 @@
         </script>
     </head>
     <body>
-        <%
-            String productSearch = request.getParameter("search");
-            DBConnect dbConnect = new DBConnect();
+        <div class="flexcontent">
+            <%
+                String productSearch = request.getParameter("search");
+                DBConnect dbConnect = new DBConnect();
 
-            /* Display the products */
-            
-            String productSearchResult = dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product WHERE brand LIKE '%" + productSearch + "%' OR model LIKE '%" + productSearch + "%' ORDER BY stock DESC");
-            
-            /* If the tags are empty, the query probably did not return any products */
-            
-            if (productSearchResult.equals("<div class='container'></div><script>let products = [];</script><style></style>")) {
-                out.print("<div class='container'>No Results Found</div>");
-            } 
-            else {
-                out.print(productSearchResult);
-            }
-        %>
+                /* Display the products */
+                
+                String productSearchResult = dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product WHERE brand LIKE '%" + productSearch + "%' OR model LIKE '%" + productSearch + "%' ORDER BY stock DESC");
+
+                /* If the tags are empty, the query probably did not return any products */
+                
+                if (productSearchResult.equals("<div class='container'></div><script>let products = [];</script><style></style>")) {
+                    out.print("<div class='container'>No Results Found</div>");
+                } 
+                else {
+                    out.print(productSearchResult);
+                }
+            %>
+        </div>
         <%@include file="footer.jsp"%>        
     </body>
 </html>

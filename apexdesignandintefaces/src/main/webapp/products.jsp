@@ -12,10 +12,12 @@
         <title>Products</title>
     </head>
     <body>
-        <%            
-            DBConnect dbConnect = new DBConnect();
-            out.print(dbConnect.displayProducts("select productID, brand, model, price, stock, sale from product"));
-        %>
+        <div class="flexcontent">
+            <%            
+                DBConnect dbConnect = new DBConnect();
+                out.print(dbConnect.displayProducts("select productID, brand, model, price, stock, sale from product"));
+            %>
+        </div>
         <%@include file="footer.jsp"%>        
     </body>
 </html>

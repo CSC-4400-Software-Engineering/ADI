@@ -4,31 +4,34 @@
     <head>
         <%@include file="header.jsp"%>
         <script>
-        <%            if (logged == null || logged.equals("index")) {
-                out.print("$('#portals').show();");
-                out.print("$('#logout').hide();");
-            } else if (logged.equals("index") == false) {
-                out.print("$('#portals').hide();");
-                out.print("$('#logout').show();");
-            }
-        %>
-            </script>
+            <%            
+                if (logged == null || logged.equals("index")) {
+                    out.print("$('#portals').show();");
+                    out.print("$('#logout').hide();");
+                } 
+                else if (logged.equals("index") == false) {
+                    out.print("$('#portals').hide();");
+                    out.print("$('#logout').show();");
+                }
+            %>
+        </script>
         <title>Cart</title>
     </head>
     <body>
-        <div class="pictures"></div>
-        <div class="products-container">
-            <div class="product-header">
-                <h5 class="product-title">Product</h5>
-                <h5 class="price">Price</h5>
-                <h5 class="quantity">Quantity</h5>
-                <h5 class="total">Total</h5>
+        <div class="flexcontent">
+            <div class="pictures"></div>
+            <div class="products-container">
+                <div class="product-header">
+                    <h5 class="product-title">Product</h5>
+                    <h5 class="price">Price</h5>
+                    <h5 class="quantity">Quantity</h5>
+                    <h5 class="total">Total</h5>
+                </div>
+                <div class="products">
+                    <!--This is where we populate the products in the cart -->
+                </div>
             </div>
-            <div class="products">
-                <!--This is where we populate the products in the cart -->
-            </div>
-        </div>
-        <input class="productSQL" type="hidden" name="productSQL" id="productSQL" value="?">
+            <input class="productSQL" type="hidden" name="productSQL" id="productSQL" value="?">
             <div class="w3-row-padding">
                 <div class="w3-col s4 w3-padding"><br></div>
                 <div class="w3-col s4 w3-padding">
@@ -43,6 +46,7 @@
                 </div>
                 <div class="w3-col s4 w3-padding"><br></div>
             </div>
+        </div>
         <%@include file="footer.jsp" %>
     </body>
 </html>

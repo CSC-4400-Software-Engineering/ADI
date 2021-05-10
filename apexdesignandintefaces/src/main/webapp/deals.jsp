@@ -19,22 +19,24 @@
         </script>
     </head>
     <body>
-        <%
-            DBConnect dbConnect = new DBConnect();
+        <div class="flexcontent">
+            <%
+                DBConnect dbConnect = new DBConnect();
 
-            /* Display the products */
-            
-            String productDealsResult = dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product WHERE sale LIKE '1' ORDER BY stock DESC");
-            
-            /* If the tags are empty, the query probably did not return any products */
-            
-            if (productDealsResult.equals("<div class='container'></div><script>let products = [];</script><style></style>")) {
-                out.print("<div class='container'>No sales are currently ongoing</div>");
-            } 
-            else {
-                out.print(productDealsResult);
-            }
-        %>
+                /* Display the products */
+                
+                String productDealsResult = dbConnect.displayProducts("SELECT productID, brand, model, price, stock, sale FROM product WHERE sale LIKE '1' ORDER BY stock DESC");
+
+                /* If the tags are empty, the query probably did not return any products */
+                
+                if (productDealsResult.equals("<div class='container'></div><script>let products = [];</script><style></style>")) {
+                    out.print("<div class='container'>No sales are currently ongoing</div>");
+                } 
+                else {
+                    out.print(productDealsResult);
+                }
+            %>
+        </div>
         <%@include file="footer.jsp"%>        
     </body>
 </html>
