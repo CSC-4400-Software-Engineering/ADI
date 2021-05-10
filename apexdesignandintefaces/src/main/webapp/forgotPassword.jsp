@@ -10,8 +10,16 @@
         <title>Forgot Password</title>
         <%@include file="header.jsp" %>
         <script>
-            $("#portals").show();
-            $("#logout").hide();
+            <%                
+                if (logged == null || logged.equals("index")) {
+                    out.print("$('#portals').show();");
+                    out.print("$('#logout').hide();");
+                } 
+                else if (logged.equals("index") == false) {
+                    out.print("$('#portals').hide();");
+                    out.print("$('#logout').show();");
+                }
+            %>
         </script>
         <%            String returnedQuestion = (String) session.getAttribute("tempMessage");
                       String tempEmail = (String) session.getAttribute("tempEmail");

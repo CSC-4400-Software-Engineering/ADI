@@ -79,7 +79,7 @@
                 <a href="loginPortal.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Login</a>
             </div>
             <div class="w3-col s4" id="logout">
-                <a href="logoutAction.jsp" class="w3-bar-item w3-right w3-button w3-theme-l1">Logout</a>
+                <a href="logoutAction.jsp" onclick="localStorage.clear();" class="w3-bar-item w3-right w3-button w3-theme-l1">Logout</a>
                 <div class="w3-bar-item w3-right w3-theme-l1 w3-border-right">Welcome: <%= name%></div>
                 <%
                     if (logged != null) {

@@ -19,11 +19,11 @@
             
             if (outcome.substring(0, 6).equals("Error:")){
             session.setAttribute("tempMessage", outcome);
-            response.sendRedirect("customerPortal.jsp?" + outcome);
+            response.sendRedirect("loginPortal.jsp?" + outcome);
             }
             else if (outcome.equals("Closed")){
             //session.setAttribute("tempMessage", "Success");
-            response.sendRedirect("customerPortal.jsp");
+            response.sendRedirect("loginPortal.jsp");
             }
         %>
     </body>

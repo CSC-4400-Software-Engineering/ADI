@@ -9,6 +9,18 @@
     <head>
         <title>Reset Password</title>
         <%@include file="header.jsp"%>
+        <script>
+            <%                
+                if (logged == null || logged.equals("index")) {
+                    out.print("$('#portals').show();");
+                    out.print("$('#logout').hide();");
+                } 
+                else if (logged.equals("index") == false) {
+                    out.print("$('#portals').hide();");
+                    out.print("$('#logout').show();");
+                }
+            %>
+        </script>
     </head>
     <body>
         <%            String userEmail = (String) session.getAttribute("tempEmail");
@@ -18,7 +30,7 @@
             String customerName = dbConnect.stringFinder("select firstName from user where email like '" + userEmail + "'");
 
             if (!givenAnswer.equals(correctAnswer)) {
-                response.sendRedirect("customerPortal.jsp?incorrect");
+                response.sendRedirect("loginPortal.jsp?incorrect");
             }
             
         %>
@@ -33,7 +45,7 @@
                         <h2 class='w3-center w3-padding'>Please confirm your password</h2>
                         <input class='w3-padding w3-center w3-large' type='password' name='confirmedPassword' id='confirmedPassword'>
                         <br><br>
-                        <button class='w3-button w3-center w3-round-xxlarge w3-theme' type='submit'>Get Security Question</button>
+                        <button class='w3-button w3-center w3-round-xxlarge w3-theme' type='submit'>Reset Password</button>
                     </form><br><br>
                     <div class="w3-row-padding w3-center w3-red" id="error"></div>
                 </div>
