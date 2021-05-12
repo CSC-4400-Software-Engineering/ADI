@@ -38,7 +38,7 @@
                 String currentProductSale = dbConnect.fetchInfo(currentProductSaleSqlInput);
                 String currentPicture = dbConnect.getPicture("SELECT picture FROM product WHERE productID LIKE ?", request.getParameter("productDropDown"));
             %>
-            <div class="w3-row">
+            <div class="container">
                 <div class="w3-col m3">
                     <div class="w3-padding">
                         <div class="w3-card-4">
