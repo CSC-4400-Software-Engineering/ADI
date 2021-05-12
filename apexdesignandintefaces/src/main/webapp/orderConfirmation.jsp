@@ -13,12 +13,10 @@
         <%@include file="header.jsp"%>
         <title>Order Confirmation</title>
         <script>
-            <%                
-                if (logged == null || logged.equals("index")) {
+            <%                if (logged == null || logged.equals("index")) {
                     out.print("$('#portals').show();");
                     out.print("$('#logout').hide();");
-                } 
-                else if (logged.equals("index") == false) {
+                } else if (logged.equals("index") == false) {
                     out.print("$('#portals').hide();");
                     out.print("$('#logout').show();");
                 }
@@ -52,24 +50,20 @@
                  Priming stock read for the first product
                  Prevents floating orderIDs
                  */
-                
                 ArrayList<String> allowedProducts = new ArrayList<String>();
                 ArrayList<String> unallowedProducts = new ArrayList<String>();
-                
-                
+
                 for (int i = 0; i < result.size(); i += 2) {
-                    
-                    
+
                     currentStock = dbConnect.fetchInfo("SELECT stock FROM product WHERE productID LIKE '" + result.get(i) + "'");
-                    
+
                     if (!(Integer.parseInt(result.get(i + 1)) > Integer.parseInt(currentStock))) {
                         allowedProducts.add(result.get(i));
                         allowedProducts.add(result.get(i + 1));
-                        }
-                    else {
+                    } else {
                         unallowedProducts.add(result.get(i));
                         unallowedProducts.add(result.get(i + 1));
-                        
+
                     }
                 }
 
@@ -78,8 +72,7 @@
                     //if there is no user logged in, set it to the guest
                     if (session.getAttribute("email") != null) {
                         currentUserID = dbConnect.fetchInfo("select userID from user where email like '" + session.getAttribute("email") + "'");
-                    } 
-                    else {
+                    } else {
                         currentUserID = "1";
                     }
 
@@ -102,35 +95,50 @@
 
                         /* Decrease the stock by the quantity ordered */
                         dbConnect.insertData("UPDATE product SET stock='" + (Integer.parseInt(currentStock) - Integer.parseInt(allowedProducts.get(i + 1))) + "' WHERE productID LIKE " + allowedProducts.get(i));
-                        dbConnect.insertData("INSERT INTO onlineorderproduct (orderID, productID, currentBrand, currentModel, currentPrice, quantity) VALUES (" + currentOrder + ", " + allowedProducts.get(i) + ", '" + currentBrand + "', '" + currentModel + "', '" + currentPrice + "', " + allowedProducts.get(i + 1) + ")"); 
+                        dbConnect.insertData("INSERT INTO onlineorderproduct (orderID, productID, currentBrand, currentModel, currentPrice, quantity) VALUES (" + currentOrder + ", " + allowedProducts.get(i) + ", '" + currentBrand + "', '" + currentModel + "', '" + currentPrice + "', " + allowedProducts.get(i + 1) + ")");
 
                     }
-                    
-                    out.print("<div class='w3-padding'>");
-                    out.print("<div class='w3-card-4 w3-margin'>");
-                    out.print("<h1 class='w3-center w3-container w3-theme-d3 w3-padding'><b>Order Confirmed!</b></h1>");
-                    out.print("<h3 class='w3-padding'> Your order has been sent in for processing. We will send a follow up email to .<br> Please wait 3-5 business days to check that your payment has gone through.</h3>");
-                    out.print("</div></div>");
+
+                    out.print("<div class='w3-container w3-padding-64 w3-margin w3-row'>"
+                            + "<div class='w3-col s3'><br></div>"
+                            + "<div class'w3-col s6 w3-padding-64'>"
+                            + "<div class='w3-card-4 w3-margin'>"
+                            + "<div class='w3-container w3-theme w3-center'><h1>Order Confirmation</h1></div>"
+                            + "<div class='w3-center w3-padding'>"
+                            + "<div class='w3-container w3-padding-32'><h4>"
+                            + "Your order has been sent in for processing. We will send a follow up email to " + userEmail + "<br>"
+                            + "Please wait 3-5 business days to check that your payment has gone through"
+                            + "</h4>"
+                            + "</div>"
+                            + "<div class='w3-row-padding w3-center w3-red' id='error'></div>"
+                            + "</div></div></div><div class='w3-col s3'><br></div></div>");
 
                 }
                 if (!(unallowedProducts.isEmpty())) {
-                    
-                    out.print("<div class='w3-padding'>");
-                    out.print("<div class='w3-card-4 w3-margin'>");
-                    out.print("<h1 class='w3-center w3-container w3-theme-d3 w3-padding'><b>Sorry</b></h1>");
-                    out.print("<h3 class='w3-padding'>The following products could not be ordered:</h3>");
-            
+
+                    //out.print("<div class='w3-padding'>");
+                    //out.print("<div class='w3-card-4 w3-margin'>");
+                    //out.print("<h1 class='w3-center w3-container w3-theme-d3 w3-padding'><b>Sorry</b></h1>");
+                    //out.print("<h3 class='w3-padding'>The following products could not be ordered:</h3>");
+                    out.print("<div class='w3-container w3-padding-64 w3-margin w3-row'>"
+                            + "<div class='w3-col s3'><br></div>"
+                            + "<div class'w3-col s6 w3-padding-64'>"
+                            + "<div class='w3-card-4 w3-margin'>"
+                            + "<div class='w3-container w3-theme w3-center'><h1>Order Errors</h1></div>"
+                            + "<div class='w3-center w3-padding'>"
+                            + "<div class='w3-container w3-padding-32'><h4>"
+                            + "We're sorry, but the following items could not be processed in your order due to insufficient stock:<br>");
                     for (int i = 0; i < unallowedProducts.size(); i += 2) {
-                        
+
                         currentBrand = dbConnect.fetchInfo("SELECT brand FROM product WHERE productID LIKE '" + unallowedProducts.get(i) + "'");
                         currentModel = dbConnect.fetchInfo("SELECT model FROM product WHERE productID LIKE '" + unallowedProducts.get(i) + "'");
-                        
-                        out.print("<h3 class='w3-padding'>" + currentBrand + " " + currentModel + "</h3>");
-                       
+                        out.print("<b>" + currentBrand + " " + currentModel + "</b><br>");
                     }
-                    
-                    out.print("</div></div>");
-        
+                    out.print("</h4>"
+                            + "</div>"
+                            + "<div class='w3-row-padding w3-center w3-red' id='error'></div>"
+                            + "</div></div></div><div class='w3-col s3'><br></div></div>");
+                    //out.print("</div></div>");
                 }
             %>
             <!--<div class="w3-padding">
@@ -142,6 +150,25 @@
                         Please wait 3-5 business days to check that your payment has gone through. 
                     </h3>  
                 </div> 
+            </div>-->
+
+            <!--<div class="w3-container w3-padding-64 w3-margin">
+                <div class="w3-col s3"><br></div>
+                <div class="w3-col s6 w3-padding-64">
+                    <div class="w3-card-4 w3-margin">
+                        <div class="w3-container w3-theme w3-center"><h1>Customer Home</h1></div>
+                        <div class="w3-col w3-center s12 w3-padding">
+                            <div class="w3-container w3-padding-32">
+                                <h4>
+                                    Your order has been sent in for processing. We will send a follow up email to <%=userEmail%>.<br>
+                                    Please wait 3-5 business days to check that your payment has gone through.  
+                                </h4>
+                            </div>
+                            <div class="w3-row-padding w3-center w3-red" id="error"></div>
+                        </div>
+                    </div>
+                </div>  
+                <div class="w3-col s3"><br></div>
             </div>-->
             <script>
                 localStorage.clear();
