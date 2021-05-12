@@ -510,9 +510,10 @@ public class DBConnect {
                 // create data rows
                 while (rst.next()) {
                     result += "<tr>\n";
-                    for (int i = 0; i < count; i++) {
+                    for (int i = 0; i < count-1; i++) {
                         result += "<td>" + rst.getString(i + 1) + "</td>\n";
                     }
+                    result += "<td>$" + rst.getString(count) + ".00</td>\n";
                     result += "</tr>\n";}
                 //
                 message = close();

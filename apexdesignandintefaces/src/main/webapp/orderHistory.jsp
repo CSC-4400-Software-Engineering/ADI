@@ -8,8 +8,7 @@
 <html>
     <head>
         <%@include file="header.jsp"%>
-        <%             
-            if (logged == null || !logged.equals("1")) {
+        <%            if (logged == null || !logged.equals("1")) {
                 response.sendRedirect("index.jsp");
             }
         %>
@@ -22,24 +21,32 @@
     </head>
     <body>
         <div class="flexcontent">
-            <div class="w3-card-4 w3-margin">
-                <div class="w3-container w3-theme w3-center"><h1>Order History</h1></div>
-                <div class="w3-row">
-                    <div class="w3-col w3-center s12 w3-padding">
 
-                        <div class="w3-container w3-padding-32">
-                            <table style="width: 100%; font-size: xx-large;">
-                                <%
-                                    DBConnect dbConnect = new DBConnect();
-                                    String table = dbConnect.orderHistory(email);
-                                    out.print(table);
-                                %>
-                            </table>
+
+            <div class="w3-container w3-padding-64 w3-margin">
+                <div class="w3-col s1"><br></div>
+                <div class="w3-col s10">
+                    <div class="w3-card-4 w3-margin">
+                        <div class="w3-container w3-theme w3-center"><h1>Order History</h1></div>
+                        <div class="w3-row">
+                            <div class="w3-col w3-center s12w3-padding">
+
+                                <div class="w3-container w3-padding-32">
+                                    <table style="width: 100%; font-size: xx-large;">
+                                        <%
+                                            DBConnect dbConnect = new DBConnect();
+                                            String table = dbConnect.orderHistory(email);
+                                            out.print(table);
+                                        %>
+                                    </table>
+                                </div>
+                                <div class="w3-row-padding w3-center w3-red" id="error"></div>
+                            </div>
+
                         </div>
-                        <div class="w3-row-padding w3-center w3-red" id="error"></div>
                     </div>
-
                 </div>
+                <div class="w3-col s3"><br></div>
             </div>
         </div>
         <%@include file="footer.jsp"%>        
